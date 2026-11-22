@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import Navbar from './components/Navbar';
 import FloatingDock from './components/FloatingDock';
-import Footer from './components/Footer';
 import ResumeModal from './components/ResumeModal';
 import Toast from './components/Toast';
 import CinematicBackground from './components/CinematicBackground';
@@ -89,9 +88,6 @@ export default function App() {
             onShowToast={showToast}
           />
         </main>
-
-        {/* Global Footer */}
-        <Footer />
 
         {/* Modern macOS Floating Dock */}
         <FloatingDock onOpenResume={() => setResumeModalOpen(true)} />

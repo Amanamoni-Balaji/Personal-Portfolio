@@ -138,6 +138,19 @@
   perspective: 1200px;
 }
 
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 14s linear infinite;
+}
+
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
