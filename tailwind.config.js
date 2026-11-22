@@ -9,19 +9,19 @@ export default {
     extend: {
       colors: {
         obsidian: {
-          950: '#06080E',
-          900: '#0A0E17',
-          850: '#0F1420',
-          800: '#141B2D',
-          700: '#1C253C',
+          950: '#07090E',
+          900: '#0C101A',
+          850: '#121724',
+          800: '#182032',
+          700: '#222B42',
         },
         slate: {
-          850: '#172033',
+          850: '#151D2E',
         },
         editorial: {
           line: '#1E293B',
-          lineLight: '#28354D',
-          lineFocus: '#384968',
+          lineLight: '#2A374F',
+          lineFocus: '#3D4F70',
         },
         accent: {
           blue: '#3B82F6',
@@ -29,7 +29,9 @@ export default {
           violet: '#8B5CF6',
           sky: '#0EA5E9',
           emerald: '#10B981',
+          teal: '#14B8A6',
           amber: '#F59E0B',
+          rose: '#F43F5E',
         },
         ink: {
           50: '#F8FAFC',
@@ -48,13 +50,17 @@ export default {
       },
       boxShadow: {
         'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4)',
-        'elevated': '0 12px 30px -10px rgba(0, 0, 0, 0.6), 0 4px 10px -3px rgba(0, 0, 0, 0.4)',
-        'card-hover': '0 20px 40px -15px rgba(10, 14, 23, 0.9), 0 0 20px 1px rgba(59, 130, 246, 0.12)',
-        'accent-soft': '0 0 25px -4px rgba(59, 130, 246, 0.25)',
+        'elevated': '0 14px 35px -10px rgba(0, 0, 0, 0.7), 0 6px 15px -3px rgba(0, 0, 0, 0.5)',
+        'card-hover': '0 24px 48px -15px rgba(7, 9, 14, 0.95), 0 0 25px 2px rgba(59, 130, 246, 0.14)',
+        'accent-soft': '0 0 30px -4px rgba(59, 130, 246, 0.28)',
+        'glow-emerald': '0 0 30px -4px rgba(16, 185, 129, 0.25)',
+        'glow-sky': '0 0 30px -4px rgba(14, 165, 233, 0.25)',
+        'glow-violet': '0 0 30px -4px rgba(139, 92, 246, 0.25)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out forwards',
         'subtle-pulse': 'subtlePulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'shimmer': 'shimmer 2.5s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -64,6 +70,10 @@ export default {
         subtlePulse: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.6' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
         }
       }
     },

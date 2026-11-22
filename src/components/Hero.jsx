@@ -257,24 +257,25 @@ export default function Hero({ onOpenResume, onShowToast }) {
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="relative rounded-2xl bg-obsidian-900 border border-editorial-lineLight p-5 sm:p-6 shadow-elevated space-y-5"
+              whileHover={{ y: -4, transition: { duration: 0.25 } }}
+              className="relative rounded-3xl bg-obsidian-900 border border-editorial-lineLight p-5 sm:p-6 shadow-elevated space-y-5"
             >
               {/* Executive Portrait Frame */}
-              <div className="relative group/portrait overflow-hidden rounded-xl bg-obsidian-950 border border-editorial-line/80 shadow-inner">
-                {/* Image Container with Subtle Zoom on Hover */}
+              <div className="relative group/portrait overflow-hidden rounded-2xl bg-obsidian-950 border border-editorial-lineLight shadow-2xl">
+                {/* Image Container with Smooth Cinematic Reveal on Hover */}
                 <div className="relative aspect-[4/3.8] sm:aspect-[4/3.5] w-full overflow-hidden">
                   <picture>
                     <source srcSet={personal.avatarWebp} type="image/webp" />
                     <img
                       src={personal.avatar}
                       alt="Amanamoni Balaji - Professional Profile"
-                      className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover/portrait:scale-105"
+                      className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover/portrait:scale-105 filter brightness-[0.98] group-hover/portrait:brightness-100"
                       loading="eager"
                       fetchPriority="high"
                     />
                   </picture>
-                  {/* Subtle Gradient Overlay at the base for contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-obsidian-950/20 to-transparent pointer-events-none" />
+                  {/* Subtle Gradient Vignette at the base */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/95 via-obsidian-950/25 to-transparent pointer-events-none" />
                 </div>
 
                 {/* Top-Right Badge: Verified Candidate */}
@@ -286,7 +287,7 @@ export default function Hero({ onOpenResume, onShowToast }) {
                 </div>
 
                 {/* Bottom Overlay Info Card */}
-                <div className="absolute bottom-3 left-3 right-3 z-10 p-3 rounded-lg bg-obsidian-900/90 border border-editorial-line/80 backdrop-blur-md flex items-center justify-between">
+                <div className="absolute bottom-3 left-3 right-3 z-10 p-3.5 rounded-xl bg-obsidian-900/90 border border-editorial-line/80 backdrop-blur-md flex items-center justify-between shadow-subtle">
                   <div className="space-y-0.5">
                     <h2 className="text-sm font-bold text-ink-50 font-sans tracking-tight">
                       Amanamoni Balaji
@@ -308,52 +309,56 @@ export default function Hero({ onOpenResume, onShowToast }) {
                   <span className="text-ink-400">Education Track</span>
                   <span className="text-ink-300">2023–2027</span>
                 </div>
-                <p className="text-sm font-semibold text-ink-100">
+                <p className="text-sm font-semibold text-ink-100 font-sans">
                   Matrusri Engineering College
                 </p>
                 <p className="text-xs text-ink-400 font-mono">
-                  B.E. Information Technology &bull; 9.6 CGPA
+                  B.E. Information Technology &bull; 9.6 CGPA &bull; Osmania University
                 </p>
               </div>
 
               {/* Engineering Focus Matrix */}
               <div className="space-y-2.5">
                 <p className="text-xs font-mono uppercase tracking-wider text-ink-400 font-semibold">
-                  Core Engineering Tracks
+                  Core Engineering Domains
                 </p>
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono">
                   <div className="p-2.5 rounded-lg bg-obsidian-850/50 border border-editorial-line text-ink-300">
-                    <span className="block text-[10px] text-ink-500">AI / ML</span>
+                    <span className="block text-[10px] text-accent-sky font-bold">AI / ML</span>
                     Predictive &amp; Vision Models
                   </div>
                   <div className="p-2.5 rounded-lg bg-obsidian-850/50 border border-editorial-line text-ink-300">
-                    <span className="block text-[10px] text-ink-500">Analytics</span>
-                    Process Mining &amp; EDA
+                    <span className="block text-[10px] text-emerald-400 font-bold">Process Mining</span>
+                    Clinical Pathways &amp; PM4Py
                   </div>
                   <div className="p-2.5 rounded-lg bg-obsidian-850/50 border border-editorial-line text-ink-300">
-                    <span className="block text-[10px] text-ink-500">Full Stack</span>
-                    React &bull; Django &bull; APIs
+                    <span className="block text-[10px] text-accent-indigo font-bold">Full Stack</span>
+                    React &bull; Django &bull; REST APIs
                   </div>
                   <div className="p-2.5 rounded-lg bg-obsidian-850/50 border border-editorial-line text-ink-300">
-                    <span className="block text-[10px] text-ink-500">Datathon</span>
+                    <span className="block text-[10px] text-amber-400 font-bold">Datathon</span>
                     Datanyx '25 Runner-Up
                   </div>
                 </div>
               </div>
 
               {/* Activity Feed / Case Studies Spotlight */}
-              <div className="p-3 rounded-lg bg-obsidian-950 border border-editorial-line/80 font-mono text-[11px] space-y-1.5">
+              <div className="p-3 rounded-xl bg-obsidian-950 border border-editorial-line/80 font-mono text-[11px] space-y-1.5 shadow-inner">
                 <div className="flex items-center gap-2 text-ink-400 pb-1 border-b border-editorial-line/50">
                   <Terminal className="w-3.5 h-3.5 text-accent-sky" />
-                  <span>Active Engineering Projects</span>
+                  <span>Production Engineering Repositories</span>
+                </div>
+                <div className="text-ink-400 flex items-center justify-between">
+                  <span className="text-emerald-400 font-bold">careflow/</span>
+                  <span className="text-ink-300 text-[10px]">clinical process mining &amp; PM4Py</span>
+                </div>
+                <div className="text-ink-400 flex items-center justify-between">
+                  <span className="text-sky-400 font-bold">mediassist-ai/</span>
+                  <span className="text-ink-300 text-[10px]">NLP medical chatbot &amp; triage</span>
                 </div>
                 <div className="text-ink-400 flex items-center justify-between">
                   <span>krishiai/</span>
-                  <span className="text-ink-300 text-[10px]">rainfall &amp; crop advisory</span>
-                </div>
-                <div className="text-ink-400 flex items-center justify-between">
-                  <span>travelmate/</span>
-                  <span className="text-ink-300 text-[10px]">full stack django booking</span>
+                  <span className="text-ink-300 text-[10px]">rainfall forecasting &amp; agronomy</span>
                 </div>
                 <div className="text-ink-400 flex items-center justify-between">
                   <span>timetrackers/</span>
@@ -361,7 +366,7 @@ export default function Hero({ onOpenResume, onShowToast }) {
                 </div>
                 <div className="text-ink-400 flex items-center justify-between">
                   <span>agro_guardian/</span>
-                  <span className="text-ink-300 text-[10px]">crop disease &amp; CNN</span>
+                  <span className="text-ink-300 text-[10px]">leaf disease &amp; CNN vision</span>
                 </div>
               </div>
             </motion.div>

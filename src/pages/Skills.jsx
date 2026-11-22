@@ -76,6 +76,78 @@ export default function Skills() {
         </div>
       </div>
 
+      {/* Visual System Architecture & Data Engineering Pipeline */}
+      <div className="rounded-2xl bg-gradient-to-r from-obsidian-900 via-obsidian-850 to-obsidian-900 border border-editorial-lineLight p-6 sm:p-8 space-y-6 shadow-elevated">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-editorial-line pb-4">
+          <div className="space-y-1">
+            <span className="text-xs font-mono font-bold text-accent-sky uppercase tracking-wider">
+              Cross-Disciplinary System Flow
+            </span>
+            <h2 className="text-lg font-bold text-ink-50 font-sans">
+              Applied Engineering Pipeline Architecture
+            </h2>
+          </div>
+          <span className="badge-editorial text-[11px] self-start sm:self-auto">
+            From Raw Data to User-Facing Intelligence
+          </span>
+        </div>
+
+        {/* 4-Stage Architectural Layers */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="p-4 rounded-xl bg-obsidian-900/90 border border-editorial-line space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-accent-blue/15 text-accent-sky border border-accent-blue/30 font-bold">
+                STAGE 01
+              </span>
+              <Database className="w-4 h-4 text-ink-400" />
+            </div>
+            <h3 className="text-sm font-bold text-ink-100 font-sans">Data &amp; Ingestion Layer</h3>
+            <p className="text-xs text-ink-400 leading-relaxed font-sans">
+              Clinical event-log validation, meteorological time series, SQLite relational schemas, and Pandas cleaning pipelines.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-obsidian-900/90 border border-editorial-line space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold">
+                STAGE 02
+              </span>
+              <Brain className="w-4 h-4 text-emerald-400" />
+            </div>
+            <h3 className="text-sm font-bold text-ink-100 font-sans">AI &amp; Mining Engines</h3>
+            <p className="text-xs text-ink-400 leading-relaxed font-sans">
+              PM4Py Directly-Follows Graphs, NLTK/TF-IDF intent classification, CNN crop pathology vision, and regression models.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-obsidian-900/90 border border-editorial-line space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-accent-indigo/15 text-accent-indigo border border-accent-indigo/30 font-bold">
+                STAGE 03
+              </span>
+              <Layers className="w-4 h-4 text-accent-indigo" />
+            </div>
+            <h3 className="text-sm font-bold text-ink-100 font-sans">Backend &amp; API Gateway</h3>
+            <p className="text-xs text-ink-400 leading-relaxed font-sans">
+              Django REST Framework services, JWT authentication, constraint satisfaction solvers, and modular micro-endpoints.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-obsidian-900/90 border border-editorial-line space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-500/15 text-sky-400 border border-sky-500/30 font-bold">
+                STAGE 04
+              </span>
+              <Terminal className="w-4 h-4 text-sky-400" />
+            </div>
+            <h3 className="text-sm font-bold text-ink-100 font-sans">Interactive Frontend UI</h3>
+            <p className="text-xs text-ink-400 leading-relaxed font-sans">
+              React + TypeScript interfaces, Streamlit 9-page analytical dashboards, Tailwind styling, and real-time Plotly charts.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Categorized Skills Grid */}
       <div className="space-y-8">
         <AnimatePresence mode="wait">

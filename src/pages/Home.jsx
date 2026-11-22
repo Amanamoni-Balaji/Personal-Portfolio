@@ -104,6 +104,35 @@ export default function Home({ onOpenResume, onShowToast }) {
         </div>
       </section>
 
+      {/* Official Credentials Vault Banner */}
+      <section className="relative py-12 px-4 sm:px-6 lg:px-8 border-y border-editorial-line bg-gradient-to-r from-obsidian-900 via-obsidian-850 to-obsidian-900">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-blue/10 border border-accent-blue/30 text-accent-sky text-xs font-mono">
+              <Award className="w-3.5 h-3.5" />
+              <span>23 Verified Certificates &amp; Documents</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-ink-50 font-sans tracking-tight">
+              Verified Technical Credentials &amp; Internship Accreditations
+            </h3>
+            <p className="text-xs sm:text-sm text-ink-400 max-w-2xl leading-relaxed">
+              Every certificate—including Google &amp; AICTE EduSkills, Tata &amp; Forage, Oracle Academy, IIT Bombay, Blackbucks, and HP Foundation—is available for direct in-browser inspection and PDF download.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <Link
+              to="/certifications"
+              className="btn-primary text-xs py-2.5 px-5"
+            >
+              <Award className="w-4 h-4" />
+              <span>Explore Credentials Vault</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Skills Matrix Preview Section */}
       <section className="relative py-16 px-4 sm:px-6 lg:px-8 border-t border-editorial-line bg-obsidian-900/50">
         <div className="max-w-7xl mx-auto space-y-10">
