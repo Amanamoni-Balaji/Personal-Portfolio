@@ -222,66 +222,131 @@ export default function Contact({ onShowToast }) {
               <h2 className="text-base font-bold text-white font-sans">Contact Channels</h2>
 
               <div className="space-y-3.5 text-xs font-mono">
-                {/* Email */}
+                {/* Email Address Display Card */}
                 <div className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1.5 hover:border-sky-400/40 hover:shadow-[0_0_15px_rgba(14,165,233,0.15)] transition-all">
-                  <span className="text-ink-500 uppercase tracking-wider text-[10px]">Email Address</span>
-                  <div className="flex items-center justify-between gap-2">
-                    <a
-                      href={`mailto:${personal.email}`}
-                      className="text-white hover:text-accent-sky transition-colors font-medium break-all"
-                    >
-                      {personal.email}
-                    </a>
+                  <div className="flex items-center justify-between">
+                    <span className="text-ink-500 uppercase tracking-wider text-[10px]">Email Address</span>
                     <button
                       onClick={handleCopyEmail}
-                      className="p-1.5 text-ink-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors shrink-0"
-                      title="Copy email"
+                      className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-mono text-ink-400 hover:text-white rounded-md hover:bg-white/10 transition-colors shrink-0"
+                      title="Copy email address"
                       aria-label="Copy email"
                     >
                       {copiedEmail ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        <>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                          <span className="text-emerald-400">Copied</span>
+                        </>
                       ) : (
-                        <Copy className="w-4 h-4" />
+                        <>
+                          <Copy className="w-3.5 h-3.5" />
+                          <span>Copy</span>
+                        </>
                       )}
                     </button>
                   </div>
-                </div>
-
-                {/* Phone */}
-                <div className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1.5 hover:border-blue-400/40 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all">
-                  <span className="text-ink-500 uppercase tracking-wider text-[10px]">Direct Phone</span>
                   <div className="flex items-center justify-between gap-2">
                     <a
-                      href={`tel:${personal.phone}`}
-                      className="text-white hover:text-accent-sky transition-colors font-medium"
+                      href={`mailto:${personal.email}`}
+                      className="text-white hover:text-accent-sky transition-colors font-medium break-all text-xs"
+                      title="Click to compose email"
                     >
-                      {personal.phone}
+                      {personal.email}
                     </a>
+                  </div>
+                </div>
+
+                {/* Direct Phone Display Card */}
+                <div className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1.5 hover:border-blue-400/40 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all">
+                  <div className="flex items-center justify-between">
+                    <span className="text-ink-500 uppercase tracking-wider text-[10px]">Direct Phone</span>
                     <button
                       onClick={handleCopyPhone}
-                      className="p-1.5 text-ink-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors shrink-0"
-                      title="Copy phone"
+                      className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-mono text-ink-400 hover:text-white rounded-md hover:bg-white/10 transition-colors shrink-0"
+                      title="Copy phone number"
                       aria-label="Copy phone"
                     >
                       {copiedPhone ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        <>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                          <span className="text-emerald-400">Copied</span>
+                        </>
                       ) : (
-                        <Copy className="w-4 h-4" />
+                        <>
+                          <Copy className="w-3.5 h-3.5" />
+                          <span>Copy</span>
+                        </>
                       )}
                     </button>
                   </div>
+                  <div className="flex items-center justify-between gap-2">
+                    <a
+                      href={`tel:${personal.phone}`}
+                      className="text-white hover:text-accent-sky transition-colors font-medium text-xs"
+                      title="Click to call"
+                    >
+                      {personal.phone}
+                    </a>
+                  </div>
                 </div>
 
-                {/* Instant WhatsApp Action Button */}
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-glow-emerald light-sweep w-full py-3 flex items-center justify-center gap-2 rounded-2xl text-xs font-mono font-semibold"
-                >
-                  <WhatsAppIcon className="w-4 h-4 text-emerald-400" />
-                  <span>Chat on WhatsApp ({personal.phone})</span>
-                </a>
+                {/* Direct Action Contact Channels (4 Balanced Buttons) */}
+                <div className="pt-2 border-t border-white/[0.06] space-y-2.5">
+                  <span className="text-xs font-mono font-semibold text-ink-400 uppercase tracking-wider block">
+                    Direct Contact Channels
+                  </span>
+                  <div className="grid grid-cols-2 gap-2.5">
+                    {/* Dedicated Email Button */}
+                    <a
+                      href={`mailto:${personal.email}`}
+                      className="btn-glow-email light-sweep py-2.5 px-3 flex items-center justify-center gap-2 rounded-xl text-xs font-mono font-medium"
+                      title={`Send an email to ${personal.email}`}
+                      aria-label="Email Me"
+                    >
+                      <Mail className="w-4 h-4 text-sky-400 shrink-0" />
+                      <span>Email Me</span>
+                    </a>
+
+                    {/* WhatsApp Button */}
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-glow-emerald light-sweep py-2.5 px-3 flex items-center justify-center gap-2 rounded-xl text-xs font-mono font-medium"
+                      title={`Chat on WhatsApp (${personal.phone})`}
+                      aria-label="Chat on WhatsApp"
+                    >
+                      <WhatsAppIcon className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span>WhatsApp</span>
+                    </a>
+
+                    {/* LinkedIn Button */}
+                    <a
+                      href={personal.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-glow-linkedin light-sweep py-2.5 px-3 flex items-center justify-center gap-2 rounded-xl text-xs font-mono font-medium"
+                      title="View LinkedIn Profile"
+                      aria-label="Connect on LinkedIn"
+                    >
+                      <Linkedin className="w-4 h-4 text-blue-400 shrink-0" />
+                      <span>LinkedIn</span>
+                    </a>
+
+                    {/* GitHub Button */}
+                    <a
+                      href={personal.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-glow-github light-sweep py-2.5 px-3 flex items-center justify-center gap-2 rounded-xl text-xs font-mono font-medium"
+                      title="View GitHub Profile"
+                      aria-label="View GitHub Profile"
+                    >
+                      <Github className="w-4 h-4 text-white shrink-0" />
+                      <span>GitHub</span>
+                    </a>
+                  </div>
+                </div>
 
                 {/* Location */}
                 <div className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1">
@@ -296,33 +361,6 @@ export default function Contact({ onShowToast }) {
                 <div className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] flex items-center gap-2.5 text-ink-300">
                   <Clock className="w-4 h-4 text-accent-sky shrink-0" />
                   <span>Response turnaround: &lt; 24 business hours</span>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="pt-2 border-t border-white/[0.06] space-y-3">
-                <span className="text-xs font-mono font-semibold text-ink-400 uppercase tracking-wider">
-                  Professional Profiles
-                </span>
-                <div className="flex items-center gap-3">
-                  <a
-                    href={personal.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-secondary light-sweep text-xs py-2.5 px-4 flex-1 rounded-xl"
-                  >
-                    <Linkedin className="w-4 h-4 text-accent-sky" />
-                    <span>LinkedIn</span>
-                  </a>
-                  <a
-                    href={personal.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-secondary light-sweep text-xs py-2.5 px-4 flex-1 rounded-xl"
-                  >
-                    <Github className="w-4 h-4 text-white" />
-                    <span>GitHub</span>
-                  </a>
                 </div>
               </div>
             </div>
