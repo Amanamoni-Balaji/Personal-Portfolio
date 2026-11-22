@@ -1,9 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 import { portfolioData } from '../data/portfolioData';
-import { Layers, Sparkles, Filter, Search, Activity, Cpu, ArrowUpRight, Github } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Sparkles, Search } from 'lucide-react';
 import BlurFade from '../components/BlurFade';
 
 export default function Projects() {
@@ -49,12 +48,8 @@ export default function Projects() {
     });
   }, [projects, filter, searchQuery]);
 
-  // CareFlow and MediAssist AI for Flagship Spotlight
-  const careflow = projects.find((p) => p.id === 'careflow');
-  const mediassist = projects.find((p) => p.id === 'mediassist-ai');
-
   return (
-    <div className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-14">
+    <div className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
       {/* Editorial Header */}
       <BlurFade delay={0.05} className="border-b border-editorial-line pb-8 space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-accent-sky text-xs font-mono">
@@ -117,145 +112,6 @@ export default function Projects() {
           </div>
         </div>
       </BlurFade>
-
-      {/* Flagship Healthcare Projects Spotlight (Shown when filter is 'All' and no search query) */}
-      {filter === 'All' && !searchQuery && (
-        <BlurFade delay={0.1} className="space-y-4">
-          <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <h2 className="text-base sm:text-lg font-bold text-white font-sans">
-                Latest Flagship Healthcare Innovations
-              </h2>
-            </div>
-            <span className="text-xs font-mono text-ink-400">Featured Releases</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* CareFlow Spotlight Banner */}
-            {careflow && (
-              <div className="group rounded-3xl bg-gradient-to-br from-[#071a14] via-[#09151c] to-[#070b10] border border-emerald-500/30 hover:border-emerald-400/60 p-6 sm:p-7 space-y-5 transition-all shadow-[0_0_30px_rgba(16,185,129,0.08)] hover:shadow-[0_0_40px_rgba(16,185,129,0.2)] relative overflow-hidden">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
-                    <Activity className="w-3.5 h-3.5" />
-                    <span>Clinical Process Mining</span>
-                  </div>
-                  <span className="text-xs font-mono text-ink-400">PM4Py &bull; Streamlit</span>
-                </div>
-
-                <div className="space-y-2">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors font-sans tracking-tight">
-                    <Link to={`/projects/${careflow.id}`}>{careflow.title}</Link>
-                  </h3>
-                  <p className="text-xs text-ink-300 leading-relaxed font-sans line-clamp-3">
-                    {careflow.overview}
-                  </p>
-                </div>
-
-                <div className="aspect-[16/9] rounded-2xl overflow-hidden border border-emerald-500/20 bg-black">
-                  <img
-                    src={careflow.primaryImage}
-                    alt={careflow.title}
-                    className="w-full h-full object-cover object-top filter brightness-95 group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-
-                <div className="pt-2 flex items-center justify-between border-t border-emerald-500/20">
-                  <div className="flex flex-wrap gap-1.5">
-                    {['Python', 'Streamlit', 'PM4Py', 'Data Analytics'].map((t, idx) => (
-                      <span key={idx} className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-950/60 text-emerald-300 border border-emerald-500/30">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {careflow.githubUrl && (
-                      <a
-                        href={careflow.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-ink-300 hover:text-white px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-emerald-400/50 inline-flex items-center gap-1.5 transition-all font-mono"
-                        aria-label={`${careflow.shortTitle} repository`}
-                      >
-                        <Github className="w-3.5 h-3.5" />
-                        <span>Repo</span>
-                      </a>
-                    )}
-                    <Link
-                      to={`/projects/${careflow.id}`}
-                      className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1 font-sans"
-                    >
-                      <span>View Case Study</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* MediAssist AI Spotlight Banner */}
-            {mediassist && (
-              <div className="group rounded-3xl bg-gradient-to-br from-[#081525] via-[#09151c] to-[#070b10] border border-sky-500/30 hover:border-sky-400/60 p-6 sm:p-7 space-y-5 transition-all shadow-[0_0_30px_rgba(14,165,233,0.08)] hover:shadow-[0_0_40px_rgba(14,165,233,0.2)] relative overflow-hidden">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/15 border border-sky-500/30 text-sky-400 text-xs font-mono">
-                    <Cpu className="w-3.5 h-3.5" />
-                    <span>Healthcare NLP Chatbot</span>
-                  </div>
-                  <span className="text-xs font-mono text-ink-400">NLTK &bull; Streamlit</span>
-                </div>
-
-                <div className="space-y-2">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-sky-400 transition-colors font-sans tracking-tight">
-                    <Link to={`/projects/${mediassist.id}`}>{mediassist.title}</Link>
-                  </h3>
-                  <p className="text-xs text-ink-300 leading-relaxed font-sans line-clamp-3">
-                    {mediassist.overview}
-                  </p>
-                </div>
-
-                <div className="aspect-[16/9] rounded-2xl overflow-hidden border border-sky-500/20 bg-black">
-                  <img
-                    src={mediassist.primaryImage}
-                    alt={mediassist.title}
-                    className="w-full h-full object-cover object-top filter brightness-95 group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-
-                <div className="pt-2 flex items-center justify-between border-t border-sky-500/20">
-                  <div className="flex flex-wrap gap-1.5">
-                    {['Python', 'Streamlit', 'NLP (NLTK)', 'TF-IDF'].map((t, idx) => (
-                      <span key={idx} className="px-2 py-0.5 rounded text-[10px] font-mono bg-sky-950/60 text-sky-300 border border-sky-500/30">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {mediassist.githubUrl && (
-                      <a
-                        href={mediassist.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-ink-300 hover:text-white px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-sky-400/50 inline-flex items-center gap-1.5 transition-all font-mono"
-                        aria-label={`${mediassist.shortTitle} repository`}
-                      >
-                        <Github className="w-3.5 h-3.5" />
-                        <span>Repo</span>
-                      </a>
-                    )}
-                    <Link
-                      to={`/projects/${mediassist.id}`}
-                      className="text-xs font-semibold text-sky-400 hover:text-sky-300 inline-flex items-center gap-1 font-sans"
-                    >
-                      <span>View Case Study</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </BlurFade>
-      )}
 
       {/* Complete Projects Grid */}
       <div className="space-y-6">

@@ -200,7 +200,8 @@ export async function sendContactMessage({ name, email, subject, message, honeyp
               subject,
               message,
               submissionDate: submissionDateFormatted,
-              recipientEmail
+              recipientEmail,
+              clientDelivered: true
             })
           }).catch(() => {});
         } catch (e) {}

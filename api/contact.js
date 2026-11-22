@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body || {};
-    const { name, email, subject, message, honeypot, submissionDate, recipientEmail } = body;
+    const { name, email, subject, message, honeypot, submissionDate, recipientEmail, clientDelivered } = body;
 
     // 1. Spam & Honeypot Protection
     if (honeypot && String(honeypot).trim() !== '') {
@@ -125,10 +125,11 @@ export default async function handler(req, res) {
     const publicKey = process.env.VITE_EMAILJS_PUBLIC_KEY || process.env.EMAILJS_PUBLIC_KEY;
     const privateKey = process.env.EMAILJS_PRIVATE_KEY;
 
-    let emailSent = false;
+    let emailSent = Boolean(clientDelivered);
     let dispatchError = null;
 
     const isEmailConfigured =
+      !emailSent &&
       serviceId &&
       templateId &&
       publicKey &&
