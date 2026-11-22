@@ -112,13 +112,21 @@ async function runVerification() {
     failed++;
   }
 
-  // 4. Verify Verified Certificate Files
-  console.log('\n4. Verifying Official Certificate Files:');
-  for (const cert of portfolioData.certifications) {
+  // 4. Verify Professional Certifications (Non-Internship)
+  console.log('\n4. Verifying All 15 Official Professional Certifications:');
+  if (portfolioData.professionalCertifications && portfolioData.professionalCertifications.length === 15) {
+    console.log('  [PASS] All 15 professional certifications cataloged in data model');
+    passed++;
+  } else {
+    console.error(`  [FAIL] Expected 15 professional certifications, found ${portfolioData.professionalCertifications?.length}`);
+    failed++;
+  }
+
+  for (const cert of portfolioData.professionalCertifications) {
     if (cert.pdfUrl) {
       const certDisk = path.join(process.cwd(), 'public', cert.pdfUrl);
       if (fs.existsSync(certDisk)) {
-        console.log(`  [PASS] Certificate file exists for ${cert.title}: ${cert.pdfUrl}`);
+        console.log(`  [PASS] Professional Certificate on disk: ${cert.title} -> ${cert.pdfUrl}`);
         passed++;
       } else {
         console.error(`  [FAIL] Missing cert file on disk: ${certDisk}`);
@@ -127,7 +135,7 @@ async function runVerification() {
 
       const certHttp = await fetchUrl(encodeURI(cert.pdfUrl));
       if (certHttp.status === 200) {
-        console.log(`  [PASS] Certificate served HTTP 200: ${cert.pdfUrl}`);
+        console.log(`  [PASS] Professional Certificate served HTTP 200: ${cert.pdfUrl}`);
         passed++;
       } else {
         console.error(`  [FAIL] Certificate HTTP fetch failed: ${cert.pdfUrl}`);
