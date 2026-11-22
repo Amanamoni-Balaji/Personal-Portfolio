@@ -59,7 +59,7 @@ export default function Home({ onOpenResume, onShowToast }) {
   const charVariants = {
     hidden: {
       opacity: 0,
-      y: 22,
+      y: 20,
       filter: 'blur(8px)',
       scale: 0.9,
     },
@@ -116,14 +116,14 @@ export default function Home({ onOpenResume, onShowToast }) {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-between overflow-hidden">
+    <div className="relative min-h-screen flex flex-col justify-between overflow-x-hidden">
       {/* Ambient Atmospheric Lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[500px] bg-gradient-to-tr from-blue-600/10 via-indigo-600/10 to-emerald-500/5 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[500px] bg-gradient-to-tr from-blue-600/10 via-indigo-600/10 to-emerald-500/5 blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute top-1/3 right-10 w-96 h-96 bg-sky-500/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute inset-0 editorial-grid-bg opacity-30 pointer-events-none" />
 
       {/* Main Balanced Hero Container */}
-      <div className="relative z-10 max-w-4xl lg:max-w-5xl mx-auto w-full pt-28 sm:pt-32 pb-12 px-4 sm:px-6 lg:px-8 text-center space-y-7 sm:space-y-8 my-auto">
+      <div className="relative z-10 max-w-4xl lg:max-w-5xl mx-auto w-full pt-24 sm:pt-32 pb-12 px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-7 my-auto">
         
         {/* 1. Small introductory text: HELLO, I'M */}
         <BlurFade delay={0.05}>
@@ -132,20 +132,20 @@ export default function Home({ onOpenResume, onShowToast }) {
           </p>
         </BlurFade>
 
-        {/* 2. My Complete Name: AMANAMONI BALAJI (Single Line on Desktop) */}
-        <div className="overflow-visible flex items-center justify-center">
+        {/* 2. My Complete Name: AMANAMONI BALAJI (Single Line on Desktop & Fluid on All Screens) */}
+        <div className="overflow-hidden flex items-center justify-center w-full px-2">
           <motion.h1
             variants={nameContainerVariants}
             initial="hidden"
             animate="visible"
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[5rem] font-extrabold tracking-tight font-sans leading-none select-none whitespace-nowrap overflow-hidden flex items-center justify-center drop-shadow-[0_4px_24px_rgba(255,255,255,0.08)]"
+            className="text-[clamp(1.15rem,5.2vw,4.75rem)] font-extrabold tracking-tight font-sans leading-none select-none whitespace-nowrap flex items-center justify-center drop-shadow-[0_4px_24px_rgba(255,255,255,0.08)]"
           >
             {fullName.split('').map((char, index) => {
               if (char === ' ') {
                 return (
                   <span
                     key={`space-${index}`}
-                    className="inline-block w-2.5 sm:w-4 md:w-5 lg:w-6"
+                    className="inline-block w-1.5 sm:w-3 md:w-4 lg:w-5"
                   />
                 );
               }
@@ -170,24 +170,24 @@ export default function Home({ onOpenResume, onShowToast }) {
 
         {/* 3. Professional Headline */}
         <BlurFade delay={0.14}>
-          <p className="text-xs sm:text-sm md:text-base lg:text-lg font-mono font-bold text-accent-sky tracking-wider sm:tracking-widest uppercase">
+          <p className="text-[clamp(0.62rem,2vw,1.1rem)] font-mono font-bold text-accent-sky tracking-tight sm:tracking-widest uppercase">
             AI/ML | DATA ANALYTICS | FULL-STACK DEVELOPMENT
           </p>
         </BlurFade>
 
         {/* 4. Short Professional Introduction */}
         <BlurFade delay={0.18}>
-          <p className="text-base sm:text-lg text-ink-300 max-w-2xl mx-auto leading-relaxed font-normal">
+          <p className="text-xs sm:text-base lg:text-lg text-ink-300 max-w-2xl mx-auto leading-relaxed font-normal px-2">
             I'm an Information Technology student passionate about building practical solutions using AI, data, and web technologies. I enjoy learning new technologies and turning ideas into useful projects.
           </p>
         </BlurFade>
 
         {/* 5. Circular Profile Photograph with 3D Tilt, Rotating Ring & Ambient Aura */}
-        <BlurFade delay={0.22} className="flex justify-center perspective-container py-2">
+        <div className="flex justify-center perspective-container py-1">
           <motion.div
-            initial={{ opacity: 0, scale: 0.88, filter: 'blur(10px)', y: 20 }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)', y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, scale: 0.9, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative flex items-center justify-center"
           >
             {/* Continuous Gentle Floating Animation */}
@@ -222,7 +222,7 @@ export default function Home({ onOpenResume, onShowToast }) {
 
               {/* Perfect Circular 1:1 Container */}
               <div
-                className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 aspect-square rounded-full p-1.5 bg-[#050507] shadow-[0_15px_40px_rgba(0,0,0,0.85),0_0_35px_rgba(56,189,248,0.2)] overflow-hidden"
+                className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 aspect-square rounded-full p-1.5 bg-[#050507] shadow-[0_15px_40px_rgba(0,0,0,0.85),0_0_35px_rgba(56,189,248,0.2)] overflow-hidden"
                 style={{ borderRadius: '50%' }}
               >
                 {/* Inner Circle Image Container */}
@@ -252,7 +252,7 @@ export default function Home({ onOpenResume, onShowToast }) {
                       transform: 'translate(-50%, -50%)',
                       borderRadius: '50%',
                     }}
-                    className="absolute w-48 h-48 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute w-44 h-44 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   />
 
                   {/* Subtle Circular Radial Edge Vignette */}
@@ -264,17 +264,17 @@ export default function Home({ onOpenResume, onShowToast }) {
               </div>
             </motion.div>
           </motion.div>
-        </BlurFade>
+        </div>
 
-        {/* 6. GitHub, LinkedIn, Email, and WhatsApp Contact Options in ONE Single Row */}
+        {/* 6. GitHub, LinkedIn, Email, and WhatsApp Contact Options in ONE Row on Desktop */}
         <BlurFade delay={0.26}>
-          <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2.5 sm:gap-3.5 pt-1">
+          <div className="grid grid-cols-2 sm:flex sm:flex-nowrap items-center justify-center gap-2 sm:gap-3 max-w-sm sm:max-w-none mx-auto pt-1">
             {/* 1. GitHub */}
             <a
               href={personal.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glow-github light-sweep inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-all group shadow-sm"
+              className="btn-glow-github light-sweep inline-flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs font-mono font-medium transition-all group shadow-sm"
               aria-label="GitHub Profile"
             >
               <Github className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
@@ -286,7 +286,7 @@ export default function Home({ onOpenResume, onShowToast }) {
               href={personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glow-linkedin light-sweep inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-all group shadow-sm"
+              className="btn-glow-linkedin light-sweep inline-flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs font-mono font-medium transition-all group shadow-sm"
               aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-4 h-4 text-sky-400 group-hover:scale-110 transition-transform" />
@@ -296,7 +296,7 @@ export default function Home({ onOpenResume, onShowToast }) {
             {/* 3. Email */}
             <a
               href={`mailto:${personal.email}`}
-              className="btn-glow-cyan light-sweep inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-all group shadow-sm"
+              className="btn-glow-cyan light-sweep inline-flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs font-mono font-medium transition-all group shadow-sm"
               aria-label="Send direct email"
             >
               <Mail className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" />
@@ -308,7 +308,7 @@ export default function Home({ onOpenResume, onShowToast }) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glow-emerald light-sweep inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-all group shadow-sm"
+              className="btn-glow-emerald light-sweep inline-flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs font-mono font-medium transition-all group shadow-sm"
               aria-label="Open WhatsApp conversation"
             >
               <WhatsAppIcon className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
@@ -322,7 +322,7 @@ export default function Home({ onOpenResume, onShowToast }) {
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-1">
             <Link
               to="/projects"
-              className="btn-glow-sky light-sweep text-sm py-3 px-6 rounded-xl font-semibold inline-flex items-center gap-2 group shadow-md"
+              className="btn-glow-sky light-sweep text-xs sm:text-sm py-2.5 px-5 sm:py-3 sm:px-6 rounded-xl font-semibold inline-flex items-center gap-2 group shadow-md"
             >
               <span>Explore My Work</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -330,7 +330,7 @@ export default function Home({ onOpenResume, onShowToast }) {
 
             <button
               onClick={handleResumeClick}
-              className="btn-glow-indigo light-sweep text-sm py-3 px-6 rounded-xl font-semibold inline-flex items-center gap-2 group shadow-md"
+              className="btn-glow-indigo light-sweep text-xs sm:text-sm py-2.5 px-5 sm:py-3 sm:px-6 rounded-xl font-semibold inline-flex items-center gap-2 group shadow-md"
             >
               <Download className="w-4 h-4 text-accent-sky transition-transform group-hover:-translate-y-0.5" />
               <span>Download Resume</span>
@@ -339,20 +339,20 @@ export default function Home({ onOpenResume, onShowToast }) {
         </BlurFade>
 
         {/* Subtle Explore Prompt (Encouraging Visitors to Explore Dedicated Pages) */}
-        <BlurFade delay={0.34} className="pt-4 text-center">
+        <BlurFade delay={0.34} className="pt-2 sm:pt-4 text-center">
           <Link
             to="/about"
             className="inline-flex flex-col items-center gap-1 text-ink-400 hover:text-white transition-colors group focus:outline-none"
             aria-label="Explore dedicated portfolio sections"
           >
-            <span className="text-[11px] font-mono tracking-wider uppercase text-ink-500 group-hover:text-accent-sky transition-colors">
+            <span className="text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-ink-500 group-hover:text-accent-sky transition-colors">
               Explore dedicated sections
             </span>
             <motion.div
               animate={{ y: [0, 4, 0] }}
               transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
             >
-              <ChevronDown className="w-4 h-4 text-ink-400 group-hover:text-accent-sky transition-colors" />
+              <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-ink-400 group-hover:text-accent-sky transition-colors" />
             </motion.div>
           </Link>
         </BlurFade>
