@@ -76,16 +76,19 @@ export default function About() {
   return (
     <div className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-16">
       {/* Editorial Header with BlurFade */}
-      <BlurFade delay={0.05} className="border-b border-editorial-line pb-8 space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-accent-sky text-xs font-mono">
+      <BlurFade delay={0.05} className="border-b border-editorial-line pb-8 space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-accent-sky text-xs font-mono font-semibold tracking-wider uppercase">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Biographical Profile &amp; Technical Foundation</span>
+          <span>GET TO KNOW ME</span>
         </div>
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-ink-50 font-sans tracking-tight">
-          About Amanamoni Balaji
+          About Me
         </h1>
-        <p className="text-sm sm:text-base text-ink-300 max-w-3xl leading-relaxed">
-          {personal.positioning}
+        <p className="text-base sm:text-lg text-ink-200 max-w-3xl leading-relaxed font-normal">
+          I'm Amanamoni Balaji, an Information Technology undergraduate at Matrusri Engineering College, Hyderabad. I'm passionate about Artificial Intelligence, Machine Learning, Data Analytics, and Full Stack Development.
+        </p>
+        <p className="text-sm sm:text-base text-ink-300 max-w-3xl leading-relaxed font-normal">
+          I enjoy exploring new technologies, building practical applications, solving problems, and turning ideas into meaningful solutions. Through my academic projects and internship experiences, I've gained hands-on experience working with different technologies and developing real-world solutions.
         </p>
       </BlurFade>
 
@@ -115,20 +118,20 @@ export default function About() {
             <div className="p-7 rounded-3xl bg-[#0b0e17]/90 border border-white/[0.08] space-y-4 shadow-elevated">
               <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
                 <h2 className="text-base sm:text-lg font-bold text-white font-sans">
-                  Engineering Philosophy &amp; Approach
+                  My Background &amp; Engineering Approach
                 </h2>
                 <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                   Verified 9.6 CGPA
                 </span>
               </div>
               <p className="leading-relaxed text-ink-300">
-                I am an Information Technology undergraduate at <strong>Matrusri Engineering College, Hyderabad</strong>, maintaining a cumulative <strong>9.6 / 10 CGPA</strong>. My technical journey is anchored in the conviction that software should be mathematically rigorous, operationally transparent, and demonstrably beneficial to end users.
+                As an Information Technology undergraduate at <strong>Matrusri Engineering College, Hyderabad</strong> (maintaining a cumulative <strong>9.6 / 10 CGPA</strong>), my technical approach is rooted in building solutions that are practical, efficient, and genuinely useful to people.
               </p>
               <p className="leading-relaxed text-ink-300">
-                Throughout my academic tenure and four industry internships, I have focused on translating ambiguous problem statements into deployable architectures. From clinical event-log analysis in <strong>CareFlow</strong> and conversational healthcare triage in <strong>MediAssist AI</strong>, to automated timetable scheduling engines in <strong>TimeTrackers (SIH)</strong> and deep learning plant pathology in <strong>Agro_Guardian</strong>, I emphasize modularity, explainability, and measurable outcomes.
+                Through my academic coursework and four industry internships, I've worked across the full development stack—from analyzing clinical patient workflows in <strong>CareFlow</strong> and engineering medical triage chat engines in <strong>MediAssist AI</strong>, to building automated timetable constraint solvers in <strong>TimeTrackers (SIH)</strong> and deep learning plant pathology models in <strong>Agro_Guardian</strong>.
               </p>
               <p className="leading-relaxed text-ink-300">
-                I deliberately avoid superficial claims or inflated percentage bars. Every capability documented in this portfolio is backed by reproducible code, verified datasets, and original institutional certificates.
+                I believe in continuous learning, writing clean maintainable code, and letting real project outcomes speak for themselves. Everything documented in this portfolio is backed by reproducible code, verified datasets, and genuine institutional credentials.
               </p>
             </div>
           </BlurFade>
