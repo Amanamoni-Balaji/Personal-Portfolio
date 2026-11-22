@@ -7,8 +7,7 @@ import {
   FileText,
   Github,
   Linkedin,
-  Mail,
-  GraduationCap
+  Mail
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -74,10 +73,6 @@ export default function Navbar({ onOpenResume }) {
               <span className="w-2.5 h-2.5 rounded-full bg-blue-500 group-hover:scale-125 transition-transform shadow-[0_0_10px_rgba(59,130,246,0.6)]" />
               <span className="text-base sm:text-lg font-bold tracking-tight text-white font-sans">
                 Amanamoni Balaji
-              </span>
-              <span className="hidden xl:inline-flex items-center gap-1.5 text-[11px] font-mono text-ink-400 pl-2.5 border-l border-white/10">
-                <GraduationCap className="w-3.5 h-3.5 text-accent-sky" />
-                <span>B.E. IT &bull; CGPA 9.6</span>
               </span>
             </Link>
 
