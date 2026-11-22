@@ -2,6 +2,8 @@ export const portfolioData = {
   personal: {
     name: "Amanamoni Balaji",
     cleanWordmark: "Amanamoni Balaji",
+    avatar: "/assets/profile.jpg",
+    avatarWebp: "/assets/profile.webp",
     headline: "AI/ML | Data Analytics | Full Stack Development",
     subHeadline: "Information Technology Undergrad @ Matrusri Engineering College (CGPA: 9.6)",
     positioning:

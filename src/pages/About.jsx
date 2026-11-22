@@ -102,8 +102,37 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right Column: Academic Record & Credentials */}
+        {/* Right Column: Portrait & Academic Record */}
         <div className="lg:col-span-5 space-y-6">
+          {/* Executive Portrait Card in About */}
+          <div className="rounded-2xl bg-obsidian-900 border border-editorial-lineLight overflow-hidden shadow-elevated group/portrait">
+            <div className="relative aspect-[4/3.4] overflow-hidden bg-obsidian-950">
+              <picture>
+                <source srcSet={personal.avatarWebp} type="image/webp" />
+                <img
+                  src={personal.avatar}
+                  alt="Amanamoni Balaji - Professional Portrait"
+                  className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover/portrait:scale-105"
+                />
+              </picture>
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent opacity-80" />
+              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-ink-50 font-sans">{personal.name}</h3>
+                  <p className="text-[11px] text-accent-sky font-mono">B.E. Information Technology</p>
+                </div>
+                <span className="badge-editorial text-xs border-accent-blue/40 text-accent-sky">
+                  CGPA: 9.6
+                </span>
+              </div>
+            </div>
+            <div className="p-4 border-t border-editorial-line bg-obsidian-850/60">
+              <p className="text-xs text-ink-300 italic leading-relaxed">
+                "{personal.heroIntro}"
+              </p>
+            </div>
+          </div>
+
           <div className="rounded-2xl bg-obsidian-900 border border-editorial-lineLight p-6 space-y-6 shadow-elevated">
             <div className="flex items-center gap-2.5 pb-4 border-b border-editorial-line">
               <GraduationCap className="w-5 h-5 text-accent-sky" />

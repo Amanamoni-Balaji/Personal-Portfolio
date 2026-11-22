@@ -72,8 +72,27 @@ async function runVerification() {
     }
   }
 
-  // 3. Verify Resume Document
-  console.log('\n3. Verifying Resume Document:');
+  // 3. Verify Profile Photo & Assets
+  console.log('\n3. Verifying Official Profile Photograph:');
+  const avatarPath = path.join(process.cwd(), 'public', portfolioData.personal.avatar);
+  if (fs.existsSync(avatarPath)) {
+    console.log(`  [PASS] Official profile photo exists on disk: ${portfolioData.personal.avatar}`);
+    passed++;
+  } else {
+    console.error(`  [FAIL] Missing profile photo on disk: ${avatarPath}`);
+    failed++;
+  }
+  const avatarHttp = await fetchUrl(portfolioData.personal.avatar);
+  if (avatarHttp.status === 200) {
+    console.log(`  [PASS] Profile photo served HTTP 200 via ${portfolioData.personal.avatar}`);
+    passed++;
+  } else {
+    console.error(`  [FAIL] Could not fetch profile photo over HTTP`);
+    failed++;
+  }
+
+  // 4. Verify Resume Document
+  console.log('\n4. Verifying Resume Document:');
   const resumeDisk = path.join(process.cwd(), 'public', portfolioData.personal.resumeUrl);
   if (fs.existsSync(resumeDisk)) {
     const size = fs.statSync(resumeDisk).size;

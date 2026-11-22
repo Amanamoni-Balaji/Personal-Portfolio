@@ -16,8 +16,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
           {/* Column 1: Wordmark & Identity */}
           <div className="md:col-span-5 space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-accent-blue" />
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg overflow-hidden border border-accent-blue/30 shrink-0 shadow-sm">
+                <picture>
+                  <source srcSet={personal.avatarWebp} type="image/webp" />
+                  <img
+                    src={personal.avatar}
+                    alt={personal.name}
+                    className="w-full h-full object-cover object-[center_20%]"
+                  />
+                </picture>
+              </div>
               <span className="text-lg font-bold text-ink-50 font-sans tracking-tight">
                 {personal.cleanWordmark}
               </span>

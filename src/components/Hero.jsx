@@ -114,9 +114,30 @@ export default function Hero({ onOpenResume, onShowToast }) {
 
             {/* Name and Professional Headline */}
             <motion.div variants={itemVariants} className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink-50 font-sans leading-[1.12]">
-                Amanamoni Balaji
-              </h1>
+              <div className="flex items-center gap-4">
+                {/* Mobile/Tablet Portrait Thumbnail */}
+                <div className="lg:hidden relative shrink-0">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-accent-blue/40 shadow-elevated bg-obsidian-950">
+                    <picture>
+                      <source srcSet={personal.avatarWebp} type="image/webp" />
+                      <img
+                        src={personal.avatar}
+                        alt="Amanamoni Balaji"
+                        className="w-full h-full object-cover object-[center_20%]"
+                      />
+                    </picture>
+                  </div>
+                  <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-obsidian-950 border-2 border-obsidian-900 flex items-center justify-center">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  </span>
+                </div>
+
+                <div>
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink-50 font-sans leading-[1.12]">
+                    Amanamoni Balaji
+                  </h1>
+                </div>
+              </div>
               
               {/* Animated Accent Line */}
               <motion.div
@@ -230,46 +251,68 @@ export default function Hero({ onOpenResume, onShowToast }) {
             </motion.div>
           </div>
 
-          {/* Right Column: Editorial Recruiter Card Inspired by Notion & GitHub */}
+          {/* Right Column: Editorial Recruiter Card with Executive Portrait */}
           <div className="lg:col-span-5">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="relative rounded-2xl bg-obsidian-900 border border-editorial-lineLight p-6 shadow-elevated space-y-6"
+              transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="relative rounded-2xl bg-obsidian-900 border border-editorial-lineLight p-5 sm:p-6 shadow-elevated space-y-5"
             >
-              {/* Card Header: Developer Frame & Candidate Verification */}
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-obsidian-850 border border-editorial-line flex items-center justify-center text-accent-sky shadow-inner">
-                    <Code2 className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h2 className="text-base font-bold text-ink-50">
-                      Amanamoni Balaji
-                    </h2>
-                    <p className="text-xs text-ink-400 font-mono">
-                      Hyderabad, Telangana, India
-                    </p>
+              {/* Executive Portrait Frame */}
+              <div className="relative group/portrait overflow-hidden rounded-xl bg-obsidian-950 border border-editorial-line/80 shadow-inner">
+                {/* Image Container with Subtle Zoom on Hover */}
+                <div className="relative aspect-[4/3.8] sm:aspect-[4/3.5] w-full overflow-hidden">
+                  <picture>
+                    <source srcSet={personal.avatarWebp} type="image/webp" />
+                    <img
+                      src={personal.avatar}
+                      alt="Amanamoni Balaji - Professional Profile"
+                      className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover/portrait:scale-105"
+                      loading="eager"
+                      fetchPriority="high"
+                    />
+                  </picture>
+                  {/* Subtle Gradient Overlay at the base for contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-obsidian-950/20 to-transparent pointer-events-none" />
+                </div>
+
+                {/* Top-Right Badge: Verified Candidate */}
+                <div className="absolute top-3 right-3 z-10">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-obsidian-950/85 border border-accent-blue/40 text-accent-sky text-[11px] font-mono font-medium shadow-elevated backdrop-blur-md">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Verified Candidate</span>
                   </div>
                 </div>
 
-                <span className="badge-editorial border-accent-blue/40 text-accent-sky">
-                  Verified Candidate
-                </span>
+                {/* Bottom Overlay Info Card */}
+                <div className="absolute bottom-3 left-3 right-3 z-10 p-3 rounded-lg bg-obsidian-900/90 border border-editorial-line/80 backdrop-blur-md flex items-center justify-between">
+                  <div className="space-y-0.5">
+                    <h2 className="text-sm font-bold text-ink-50 font-sans tracking-tight">
+                      Amanamoni Balaji
+                    </h2>
+                    <p className="text-[11px] text-accent-sky font-mono">
+                      Hyderabad, Telangana, India
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-[10px] text-ink-400 font-mono block">CUMULATIVE GPA</span>
+                    <span className="text-xs font-bold text-emerald-400 font-mono">9.6 / 10 CGPA</span>
+                  </div>
+                </div>
               </div>
 
               {/* Verified Education Spotlight */}
-              <div className="p-4 rounded-xl bg-obsidian-850/80 border border-editorial-line space-y-2">
+              <div className="p-3.5 rounded-xl bg-obsidian-850/80 border border-editorial-line space-y-1.5">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-ink-400">Education</span>
-                  <span className="font-bold text-accent-sky">CGPA: 9.6 / 10</span>
+                  <span className="text-ink-400">Education Track</span>
+                  <span className="text-ink-300">2023–2027</span>
                 </div>
                 <p className="text-sm font-semibold text-ink-100">
                   Matrusri Engineering College
                 </p>
                 <p className="text-xs text-ink-400 font-mono">
-                  B.E. Information Technology &bull; 2023–2027
+                  B.E. Information Technology &bull; 9.6 CGPA
                 </p>
               </div>
 

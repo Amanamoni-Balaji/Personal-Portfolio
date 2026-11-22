@@ -46,8 +46,15 @@ export default function ResumeModal({ isOpen, onClose }) {
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-editorial-line bg-obsidian-850">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-accent-blue/15 border border-accent-blue/30 flex items-center justify-center text-accent-sky">
-                <FileText className="w-4 h-4" />
+              <div className="w-10 h-10 rounded-xl overflow-hidden border border-accent-blue/40 shrink-0 bg-obsidian-950 shadow-sm">
+                <picture>
+                  <source srcSet={personal.avatarWebp} type="image/webp" />
+                  <img
+                    src={personal.avatar}
+                    alt={personal.name}
+                    className="w-full h-full object-cover object-[center_20%]"
+                  />
+                </picture>
               </div>
               <div>
                 <h3 className="text-base font-bold text-ink-50">
