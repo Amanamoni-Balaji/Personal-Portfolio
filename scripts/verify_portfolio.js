@@ -136,8 +136,39 @@ async function runVerification() {
     }
   }
 
-  // 5. Check Content & Data Validation
-  console.log('\n5. Validating Content & Design Requirements:');
+  // 5. Verify Internship Certificates
+  console.log('\n5. Verifying All 5 Official Internship Certificates:');
+  if (portfolioData.internshipCertificates && portfolioData.internshipCertificates.length === 5) {
+    console.log('  [PASS] All 5 internship certificates cataloged in data model');
+    passed++;
+  } else {
+    console.error(`  [FAIL] Expected 5 internship certificates, found ${portfolioData.internshipCertificates?.length}`);
+    failed++;
+  }
+
+  for (const cert of portfolioData.internshipCertificates) {
+    const certDisk = path.join(process.cwd(), 'public', cert.pdfUrl);
+    if (fs.existsSync(certDisk)) {
+      const size = fs.statSync(certDisk).size;
+      console.log(`  [PASS] Internship Certificate on disk: ${cert.title} (${size} bytes) -> ${cert.pdfUrl}`);
+      passed++;
+    } else {
+      console.error(`  [FAIL] Missing internship cert on disk: ${certDisk}`);
+      failed++;
+    }
+
+    const certHttp = await fetchUrl(encodeURI(cert.pdfUrl));
+    if (certHttp.status === 200) {
+      console.log(`  [PASS] Internship Certificate served HTTP 200: ${cert.pdfUrl}`);
+      passed++;
+    } else {
+      console.error(`  [FAIL] HTTP fetch failed for internship cert: ${cert.pdfUrl}`);
+      failed++;
+    }
+  }
+
+  // 6. Check Content & Data Validation
+  console.log('\n6. Validating Content & Design Requirements:');
   
   // Wordmark check
   if (portfolioData.personal.cleanWordmark === "Amanamoni Balaji") {

@@ -401,7 +401,10 @@ export const portfolioData = {
         "Leveraging Python and Microsoft Excel for analytical transformations and metric evaluations.",
         "Collaborating with team members to translate analytical observations into clear recommendations."
       ],
-      technologies: ["Data Analytics", "Python", "Data Analysis", "Microsoft Excel"]
+      technologies: ["Data Analytics", "Python", "Data Analysis", "Microsoft Excel"],
+      certificatePdf: "/certificates/Infotact_Data_Analytics_Offer_Letter.pdf",
+      documentType: "Offer Letter & Appointment Documentation",
+      credentialId: "48c945094211"
     },
     {
       id: "blackbucks",
@@ -417,7 +420,10 @@ export const portfolioData = {
         "Deep dive into predictive modeling, neural architectures, and model deployment pipelines.",
         "Collaborative project execution under industry mentor guidance."
       ],
-      technologies: ["AI/ML", "Python", "Machine Learning", "Model Deployment"]
+      technologies: ["AI/ML", "Python", "Machine Learning", "Model Deployment"],
+      certificatePdf: "/certificates/Blackbucks_AI_ML_Internship_Certificate.pdf",
+      documentType: "Certificate of Completion",
+      credentialId: "BBEDINT2026ST05365"
     },
     {
       id: "innovation-hacks",
@@ -434,7 +440,10 @@ export const portfolioData = {
         "Ensured cross-browser compatibility and optimized rendering performance across viewports.",
         "Followed Git version control best practices and participated in iterative code reviews."
       ],
-      technologies: ["React.js", "Django", "JavaScript", "HTML/CSS", "REST APIs"]
+      technologies: ["React.js", "Django", "JavaScript", "HTML/CSS", "REST APIs"],
+      certificatePdf: "/certificates/Innovation_Hacks_Full_Stack_Certificate.pdf",
+      documentType: "Certificate of Completion",
+      credentialId: "IH-FS-2026-0354"
     },
     {
       id: "blend-vidya",
@@ -451,7 +460,118 @@ export const portfolioData = {
         "Assisted in benchmarking algorithm performance using precision, recall, and F1-score metrics.",
         "Researched practical applications of computer vision and natural language processing concepts."
       ],
-      technologies: ["Artificial Intelligence", "Machine Learning", "Python", "Feature Engineering"]
+      technologies: ["Artificial Intelligence", "Machine Learning", "Python", "Feature Engineering"],
+      certificatePdf: "/certificates/Blend_Vidya_AI_Training_Certificate.pdf",
+      documentType: "Certificate of Training Completion"
+    }
+  ],
+
+  internshipCertificates: [
+    {
+      id: "eduskills-google-aiml",
+      title: "Certificate of Virtual Internship – AI-ML",
+      role: "AI-ML Virtual Intern",
+      issuer: "EduSkills & AICTE (Supported by Google for Developers)",
+      organization: "EduSkills & AICTE, Ministry of Education",
+      partner: "Supported by Google for Developers (India Edu Program)",
+      duration: "January – March 2026 (10-Weeks)",
+      issueDate: "March 2026",
+      status: "Verified Credential",
+      badge: "Grade O (Outstanding)",
+      grade: "Grade O (Outstanding)",
+      credentialId: "4044b75a93618eda0394",
+      studentId: "STU69180bd1d95871763183569",
+      category: "AI & Machine Learning",
+      description: "Successfully completed 10-weeks AI-ML Virtual Internship supported by Google for Developers under the India Edu Program. Evaluated by AICTE Ministry of Education and EduSkills leadership with an Outstanding Grade (O).",
+      skills: ["Artificial Intelligence", "Machine Learning", "Neural Networks", "Google for Developers", "Model Evaluation"],
+      pdfUrl: "/certificates/EduSkills_Google_AI_ML_Virtual_Internship.pdf",
+      pages: 1,
+      accentColor: "from-blue-600 to-indigo-600",
+      issuerLogoText: "Google | EduSkills"
+    },
+    {
+      id: "blackbucks-aiml",
+      title: "Certificate of Completion – AI Machine Learning Engineer",
+      role: "AI Machine Learning Engineer Intern",
+      issuer: "Blackbucks Education Pvt. Ltd.",
+      organization: "Blackbucks Education Pvt. Ltd.",
+      partner: "Trusted by N.E.A.T, AICTE",
+      duration: "1 May 2026 to 15 June 2026 (6 Weeks)",
+      issueDate: "22 June 2026",
+      status: "Verified Credential",
+      badge: "NEAT Trusted",
+      grade: "Completed with Distinction",
+      credentialId: "BBEDINT2026ST05365",
+      studentId: "1608-23-737-069",
+      category: "AI & Machine Learning",
+      description: "Successfully completed 6-Week Short-Term Internship in AI Machine Learning Engineer. Participated in structured training sessions, practical assignments, and project-based learning activities aligned with current industry standards.",
+      skills: ["Machine Learning", "AI Engineering", "Deep Learning", "Supervised Modeling", "Model Optimization"],
+      pdfUrl: "/certificates/Blackbucks_AI_ML_Internship_Certificate.pdf",
+      pages: 1,
+      accentColor: "from-emerald-600 to-teal-600",
+      issuerLogoText: "Blackbucks | NEAT"
+    },
+    {
+      id: "innovation-hacks-fullstack",
+      title: "Certificate of Completion – Full Stack Development",
+      role: "Full Stack Development Intern",
+      issuer: "Innovation Hacks",
+      organization: "Innovation Hacks",
+      partner: "Code Locally. Impact Globally.",
+      duration: "Aug 22, 2026 to Sep 22, 2026",
+      issueDate: "September 2026",
+      status: "Verified Credential",
+      badge: "Verified Completion",
+      grade: "Full Stack Certified",
+      credentialId: "IH-FS-2026-0354",
+      category: "Web Development",
+      description: "Successfully completed intensive Full Stack Development Internship. Built responsive web applications, interactive component architectures, REST API endpoints, and version-controlled Git workflows.",
+      skills: ["React.js", "Django", "JavaScript", "HTML5/CSS3", "REST APIs", "Git Workflows"],
+      pdfUrl: "/certificates/Innovation_Hacks_Full_Stack_Certificate.pdf",
+      pages: 1,
+      accentColor: "from-sky-600 to-cyan-600",
+      issuerLogoText: "Innovation Hacks"
+    },
+    {
+      id: "blend-vidya-ai",
+      title: "Certificate of Training Completion – Artificial Intelligence",
+      role: "Artificial Intelligence Intern",
+      issuer: "Blend Vidya EdTech",
+      organization: "Blend Vidya EdTech",
+      partner: "ISO 9001:2015 & MSME Certified",
+      duration: "05/01/2025 to 05/03/2025 (2 Months)",
+      issueDate: "March 2025",
+      status: "Verified Credential",
+      badge: "ISO 9001:2015",
+      grade: "Training Completed",
+      category: "AI & Machine Learning",
+      description: "Completed two months comprehensive training and practical internship on Artificial Intelligence, with recognized dedication, hard work, and valuable contributions during the training curriculum.",
+      skills: ["Artificial Intelligence", "Model Pipelines", "Data Preprocessing", "Feature Engineering"],
+      pdfUrl: "/certificates/Blend_Vidya_AI_Training_Certificate.pdf",
+      pages: 1,
+      accentColor: "from-amber-600 to-orange-600",
+      issuerLogoText: "Blend Vidya"
+    },
+    {
+      id: "infotact-data-analytics",
+      title: "Internship Offer Letter & Appointment – Data Analytics",
+      role: "Associate L1 (Data Analytics)",
+      issuer: "Infotact Solutions",
+      organization: "Infotact Solutions",
+      partner: "ISO 9001:2015 Approved Seal",
+      duration: "05/10/2026 to 05/01/2027 (Ongoing)",
+      issueDate: "2 October 2026",
+      status: "Active Appointment",
+      badge: "Associate L1 &bull; Active",
+      grade: "Associate L1",
+      credentialId: "48c945094211",
+      category: "Data Analytics",
+      description: "Official appointment and offer documentation as Associate L1 in Data Analytics at Infotact Solutions. Comprehensive 2-page document outlining role responsibilities, EDA workflows, dashboard engineering, performance milestones, and terms.",
+      skills: ["Data Analytics", "Exploratory Data Analysis", "Python", "SQL", "Microsoft Excel", "Business Dashboards"],
+      pdfUrl: "/certificates/Infotact_Data_Analytics_Offer_Letter.pdf",
+      pages: 2,
+      accentColor: "from-violet-600 to-purple-600",
+      issuerLogoText: "Infotact Solutions"
     }
   ],
 
@@ -469,12 +589,12 @@ export const portfolioData = {
     {
       id: "aiml-eduskills",
       title: "AI-ML Virtual Internship",
-      issuer: "EduSkills",
-      date: "Credential Issued",
+      issuer: "EduSkills & AICTE (Supported by Google for Developers)",
+      date: "January – March 2026",
       status: "Verified Credential",
-      description: "Comprehensive training in machine learning workflows, supervised algorithms, neural network foundations, and evaluation methodologies.",
-      skills: ["Machine Learning", "Supervised Learning", "Model Training", "Evaluation Metrics"],
-      pdfUrl: null
+      description: "Comprehensive 10-weeks virtual internship in machine learning workflows, supervised algorithms, neural network foundations, and evaluation methodologies supported by Google for Developers.",
+      skills: ["Machine Learning", "Neural Networks", "Google for Developers", "Model Evaluation"],
+      pdfUrl: "/certificates/EduSkills_Google_AI_ML_Virtual_Internship.pdf"
     },
     {
       id: "db-oracle",

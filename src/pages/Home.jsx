@@ -28,8 +28,8 @@ export default function Home({ onOpenResume, onShowToast }) {
   const quickStats = [
     { label: 'B.E. IT CGPA', value: '9.6 / 10', icon: GraduationCap, sub: 'Matrusri Eng College', link: '/about' },
     { label: 'Featured Projects', value: `${projects.length} Systems`, icon: Layers, sub: 'AI, Analytics & Web', link: '/projects' },
+    { label: 'Internship Certificates', value: '5 Verified', icon: Award, sub: 'Google, Blackbucks & more', link: '/certifications' },
     { label: 'Datathon Runner-Up', value: 'Datanyx 2025', icon: Trophy, sub: 'AgroTech Track', link: '/achievements' },
-    { label: 'Industry Roles', value: '4 Internships', icon: Briefcase, sub: 'Ongoing & Verified', link: '/experience' },
   ];
 
   return (

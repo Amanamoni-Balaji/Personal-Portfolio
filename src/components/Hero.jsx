@@ -100,7 +100,7 @@ export default function Hero({ onOpenResume, onShowToast }) {
         >
           {/* Left Column: Editorial Headline & Intros */}
           <div className="lg:col-span-7 space-y-6">
-            
+
             {/* Status Indicator Badge */}
             <motion.div variants={itemVariants}>
               <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-editorial-line bg-obsidian-900/90 text-xs font-mono text-ink-300 shadow-sm backdrop-blur-sm">
@@ -138,7 +138,7 @@ export default function Hero({ onOpenResume, onShowToast }) {
                   </h1>
                 </div>
               </div>
-              
+
               {/* Animated Accent Line */}
               <motion.div
                 initial={{ width: 0 }}

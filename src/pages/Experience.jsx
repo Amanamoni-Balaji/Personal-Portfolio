@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Briefcase,
@@ -10,20 +11,50 @@ import {
   ArrowRight,
   ChevronDown,
   Building,
-  Terminal
+  Terminal,
+  ShieldCheck,
+  Eye,
+  ExternalLink,
+  Download,
+  FileText
 } from 'lucide-react';
+import CertificateModal from '../components/CertificateModal';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Experience() {
-  const { internships } = portfolioData;
+  const { internships, internshipCertificates } = portfolioData;
   const [expandedId, setExpandedId] = useState('infotact');
+  const [selectedCert, setSelectedCert] = useState(null);
 
   const toggleExpand = (id) => {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
+  const handleOpenCertificate = (exp) => {
+    // Find matching certificate in internshipCertificates or construct credential object
+    const match = internshipCertificates.find((c) =>
+      c.id.includes(exp.id) || exp.id.includes(c.id) || c.organization.toLowerCase().includes(exp.company.toLowerCase())
+    );
+
+    if (match) {
+      setSelectedCert(match);
+    } else {
+      setSelectedCert({
+        title: `${exp.role} – ${exp.company}`,
+        issuer: exp.company,
+        organization: exp.company,
+        duration: exp.duration,
+        pdfUrl: exp.certificatePdf,
+        skills: exp.technologies,
+        description: exp.description,
+        badge: exp.status,
+        credentialId: exp.credentialId
+      });
+    }
+  };
+
   return (
-    <div className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-12">
+    <div className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-14">
       {/* Header */}
       <div className="border-b border-editorial-line pb-8 space-y-3">
         <span className="text-xs font-mono font-semibold text-accent-sky uppercase tracking-wider">
@@ -33,7 +64,7 @@ export default function Experience() {
           Internships &amp; Practical Roles
         </h1>
         <p className="text-sm sm:text-base text-ink-400 max-w-2xl leading-relaxed">
-          Chronological record of software engineering, artificial intelligence, and data analytics internships. Clearly distinguished between ongoing engagements, completed terms, and upcoming appointments.
+          Chronological record of software engineering, artificial intelligence, and data analytics internships. Each entry includes verified tasks, applied technologies, and direct access to official completion certificates and appointment letters.
         </p>
       </div>
 
@@ -73,9 +104,9 @@ export default function Experience() {
 
               {/* Experience Card */}
               <div
-                className={`rounded-2xl bg-obsidian-850/90 border transition-all duration-300 p-6 sm:p-7 space-y-4 shadow-subtle ${
+                className={`rounded-2xl bg-obsidian-850/80 border p-6 sm:p-7 space-y-5 transition-all shadow-subtle ${
                   isOngoing
-                    ? 'border-emerald-500/30 hover:border-emerald-500/50'
+                    ? 'border-emerald-500/30'
                     : 'border-editorial-line hover:border-editorial-lineFocus'
                 }`}
               >
@@ -116,7 +147,7 @@ export default function Experience() {
                   {exp.description}
                 </p>
 
-                {/* Key Responsibilities */}
+                {/* Key Responsibilities Accordion */}
                 {exp.responsibilities && (
                   <div className="space-y-2 pt-2 border-t border-editorial-line/60">
                     <button
@@ -168,11 +199,83 @@ export default function Experience() {
                     </span>
                   ))}
                 </div>
+
+                {/* Official Certificate & Document Action Bar */}
+                {exp.certificatePdf && (
+                  <div className="pt-4 border-t border-editorial-line flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-obsidian-900/60 -mx-6 -mb-6 p-4 rounded-b-2xl">
+                    <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+                      <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span className="truncate">{exp.documentType || 'Official Verified Credential'}</span>
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0">
+                      <button
+                        onClick={() => handleOpenCertificate(exp)}
+                        className="btn-primary text-xs py-1.5 px-3 inline-flex items-center gap-1.5 shadow-sm"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>View Certificate</span>
+                      </button>
+
+                      <a
+                        href={exp.certificatePdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 text-ink-400 hover:text-white rounded-lg bg-obsidian-850 border border-editorial-line transition-colors"
+                        title="Open PDF in new tab"
+                        aria-label="Open PDF in new tab"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+
+                      <a
+                        href={exp.certificatePdf}
+                        download
+                        className="p-1.5 text-ink-400 hover:text-white rounded-lg bg-obsidian-850 border border-editorial-line transition-colors"
+                        title="Download certificate PDF"
+                        aria-label="Download PDF"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           );
         })}
       </div>
+
+      {/* Bottom Banner to Full Certifications Gallery */}
+      <div className="p-6 sm:p-8 rounded-2xl bg-obsidian-900 border border-editorial-lineLight flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-elevated">
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-2 text-xs font-mono text-accent-sky">
+            <Sparkles className="w-4 h-4" />
+            <span>Official Accreditation Vault</span>
+          </div>
+          <h3 className="text-lg font-bold text-ink-50 font-sans">
+            Explore All 5 Official Internship Certificates &amp; Accreditations
+          </h3>
+          <p className="text-xs text-ink-400 max-w-xl leading-relaxed">
+            Directly inspect and download official documents from Google for Developers &bull; EduSkills, Blackbucks Education, Innovation Hacks, Blend Vidya, and Infotact Solutions.
+          </p>
+        </div>
+
+        <Link
+          to="/certifications"
+          className="btn-primary text-xs py-2.5 px-5 shrink-0 inline-flex items-center gap-2"
+        >
+          <span>Explore Certificates Gallery</span>
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+
+      {/* Shared Interactive Certificate Preview Modal */}
+      <CertificateModal
+        certificate={selectedCert}
+        isOpen={Boolean(selectedCert)}
+        onClose={() => setSelectedCert(null)}
+      />
     </div>
   );
 }
