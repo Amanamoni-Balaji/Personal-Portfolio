@@ -29,7 +29,15 @@ export default function Certifications() {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Top Section View Filter
-  const [activeSection, setActiveSection] = useState('all'); // 'all', 'professional', 'internship'
+  const [activeSection, setActiveSection] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const sec = params.get('section');
+      if (sec === 'internship' || sec === 'professional') return sec;
+      if (window.location.hash === '#internship-certificates') return 'internship';
+    }
+    return 'all';
+  });
 
   // Category Filter for Professional Certifications
   const [profCategory, setProfCategory] = useState('All');
@@ -238,16 +246,25 @@ export default function Certifications() {
                       {cert.imageUrl && (
                         <div
                           onClick={() => setSelectedCert(cert)}
-                          className="relative w-full h-36 rounded-2xl overflow-hidden border border-white/10 group-hover:border-accent-sky/50 cursor-pointer bg-black/40 transition-all shadow-inner my-1"
+                          className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 group-hover:border-accent-sky/50 cursor-pointer bg-[#05070d] transition-all shadow-inner my-1 flex items-center justify-center group/thumb"
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              setSelectedCert(cert);
+                            }
+                          }}
+                          aria-label={`Preview certificate for ${cert.title}`}
                         >
                           <img
                             src={cert.imageUrl}
-                            alt={cert.title}
-                            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                            alt={`${cert.title} Certificate`}
+                            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/thumb:scale-105"
                             loading="lazy"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d16] via-transparent to-transparent opacity-70" />
-                          <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md text-[10px] font-mono bg-black/80 backdrop-blur-sm border border-white/20 text-accent-sky flex items-center gap-1 font-semibold">
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d16]/90 via-transparent to-transparent opacity-60 group-hover/thumb:opacity-30 transition-opacity" />
+                          <span className="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-lg text-[10px] font-mono bg-black/80 backdrop-blur-md border border-white/20 text-accent-sky flex items-center gap-1.5 font-semibold shadow-md group-hover/thumb:border-accent-sky/60 group-hover/thumb:text-white transition-colors">
                             <Eye className="w-3 h-3 text-accent-sky" /> Preview
                           </span>
                         </div>
@@ -265,24 +282,24 @@ export default function Certifications() {
 
                       {/* Dates & Credential IDs */}
                       <div className="p-3 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1.5 text-xs font-mono">
-                        <div className="flex items-center justify-between text-ink-400">
-                          <span className="text-ink-500">Date</span>
-                          <span className="text-white">{cert.date}</span>
+                        <div className="flex items-start justify-between gap-2 text-ink-400">
+                          <span className="text-ink-500 shrink-0">Date</span>
+                          <span className="text-white text-right">{cert.date}</span>
                         </div>
 
                         {cert.credentialId && (
-                          <div className="flex items-center justify-between text-ink-400">
-                            <span className="text-ink-500">Credential ID</span>
-                            <span className="text-accent-sky truncate max-w-[170px]" title={cert.credentialId}>
+                          <div className="flex items-start justify-between gap-2 text-ink-400">
+                            <span className="text-ink-500 shrink-0">Credential ID</span>
+                            <span className="text-accent-sky truncate max-w-[170px] text-right" title={cert.credentialId}>
                               {cert.credentialId}
                             </span>
                           </div>
                         )}
 
                         {cert.score && (
-                          <div className="flex items-center justify-between text-ink-400">
-                            <span className="text-ink-500">Performance</span>
-                            <span className="text-emerald-400 font-semibold">{cert.score}</span>
+                          <div className="flex items-start justify-between gap-2 text-ink-400">
+                            <span className="text-ink-500 shrink-0">Performance</span>
+                            <span className="text-emerald-400 font-semibold text-right">{cert.score}</span>
                           </div>
                         )}
                       </div>
@@ -430,6 +447,34 @@ export default function Certifications() {
                         </span>
                       </div>
 
+                      {/* Real Certificate Preview Thumbnail */}
+                      {cert.imageUrl && (
+                        <div
+                          onClick={() => setSelectedCert(cert)}
+                          className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 group-hover:border-accent-sky/50 cursor-pointer bg-[#05070d] transition-all shadow-inner my-1 flex items-center justify-center group/thumb"
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              setSelectedCert(cert);
+                            }
+                          }}
+                          aria-label={`Preview certificate for ${cert.title}`}
+                        >
+                          <img
+                            src={cert.imageUrl}
+                            alt={`${cert.title} Certificate`}
+                            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/thumb:scale-105"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d16]/90 via-transparent to-transparent opacity-60 group-hover/thumb:opacity-30 transition-opacity" />
+                          <span className="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-lg text-[10px] font-mono bg-black/80 backdrop-blur-md border border-white/20 text-accent-sky flex items-center gap-1.5 font-semibold shadow-md group-hover/thumb:border-accent-sky/60 group-hover/thumb:text-white transition-colors">
+                            <Eye className="w-3 h-3 text-accent-sky" /> Preview
+                          </span>
+                        </div>
+                      )}
+
                       {/* Title & Role */}
                       <div>
                         <h3 className="text-base font-bold text-white group-hover:text-accent-sky transition-colors leading-snug font-sans tracking-tight">
@@ -445,24 +490,24 @@ export default function Certifications() {
 
                       {/* Duration & Metadata */}
                       <div className="p-3 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1.5 text-xs font-mono">
-                        <div className="flex items-center justify-between text-ink-400">
-                          <span className="text-ink-500">Duration</span>
-                          <span className="text-white">{cert.duration}</span>
+                        <div className="flex items-start justify-between gap-2 text-ink-400">
+                          <span className="text-ink-500 shrink-0">Duration</span>
+                          <span className="text-white text-right">{cert.duration}</span>
                         </div>
 
                         {cert.credentialId && (
-                          <div className="flex items-center justify-between text-ink-400">
-                            <span className="text-ink-500">Credential ID</span>
-                            <span className="text-accent-sky truncate max-w-[170px]" title={cert.credentialId}>
+                          <div className="flex items-start justify-between gap-2 text-ink-400">
+                            <span className="text-ink-500 shrink-0">Credential ID</span>
+                            <span className="text-accent-sky truncate max-w-[170px] text-right" title={cert.credentialId}>
                               {cert.credentialId}
                             </span>
                           </div>
                         )}
 
                         {cert.grade && (
-                          <div className="flex items-center justify-between text-ink-400">
-                            <span className="text-ink-500">Evaluation</span>
-                            <span className="text-emerald-400 font-semibold">{cert.grade}</span>
+                          <div className="flex items-start justify-between gap-2 text-ink-400">
+                            <span className="text-ink-500 shrink-0">Evaluation</span>
+                            <span className="text-emerald-400 font-semibold text-right">{cert.grade}</span>
                           </div>
                         )}
                       </div>

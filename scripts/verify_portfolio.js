@@ -122,11 +122,13 @@ async function runVerification() {
     failed++;
   }
 
+  const seenImages = new Set();
+
   for (const cert of portfolioData.professionalCertifications) {
     if (cert.pdfUrl) {
       const certDisk = path.join(process.cwd(), 'public', cert.pdfUrl);
       if (fs.existsSync(certDisk)) {
-        console.log(`  [PASS] Professional Certificate on disk: ${cert.title} -> ${cert.pdfUrl}`);
+        console.log(`  [PASS] Professional Certificate PDF on disk: ${cert.title} -> ${cert.pdfUrl}`);
         passed++;
       } else {
         console.error(`  [FAIL] Missing cert file on disk: ${certDisk}`);
@@ -135,12 +137,45 @@ async function runVerification() {
 
       const certHttp = await fetchUrl(encodeURI(cert.pdfUrl));
       if (certHttp.status === 200) {
-        console.log(`  [PASS] Professional Certificate served HTTP 200: ${cert.pdfUrl}`);
+        console.log(`  [PASS] Professional Certificate PDF served HTTP 200: ${cert.pdfUrl}`);
         passed++;
       } else {
         console.error(`  [FAIL] Certificate HTTP fetch failed: ${cert.pdfUrl}`);
         failed++;
       }
+    }
+
+    // Check certificate thumbnail image
+    if (cert.imageUrl) {
+      const imgDisk = path.join(process.cwd(), 'public', cert.imageUrl);
+      if (fs.existsSync(imgDisk)) {
+        const size = fs.statSync(imgDisk).size;
+        console.log(`  [PASS] Certificate thumbnail on disk: ${cert.title} (${size} bytes) -> ${cert.imageUrl}`);
+        passed++;
+      } else {
+        console.error(`  [FAIL] Missing thumbnail image on disk: ${imgDisk}`);
+        failed++;
+      }
+
+      if (seenImages.has(cert.imageUrl)) {
+        console.error(`  [FAIL] Duplicate thumbnail image detected: ${cert.imageUrl}`);
+        failed++;
+      } else {
+        seenImages.add(cert.imageUrl);
+        passed++;
+      }
+
+      const imgHttp = await fetchUrl(encodeURI(cert.imageUrl));
+      if (imgHttp.status === 200) {
+        console.log(`  [PASS] Certificate thumbnail served HTTP 200: ${cert.imageUrl}`);
+        passed++;
+      } else {
+        console.error(`  [FAIL] Certificate thumbnail HTTP fetch failed: ${cert.imageUrl}`);
+        failed++;
+      }
+    } else {
+      console.error(`  [FAIL] Certificate missing imageUrl: ${cert.title}`);
+      failed++;
     }
   }
 
@@ -171,6 +206,39 @@ async function runVerification() {
       passed++;
     } else {
       console.error(`  [FAIL] HTTP fetch failed for internship cert: ${cert.pdfUrl}`);
+      failed++;
+    }
+
+    // Check internship certificate thumbnail image
+    if (cert.imageUrl) {
+      const imgDisk = path.join(process.cwd(), 'public', cert.imageUrl);
+      if (fs.existsSync(imgDisk)) {
+        const size = fs.statSync(imgDisk).size;
+        console.log(`  [PASS] Internship thumbnail on disk: ${cert.title} (${size} bytes) -> ${cert.imageUrl}`);
+        passed++;
+      } else {
+        console.error(`  [FAIL] Missing internship thumbnail on disk: ${imgDisk}`);
+        failed++;
+      }
+
+      if (seenImages.has(cert.imageUrl)) {
+        console.error(`  [FAIL] Duplicate thumbnail image detected: ${cert.imageUrl}`);
+        failed++;
+      } else {
+        seenImages.add(cert.imageUrl);
+        passed++;
+      }
+
+      const imgHttp = await fetchUrl(encodeURI(cert.imageUrl));
+      if (imgHttp.status === 200) {
+        console.log(`  [PASS] Internship thumbnail served HTTP 200: ${cert.imageUrl}`);
+        passed++;
+      } else {
+        console.error(`  [FAIL] Internship thumbnail HTTP fetch failed: ${cert.imageUrl}`);
+        failed++;
+      }
+    } else {
+      console.error(`  [FAIL] Internship certificate missing imageUrl: ${cert.title}`);
       failed++;
     }
   }

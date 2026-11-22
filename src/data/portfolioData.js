@@ -651,6 +651,7 @@ export const portfolioData = {
       description: "Successfully completed 10-weeks AI-ML Virtual Internship supported by Google for Developers under the India Edu Program. Evaluated by AICTE Ministry of Education and EduSkills leadership with an Outstanding Grade (O).",
       skills: ["Artificial Intelligence", "Machine Learning", "Neural Networks", "Google for Developers", "Model Evaluation"],
       pdfUrl: "/certificates/EduSkills_Google_AI_ML_Virtual_Internship.pdf",
+      imageUrl: "/certificates/EduSkills_Google_AI_ML_Virtual_Internship.jpg",
       pages: 1,
       accentColor: "from-blue-600 to-indigo-600",
       issuerLogoText: "Google | EduSkills"
@@ -673,6 +674,7 @@ export const portfolioData = {
       description: "Successfully completed 6-Week Short-Term Internship in AI Machine Learning Engineer. Participated in structured training sessions, practical assignments, and project-based learning activities aligned with current industry standards.",
       skills: ["Machine Learning", "AI Engineering", "Deep Learning", "Supervised Modeling", "Model Optimization"],
       pdfUrl: "/certificates/Blackbucks_AI_ML_Internship_Certificate.pdf",
+      imageUrl: "/certificates/Blackbucks_AI_ML_Internship_Certificate.jpg",
       pages: 1,
       accentColor: "from-emerald-600 to-teal-600",
       issuerLogoText: "Blackbucks | NEAT"
@@ -694,6 +696,7 @@ export const portfolioData = {
       description: "Successfully completed intensive Full Stack Development Internship. Built responsive web applications, interactive component architectures, REST API endpoints, and version-controlled Git workflows.",
       skills: ["React.js", "Django", "JavaScript", "HTML5/CSS3", "REST APIs", "Git Workflows"],
       pdfUrl: "/certificates/Innovation_Hacks_Full_Stack_Certificate.pdf",
+      imageUrl: "/certificates/Innovation_Hacks_Full_Stack_Certificate.jpg",
       pages: 1,
       accentColor: "from-sky-600 to-cyan-600",
       issuerLogoText: "Innovation Hacks"
@@ -714,6 +717,7 @@ export const portfolioData = {
       description: "Completed two months comprehensive training and practical internship on Artificial Intelligence, with recognized dedication, hard work, and valuable contributions during the training curriculum.",
       skills: ["Artificial Intelligence", "Model Pipelines", "Data Preprocessing", "Feature Engineering"],
       pdfUrl: "/certificates/Blend_Vidya_AI_Training_Certificate.pdf",
+      imageUrl: "/certificates/Blend_Vidya_AI_Training_Certificate.jpg",
       pages: 1,
       accentColor: "from-amber-600 to-orange-600",
       issuerLogoText: "Blend Vidya"
@@ -728,13 +732,14 @@ export const portfolioData = {
       duration: "05/10/2026 to 05/01/2027 (Ongoing)",
       issueDate: "2 October 2026",
       status: "Active Appointment",
-      badge: "Associate L1 &bull; Active",
+      badge: "Associate L1 • Active",
       grade: "Associate L1",
       credentialId: "48c945094211",
       category: "Data Analytics",
       description: "Official appointment and offer documentation as Associate L1 in Data Analytics at Infotact Solutions. Comprehensive 2-page document outlining role responsibilities, EDA workflows, dashboard engineering, performance milestones, and terms.",
       skills: ["Data Analytics", "Exploratory Data Analysis", "Python", "SQL", "Microsoft Excel", "Business Dashboards"],
       pdfUrl: "/certificates/Infotact_Data_Analytics_Offer_Letter.pdf",
+      imageUrl: "/certificates/Infotact_Data_Analytics_Offer_Letter.jpg",
       pages: 2,
       accentColor: "from-violet-600 to-purple-600",
       issuerLogoText: "Infotact Solutions"
@@ -756,6 +761,7 @@ export const portfolioData = {
       description: "Satisfactory completion of all coursework in Database Foundations presented by Oracle Academy, covering relational database architecture, entity-relationship modeling, normalization, and SQL.",
       skills: ["SQL", "Relational Database Design", "ER Modeling", "Oracle Architecture"],
       pdfUrl: "/certificates/Oracle_Database_Foundations.pdf",
+      imageUrl: "/certificates/Oracle_Database_Foundations.jpg",
       issuerLogoText: "Oracle Academy"
     },
     {
@@ -772,6 +778,7 @@ export const portfolioData = {
       description: "Successfully completed remote examination on Python for Machine Learning organized at Matrusri Engineering College with course material provided by EduPyramids, SINE, IIT Bombay.",
       skills: ["Python", "Machine Learning", "Model Training", "Supervised Algorithms"],
       pdfUrl: "/certificates/IIT_Bombay_Python_Machine_Learning.pdf",
+      imageUrl: "/certificates/IIT_Bombay_Python_Machine_Learning.jpg",
       issuerLogoText: "IIT Bombay | SINE"
     },
     {
@@ -788,6 +795,7 @@ export const portfolioData = {
       description: "Successfully passed remote examination from SINE, IIT Bombay, for Java training organized at Matrusri Engineering College (4 Credits, Score: 82.50%).",
       skills: ["Java", "Object-Oriented Programming", "Algorithmic Logic", "Data Structures"],
       pdfUrl: "/certificates/IIT_Bombay_Java_Training.pdf",
+      imageUrl: "/certificates/IIT_Bombay_Java_Training.jpg",
       issuerLogoText: "IIT Bombay | SINE"
     },
     {
@@ -804,6 +812,7 @@ export const portfolioData = {
       description: "Completed Python 3.4.3 test organized at Matrusri Engineering College with course material provided by Spoken Tutorial Project, IIT Bombay (4 Credits).",
       skills: ["Python 3", "Control Flow", "Functions", "Data Types"],
       pdfUrl: "/certificates/IIT_Bombay_Python_3_4_3.pdf",
+      imageUrl: "/certificates/IIT_Bombay_Python_3_4_3.jpg",
       issuerLogoText: "IIT Bombay"
     },
     {
@@ -837,6 +846,7 @@ export const portfolioData = {
       description: "Gained core understanding of artificial intelligence, key concepts and applications, data importance in AI, business use-cases, and ethical implications.",
       skills: ["Artificial Intelligence", "AI Applications", "Data Foundations", "Ethical AI"],
       pdfUrl: "/certificates/HPLIFE_AI_for_Beginners.pdf",
+      imageUrl: "/certificates/HPLIFE_AI_for_Beginners.jpg",
       issuerLogoText: "HP LIFE"
     },
     {
@@ -853,6 +863,7 @@ export const portfolioData = {
       description: "Explored AI's role in modern enterprise, standalone vs integrated AI tools, effective prompt crafting techniques, ethical use, and workplace productivity.",
       skills: ["Prompt Engineering", "Business AI", "Workflow Automation", "Professional Tech"],
       pdfUrl: "/certificates/HPLIFE_AI_for_Business_Professionals.pdf",
+      imageUrl: "/certificates/HPLIFE_AI_for_Business_Professionals.jpg",
       issuerLogoText: "HP LIFE"
     },
     {
@@ -869,6 +880,7 @@ export const portfolioData = {
       description: "Studied leading data science and analytics practices, methodologies, business value of data-driven approaches, and analytical competencies.",
       skills: ["Data Science", "Analytics Methodologies", "Business Insights", "Data Strategy"],
       pdfUrl: "/certificates/HPLIFE_Data_Science_and_Analytics.pdf",
+      imageUrl: "/certificates/HPLIFE_Data_Science_and_Analytics.jpg",
       issuerLogoText: "HP LIFE"
     },
     {
@@ -885,6 +897,7 @@ export const portfolioData = {
       description: "Gained knowledge about common cybersecurity threats, vulnerability vectors, and foundational methodologies to secure digital data and information systems.",
       skills: ["Cybersecurity", "Threat Awareness", "Information Security", "Digital Safety"],
       pdfUrl: "/certificates/HPLIFE_Cybersecurity_Awareness.pdf",
+      imageUrl: "/certificates/HPLIFE_Cybersecurity_Awareness.jpg",
       issuerLogoText: "HP LIFE"
     },
     {
@@ -933,6 +946,7 @@ export const portfolioData = {
       description: "Certificate of Membership granted to Amanamoni Balaji representing Matrusri Engineering College Students' Chapter, valid through academic graduation in 2027.",
       skills: ["Professional Membership", "Engineering Community", "Technical Leadership"],
       pdfUrl: "/certificates/IEI_Certificate_of_Membership.pdf",
+      imageUrl: "/certificates/IEI_Certificate_of_Membership.jpg",
       issuerLogoText: "IEI India"
     },
     {
@@ -948,6 +962,7 @@ export const portfolioData = {
       description: "Offered by Matrusri Engineering College through the Cisco Networking Academy program. Fundamental networking concepts, IP addressing, subnetting, and TCP/IP protocol suite.",
       skills: ["Networking Basics", "TCP/IP Protocol", "Subnetting", "Routing & Switching"],
       pdfUrl: "/certificates/Cisco_Networking_Basics.pdf",
+      imageUrl: "/certificates/Cisco_Networking_Basics.jpg",
       issuerLogoText: "Cisco Academy"
     },
     {
@@ -963,6 +978,7 @@ export const portfolioData = {
       description: "Foundational Python programming covering data types, control flow, functions, modular architecture, and algorithmic problem-solving.",
       skills: ["Python", "Algorithmic Logic", "Data Structures", "Modular Programming"],
       pdfUrl: "/certificates/Python_Essentials_Cisco.pdf",
+      imageUrl: "/certificates/Python_Essentials_Cisco.jpg",
       issuerLogoText: "Cisco & Python Inst."
     },
     {
@@ -978,6 +994,7 @@ export const portfolioData = {
       description: "Essential data analysis methodologies, data lifecycle, exploratory analysis, statistical techniques, and analytical communication.",
       skills: ["Data Analytics", "Exploratory Data Analysis", "Data Lifecycle", "Statistical Reasoning"],
       pdfUrl: "/certificates/Data_Analytics_Essentials.pdf",
+      imageUrl: "/certificates/Data_Analytics_Essentials.jpg",
       issuerLogoText: "Cisco Academy"
     },
     {
@@ -994,6 +1011,7 @@ export const portfolioData = {
       description: "Completed practical job simulation in Cybersecurity Analysis with Tata and Forage. Covered identity and access management (IAM) fundamentals, IAM strategy assessment, custom IAM solution design, and enterprise platform integration.",
       skills: ["Identity & Access Management (IAM)", "IAM Strategy Assessment", "Custom IAM Solutions", "Platform Integration"],
       pdfUrl: "/certificates/Tata_Cybersecurity_Analyst_Job_Simulation.pdf",
+      imageUrl: "/certificates/Tata_Cybersecurity_Analyst_Job_Simulation.jpg",
       issuerLogoText: "Tata | Forage"
     },
     {
@@ -1010,6 +1028,7 @@ export const portfolioData = {
       description: "Completed practical job simulation in Data Visualisation with Tata and Forage. Mastered framing business scenarios, choosing optimal visualizations, creating effective executive dashboards, and communicating data-driven strategic insights.",
       skills: ["Data Visualisation", "Business Scenario Framing", "Executive Dashboards", "Data Storytelling"],
       pdfUrl: "/certificates/Tata_Data_Visualisation_Empowering_Business.pdf",
+      imageUrl: "/certificates/Tata_Data_Visualisation_Empowering_Business.jpg",
       issuerLogoText: "Tata | Forage"
     },
     {
@@ -1026,6 +1045,7 @@ export const portfolioData = {
       description: "Completed practical job simulation in GenAI Powered Data Analytics with Tata and Forage. Performed exploratory data analysis and risk profiling, predictive modeling for delinquency forecasting, executive data reporting, and AI-driven collections strategy implementation.",
       skills: ["Generative AI", "Exploratory Data Analysis", "Risk Profiling", "Predictive Delinquency Modeling", "AI Collections Strategy"],
       pdfUrl: "/certificates/Tata_GenAI_Powered_Data_Analytics.pdf",
+      imageUrl: "/certificates/Tata_GenAI_Powered_Data_Analytics.jpg",
       issuerLogoText: "Tata | Forage"
     }
   ],
@@ -1043,7 +1063,8 @@ export const portfolioData = {
       category: "Database & Cloud",
       description: "Coursework completion in Database Foundations covering relational database architecture, entity-relationship modeling, normalization, and SQL.",
       skills: ["SQL", "Relational Database Design", "ER Modeling", "Oracle Architecture"],
-      pdfUrl: "/certificates/Oracle_Database_Foundations.pdf"
+      pdfUrl: "/certificates/Oracle_Database_Foundations.pdf",
+      imageUrl: "/certificates/Oracle_Database_Foundations.jpg"
     },
     {
       id: "iit-bombay-python-ml",
@@ -1057,7 +1078,8 @@ export const portfolioData = {
       category: "AI & Machine Learning",
       description: "Python for Machine Learning training organized at Matrusri Engineering College with material from EduPyramids, SINE, IIT Bombay.",
       skills: ["Python", "Machine Learning", "Model Training", "Supervised Algorithms"],
-      pdfUrl: "/certificates/IIT_Bombay_Python_Machine_Learning.pdf"
+      pdfUrl: "/certificates/IIT_Bombay_Python_Machine_Learning.pdf",
+      imageUrl: "/certificates/IIT_Bombay_Python_Machine_Learning.jpg"
     },
     {
       id: "iit-bombay-java",
@@ -1071,7 +1093,8 @@ export const portfolioData = {
       category: "Programming & Software",
       description: "Remote examination from SINE, IIT Bombay, for Java training organized at Matrusri Engineering College (4 Credits).",
       skills: ["Java", "Object-Oriented Programming", "Algorithmic Logic", "Data Structures"],
-      pdfUrl: "/certificates/IIT_Bombay_Java_Training.pdf"
+      pdfUrl: "/certificates/IIT_Bombay_Java_Training.pdf",
+      imageUrl: "/certificates/IIT_Bombay_Java_Training.jpg"
     },
     {
       id: "cisco-networking",
@@ -1084,7 +1107,8 @@ export const portfolioData = {
       category: "Cybersecurity & Systems",
       description: "Fundamental networking concepts, IP addressing, subnetting, TCP/IP protocol suite, Ethernet architecture, and network troubleshooting.",
       skills: ["Networking Basics", "TCP/IP Protocol", "Subnetting", "Routing & Switching"],
-      pdfUrl: "/certificates/Cisco_Networking_Basics.pdf"
+      pdfUrl: "/certificates/Cisco_Networking_Basics.pdf",
+      imageUrl: "/certificates/Cisco_Networking_Basics.jpg"
     },
     {
       id: "cisco-python",
@@ -1097,7 +1121,8 @@ export const portfolioData = {
       category: "Programming & Software",
       description: "Foundational Python programming covering data types, control flow, functions, modular architecture, and algorithmic problem-solving.",
       skills: ["Python", "Algorithmic Logic", "Data Structures", "Modular Programming"],
-      pdfUrl: "/certificates/Python_Essentials_Cisco.pdf"
+      pdfUrl: "/certificates/Python_Essentials_Cisco.pdf",
+      imageUrl: "/certificates/Python_Essentials_Cisco.jpg"
     },
     {
       id: "cisco-data-analytics",
@@ -1110,7 +1135,8 @@ export const portfolioData = {
       category: "Data Analytics",
       description: "Essential data analysis methodologies, data lifecycle, exploratory analysis, statistical techniques, and analytical communication.",
       skills: ["Data Analytics", "Exploratory Data Analysis", "Data Lifecycle", "Statistical Reasoning"],
-      pdfUrl: "/certificates/Data_Analytics_Essentials.pdf"
+      pdfUrl: "/certificates/Data_Analytics_Essentials.pdf",
+      imageUrl: "/certificates/Data_Analytics_Essentials.jpg"
     },
     {
       id: "tata-cybersecurity",
@@ -1124,7 +1150,8 @@ export const portfolioData = {
       category: "Cybersecurity & Systems",
       description: "Completed practical job simulation in Cybersecurity Analysis with Tata and Forage. Covered identity and access management (IAM) fundamentals, IAM strategy assessment, custom IAM solution design, and enterprise platform integration.",
       skills: ["Identity & Access Management (IAM)", "IAM Strategy Assessment", "Custom IAM Solutions", "Platform Integration"],
-      pdfUrl: "/certificates/Tata_Cybersecurity_Analyst_Job_Simulation.pdf"
+      pdfUrl: "/certificates/Tata_Cybersecurity_Analyst_Job_Simulation.pdf",
+      imageUrl: "/certificates/Tata_Cybersecurity_Analyst_Job_Simulation.jpg"
     },
     {
       id: "tata-data-visualisation",
@@ -1138,7 +1165,8 @@ export const portfolioData = {
       category: "Data Analytics",
       description: "Completed practical job simulation in Data Visualisation with Tata and Forage. Mastered framing business scenarios, choosing optimal visualizations, creating effective executive dashboards, and communicating data-driven strategic insights.",
       skills: ["Data Visualisation", "Business Scenario Framing", "Executive Dashboards", "Data Storytelling"],
-      pdfUrl: "/certificates/Tata_Data_Visualisation_Empowering_Business.pdf"
+      pdfUrl: "/certificates/Tata_Data_Visualisation_Empowering_Business.pdf",
+      imageUrl: "/certificates/Tata_Data_Visualisation_Empowering_Business.jpg"
     },
     {
       id: "tata-genai-analytics",
@@ -1152,7 +1180,8 @@ export const portfolioData = {
       category: "AI & Machine Learning",
       description: "Completed practical job simulation in GenAI Powered Data Analytics with Tata and Forage. Performed exploratory data analysis and risk profiling, predictive modeling for delinquency forecasting, executive data reporting, and AI-driven collections strategy implementation.",
       skills: ["Generative AI", "Exploratory Data Analysis", "Risk Profiling", "Predictive Delinquency Modeling", "AI Collections Strategy"],
-      pdfUrl: "/certificates/Tata_GenAI_Powered_Data_Analytics.pdf"
+      pdfUrl: "/certificates/Tata_GenAI_Powered_Data_Analytics.pdf",
+      imageUrl: "/certificates/Tata_GenAI_Powered_Data_Analytics.jpg"
     }
   ],
 
