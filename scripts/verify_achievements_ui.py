@@ -43,17 +43,31 @@ def verify_achievements_and_ui():
         assert gallery_modal.count() >= 1, "ERROR: Team Gallery modal did not open!"
         print("  [PASS] Team Gallery modal opened successfully.")
 
-        # Verify all 5 photos are present in grid
+        # Verify all 5 photos are present in grid in the exact requested order
         photo_cards = page.locator("div[role='button'][aria-label^='View ']").all()
         assert len(photo_cards) == 5, f"ERROR: Expected 5 team photos, found {len(photo_cards)}"
-        print("  [PASS] All 5 authentic team photographs rendered in gallery grid.")
+        
+        expected_order = [
+            "Amanamoni Balaji — Second Position Recognition",
+            "Amanamoni Balaji — Stage Felicitation & Award Cheque",
+            "Team Aurum — ₹8,000 Runner-Up Award Cheque Celebration",
+            "Live AgroTech Project Demonstration",
+            "Team Aurum with DATANYX NYXBOT Mascot"
+        ]
+
+        for i, expected_title in enumerate(expected_order):
+            card_text = photo_cards[i].inner_text()
+            assert expected_title in card_text, f"ERROR: Photo {i+1} title mismatch! Expected '{expected_title}' in '{card_text}'"
+            assert f"Photo {i+1} of 5" in card_text or f"Photo {i+1}" in card_text, f"ERROR: Photo {i+1} number badge mismatch!"
+            print(f"  [PASS] Verified Photo {i+1} of 5: '{expected_title}'")
 
         # Click first photo to test enlarged view
         photo_cards[0].click()
         page.wait_for_timeout(600)
         counter = page.locator("div:has-text('1 / 5')")
         assert counter.count() >= 1, "ERROR: Enlarged photo 1 not active!"
-        print("  [PASS] Enlarged lightbox view opened for Photo 1.")
+        assert page.locator(f"h4:has-text('{expected_order[0]}')").count() >= 1, "ERROR: Enlarged photo 1 title mismatch!"
+        print(f"  [PASS] Enlarged lightbox view opened for Photo 1: '{expected_order[0]}'.")
 
         # Test Next navigation button
         next_btn = page.locator("button[aria-label='Next photograph']")
@@ -61,7 +75,8 @@ def verify_achievements_and_ui():
         page.wait_for_timeout(400)
         counter2 = page.locator("div:has-text('2 / 5')")
         assert counter2.count() >= 1, "ERROR: Next navigation failed!"
-        print("  [PASS] Next photo navigation works (now Photo 2).")
+        assert page.locator(f"h4:has-text('{expected_order[1]}')").count() >= 1, "ERROR: Photo 2 title mismatch after Next!"
+        print(f"  [PASS] Next photo navigation works: Photo 2 of 5 ('{expected_order[1]}').")
 
         # Test Back to Gallery button
         back_btn = page.locator("button:has-text('Back to Gallery')").first

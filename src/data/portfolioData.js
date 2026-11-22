@@ -1225,6 +1225,18 @@ export const portfolioData = {
       ],
       teamGallery: [
         {
+          id: "datanyx-award-stage-2",
+          title: "Amanamoni Balaji — Second Position Recognition",
+          caption: "Official stage photograph of Amanamoni Balaji with the Certificate of Achievement and ₹8,000 prize cheque at DATANYX 2025.",
+          imageUrl: "/assets/datanyx/datanyx-award-stage-2.jpg"
+        },
+        {
+          id: "datanyx-award-stage-1",
+          title: "Amanamoni Balaji — Stage Felicitation & Award Cheque",
+          caption: "Amanamoni Balaji on stage holding the DATANYX 2025 Certificate of Achievement and the ₹8,000 award cheque against the official event backdrop.",
+          imageUrl: "/assets/datanyx/datanyx-award-stage-1.jpg"
+        },
+        {
           id: "datanyx-team-cheque-outdoors",
           title: "Team Aurum — ₹8,000 Runner-Up Award Cheque Celebration",
           caption: "Team Aurum (Amanamoni Balaji and teammates) celebrating Second Position at DATANYX 2025 with the official ₹8,000 award cheque outdoors at MJCET.",
@@ -1241,18 +1253,6 @@ export const portfolioData = {
           title: "Team Aurum with DATANYX NYXBOT Mascot",
           caption: "Teammates posing with the official NYXBOT robot mascot and DATANYX directional arrow at Muffakham Jah College of Engineering & Technology.",
           imageUrl: "/assets/datanyx/datanyx-team-nyxbot.jpg"
-        },
-        {
-          id: "datanyx-award-stage-1",
-          title: "Amanamoni Balaji — Stage Felicitation & Award Cheque",
-          caption: "Amanamoni Balaji on stage holding the DATANYX 2025 Certificate of Achievement and the ₹8,000 award cheque against the official event backdrop.",
-          imageUrl: "/assets/datanyx/datanyx-award-stage-1.jpg"
-        },
-        {
-          id: "datanyx-award-stage-2",
-          title: "Amanamoni Balaji — Second Position Recognition",
-          caption: "Official stage photograph of Amanamoni Balaji with the Certificate of Achievement and ₹8,000 prize cheque at DATANYX 2025.",
-          imageUrl: "/assets/datanyx/datanyx-award-stage-2.jpg"
         }
       ]
     },
