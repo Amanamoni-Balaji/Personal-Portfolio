@@ -4,67 +4,19 @@ import { Link } from 'react-router-dom';
 import {
   GraduationCap,
   Award,
-  BookOpen,
-  Code2,
-  Terminal,
-  Compass,
-  FileCheck,
-  CheckCircle2,
-  ExternalLink,
+  Trophy,
   ArrowRight,
   Sparkles,
-  Activity,
-  Cpu,
-  Layers,
-  FileText,
-  Calendar,
   MapPin,
-  ShieldCheck
+  CheckCircle2,
+  Users,
+  Target
 } from 'lucide-react';
 import BlurFade from '../components/BlurFade';
 import { portfolioData } from '../data/portfolioData';
 
 export default function About() {
   const { personal } = portfolioData;
-
-  const corePillars = [
-    {
-      title: "Clinical Process Mining & Analytics",
-      tag: "Process Discovery",
-      icon: Activity,
-      color: "emerald",
-      borderClass: "hover:border-emerald-500/40 hover:shadow-[0_0_25px_rgba(16,185,129,0.15)]",
-      badgeClass: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
-      description: "Analyzing clinical event logs with PM4Py to reconstruct operational patient pathways, identify procedural bottlenecks, and compute stage-by-stage wait times."
-    },
-    {
-      title: "Healthcare AI & Natural Language Processing",
-      tag: "NLP & Intent Engines",
-      icon: Cpu,
-      color: "sky",
-      borderClass: "hover:border-sky-500/40 hover:shadow-[0_0_25px_rgba(14,165,233,0.15)]",
-      badgeClass: "bg-sky-500/10 text-sky-400 border-sky-500/30",
-      description: "Developing conversational medical assistants using NLTK and TF-IDF intent classification to provide reliable symptom triage, emergency disclaimers, and medication lookups."
-    },
-    {
-      title: "Full-Stack Web Architectures",
-      tag: "Distributed Systems",
-      icon: Layers,
-      color: "indigo",
-      borderClass: "hover:border-indigo-500/40 hover:shadow-[0_0_25px_rgba(99,102,241,0.15)]",
-      badgeClass: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30",
-      description: "Engineering performant React and TypeScript interfaces backed by modular Django REST Framework APIs, JWT authentication, and structured relational databases."
-    },
-    {
-      title: "Algorithmic Resource Optimization",
-      tag: "Constraint Solvers",
-      icon: Terminal,
-      color: "violet",
-      borderClass: "hover:border-purple-500/40 hover:shadow-[0_0_25px_rgba(168,85,247,0.15)]",
-      badgeClass: "bg-purple-500/10 text-purple-400 border-purple-500/30",
-      description: "Formulating multi-variable constraint satisfaction algorithms to solve complex academic, timetable, and department scheduling challenges without room or teacher collisions."
-    }
-  ];
 
   const quickStats = [
     { label: "Academic CGPA", value: "9.6 / 10", note: "Matrusri Eng College" },
@@ -74,8 +26,8 @@ export default function About() {
   ];
 
   return (
-    <div className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-16">
-      {/* Editorial Header with BlurFade */}
+    <div className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-14">
+      {/* 1. Header with First-Person Personal Introduction */}
       <BlurFade delay={0.05} className="border-b border-editorial-line pb-8 space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-accent-sky text-xs font-mono font-semibold tracking-wider uppercase">
           <Sparkles className="w-3.5 h-3.5" />
@@ -92,7 +44,7 @@ export default function About() {
         </p>
       </BlurFade>
 
-      {/* Quick Stats Grid */}
+      {/* 2. Academic and Professional Highlights */}
       <BlurFade delay={0.1}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {quickStats.map((stat, idx) => (
@@ -110,15 +62,18 @@ export default function About() {
         </div>
       </BlurFade>
 
-      {/* Main Narrative & Portrait Grid */}
+      {/* 3. Main Narrative & Profile Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-        {/* Left Column: Narrative & Technical Focus */}
-        <div className="lg:col-span-7 space-y-8 text-sm text-ink-300 leading-relaxed font-normal">
+        {/* Left Column: Background, Beyond Academics & Professional Goals */}
+        <div className="lg:col-span-7 space-y-7 text-sm text-ink-300 leading-relaxed font-normal">
+          
+          {/* Card 1: My Background & Engineering Approach */}
           <BlurFade delay={0.15}>
             <div className="p-7 rounded-3xl bg-[#0b0e17]/90 border border-white/[0.08] space-y-4 shadow-elevated">
               <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
-                <h2 className="text-base sm:text-lg font-bold text-white font-sans">
-                  My Background &amp; Engineering Approach
+                <h2 className="text-base sm:text-lg font-bold text-white font-sans flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-accent-sky" />
+                  <span>My Background &amp; Engineering Approach</span>
                 </h2>
                 <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                   Verified 9.6 CGPA
@@ -128,7 +83,7 @@ export default function About() {
                 As an Information Technology undergraduate at <strong>Matrusri Engineering College, Hyderabad</strong> (maintaining a cumulative <strong>9.6 / 10 CGPA</strong>), my technical approach is rooted in building solutions that are practical, efficient, and genuinely useful to people.
               </p>
               <p className="leading-relaxed text-ink-300">
-                Through my academic coursework and four industry internships, I've worked across the full development stack—from analyzing clinical patient workflows in <strong>CareFlow</strong> and engineering medical triage chat engines in <strong>MediAssist AI</strong>, to building automated timetable constraint solvers in <strong>TimeTrackers (SIH)</strong> and deep learning plant pathology models in <strong>Agro_Guardian</strong>.
+                Through my academic coursework and four industry internships, I've worked across the full software lifecycle—from analyzing clinical patient workflows in <strong>CareFlow</strong> and engineering medical triage chat engines in <strong>MediAssist AI</strong>, to building automated timetable constraint solvers in <strong>TimeTrackers (SIH)</strong> and deep learning plant pathology models in <strong>Agro_Guardian</strong>.
               </p>
               <p className="leading-relaxed text-ink-300">
                 I believe in continuous learning, writing clean maintainable code, and letting real project outcomes speak for themselves. Everything documented in this portfolio is backed by reproducible code, verified datasets, and genuine institutional credentials.
@@ -136,60 +91,64 @@ export default function About() {
             </div>
           </BlurFade>
 
-          {/* Core Technical Pillars (Bento Style) */}
-          <BlurFade delay={0.2} className="space-y-4">
-            <h3 className="text-base font-bold text-white font-sans flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent-sky" />
-              <span>Core Areas of Specialization</span>
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {corePillars.map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={idx}
-                    className={`p-5 rounded-2xl bg-[#0a0d16]/80 border border-white/[0.07] transition-all space-y-3 ${item.borderClass}`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white">
-                        <Icon className="w-4 h-4 text-accent-sky" />
-                      </div>
-                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${item.badgeClass}`}>
-                        {item.tag}
-                      </span>
-                    </div>
-                    <h4 className="text-sm font-bold text-white font-sans leading-snug">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs text-ink-400 leading-relaxed font-sans">
-                      {item.description}
-                    </p>
-                  </div>
-                );
-              })}
+          {/* Card 2: Beyond Academics & Collaborative Impact */}
+          <BlurFade delay={0.2}>
+            <div className="p-7 rounded-3xl bg-[#0b0e17]/90 border border-white/[0.08] space-y-4 shadow-elevated">
+              <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+                <h2 className="text-base sm:text-lg font-bold text-white font-sans flex items-center gap-2">
+                  <Trophy className="w-4 h-4 text-accent-sky" />
+                  <span>Beyond Academics &amp; Collaborative Experience</span>
+                </h2>
+                <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-blue-500/10 text-accent-sky border border-blue-500/30">
+                  Competitions &amp; Community
+                </span>
+              </div>
+              <p className="leading-relaxed text-ink-300">
+                Beyond regular coursework, I actively participate in hackathons, competitive problem-solving, and technical communities. Working with teams under strict deadlines has strengthened both my architectural thinking and interpersonal collaboration skills:
+              </p>
+              <div className="space-y-2.5 pt-1">
+                <div className="p-3.5 rounded-2xl bg-[#07090e] border border-white/[0.05] flex items-start gap-3 text-xs text-ink-300">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-white">Datanyx 2025 Datathon Runner-Up:</strong> Built agricultural predictive intelligence models under competition constraints at MJCET, Hyderabad.
+                  </span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-[#07090e] border border-white/[0.05] flex items-start gap-3 text-xs text-ink-300">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-white">Hackathons (SIH &amp; HackWithHyderabad):</strong> Contributed to automated resource allocation algorithms and collaborative AI incident response tools with multi-disciplinary peers.
+                  </span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-[#07090e] border border-white/[0.05] flex items-start gap-3 text-xs text-ink-300">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-white">Technical Community Involvement:</strong> Active member of the Tech Tycoons Club and student member of IEI and SCRS, regularly engaging in peer workshops and code sessions.
+                  </span>
+                </div>
+              </div>
             </div>
           </BlurFade>
 
-          {/* Career Target & Collaboration Callout */}
+          {/* Card 3: My Professional Goals */}
           <BlurFade delay={0.25}>
-            <div className="p-6 rounded-2xl bg-[#0d111d] border border-blue-500/20 space-y-3">
-              <div className="flex items-center gap-2 text-accent-sky text-xs font-mono font-bold">
-                <Compass className="w-4 h-4" />
-                <span>Career Focus &amp; Collaboration</span>
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#0c1322] via-[#090d16] to-[#07090e] border border-blue-500/25 space-y-3 shadow-sm">
+              <div className="flex items-center gap-2 text-accent-sky text-xs font-mono font-bold uppercase tracking-wider">
+                <Target className="w-4 h-4" />
+                <span>My Professional Goals</span>
               </div>
-              <p className="text-xs text-ink-300 leading-relaxed">
-                Currently exploring software engineering, artificial intelligence, and data analytics opportunities where clean architecture, empirical verification, and algorithmic problem-solving drive product excellence.
+              <p className="text-xs sm:text-sm text-ink-300 leading-relaxed font-sans">
+                My immediate goal is to contribute to forward-thinking engineering teams where I can apply my skills in <strong className="text-white">Artificial Intelligence, Machine Learning, Data Analytics, and Full-Stack Development</strong> to build high-impact, scalable solutions. Long-term, I aspire to lead systems that bridge complex computational models with accessible, reliable user experiences.
               </p>
             </div>
           </BlurFade>
+
         </div>
 
         {/* Right Column: Portrait Card & Academic Track Record */}
-        <div className="lg:col-span-5 space-y-8">
+        <div className="lg:col-span-5 space-y-7">
           {/* Executive Portrait Card */}
-          <BlurFade delay={0.2}>
+          <BlurFade delay={0.15}>
             <div className="rounded-3xl bg-[#0b0e17] border border-white/15 overflow-hidden shadow-2xl group/portrait relative">
-              {/* Subtle top glow bar */}
               <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-sky-400 z-10" />
 
               <div className="relative aspect-[4/3.8] overflow-hidden bg-black">
@@ -203,7 +162,6 @@ export default function About() {
                 </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e17] via-transparent to-transparent opacity-85" />
 
-                {/* Floating pill tags on portrait */}
                 <div className="absolute top-4 left-4">
                   <span className="px-2.5 py-1 rounded-full text-[10px] font-mono bg-black/60 backdrop-blur-md text-emerald-400 border border-emerald-500/40 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -238,7 +196,7 @@ export default function About() {
           </BlurFade>
 
           {/* Academic History Timeline */}
-          <BlurFade delay={0.25}>
+          <BlurFade delay={0.2}>
             <div className="rounded-3xl bg-[#0b0e17]/90 border border-white/[0.08] p-6 sm:p-7 space-y-6 shadow-elevated">
               <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
                 <div className="flex items-center gap-2.5">
@@ -280,7 +238,7 @@ export default function About() {
               <div className="pt-2">
                 <Link
                   to="/contact"
-                  className="btn-primary w-full text-xs py-3 rounded-xl shadow-md"
+                  className="btn-primary w-full text-xs py-3 rounded-xl shadow-md inline-flex items-center justify-center gap-2"
                 >
                   <span>Initiate Discussion</span>
                   <ArrowRight className="w-3.5 h-3.5" />
