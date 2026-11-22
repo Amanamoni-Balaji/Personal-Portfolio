@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 import { portfolioData } from '../data/portfolioData';
-import { Layers, Sparkles, Filter, Search, Activity, Cpu, ArrowUpRight } from 'lucide-react';
+import { Layers, Sparkles, Filter, Search, Activity, Cpu, ArrowUpRight, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import BlurFade from '../components/BlurFade';
 
@@ -168,13 +168,27 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <Link
-                    to={`/projects/${careflow.id}`}
-                    className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1 font-sans"
-                  >
-                    <span>View Case Study</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
+                  <div className="flex items-center gap-2">
+                    {careflow.githubUrl && (
+                      <a
+                        href={careflow.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-ink-300 hover:text-white px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-emerald-400/50 inline-flex items-center gap-1.5 transition-all font-mono"
+                        aria-label={`${careflow.shortTitle} repository`}
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        <span>Repo</span>
+                      </a>
+                    )}
+                    <Link
+                      to={`/projects/${careflow.id}`}
+                      className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1 font-sans"
+                    >
+                      <span>View Case Study</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             )}
@@ -215,13 +229,27 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <Link
-                    to={`/projects/${mediassist.id}`}
-                    className="text-xs font-semibold text-sky-400 hover:text-sky-300 inline-flex items-center gap-1 font-sans"
-                  >
-                    <span>View Case Study</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
+                  <div className="flex items-center gap-2">
+                    {mediassist.githubUrl && (
+                      <a
+                        href={mediassist.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-ink-300 hover:text-white px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-sky-400/50 inline-flex items-center gap-1.5 transition-all font-mono"
+                        aria-label={`${mediassist.shortTitle} repository`}
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        <span>Repo</span>
+                      </a>
+                    )}
+                    <Link
+                      to={`/projects/${mediassist.id}`}
+                      className="text-xs font-semibold text-sky-400 hover:text-sky-300 inline-flex items-center gap-1 font-sans"
+                    >
+                      <span>View Case Study</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             )}
@@ -258,19 +286,6 @@ export default function Projects() {
           </div>
         )}
       </div>
-
-      {/* Recruiter Footnote Banner */}
-      <BlurFade delay={0.15}>
-        <div className="p-6 sm:p-7 rounded-3xl bg-[#0b0e17] border border-white/10 text-xs font-mono text-ink-400 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-elevated">
-          <div>
-            <span className="text-white font-bold block mb-1">Authentic Project Artifacts</span>
-            All screenshots, wireframes, and implementation descriptions reflect verified academic, internship, and hackathon project deliverables.
-          </div>
-          <span className="badge-status text-xs shrink-0">
-            Open Source Code Available
-          </span>
-        </div>
-      </BlurFade>
     </div>
   );
 }

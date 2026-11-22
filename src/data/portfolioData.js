@@ -185,7 +185,7 @@ export const portfolioData = {
         "Successfully exposed key transition bottlenecks and quantified average handoff delays to support data-driven hospital scheduling.",
         "Delivered 9-page production-quality analytics dashboard with zero data leakage in predictive modeling."
       ],
-      githubUrl: "https://github.com/Amanamoni-Balaji",
+      githubUrl: "https://github.com/Amanamoni-Balaji/CareFlow-Clinical-Pathway-Process-Mining",
       liveUrl: null,
       primaryImage: "/assets/careflow/careflow-hero.png",
       gallery: [
@@ -270,7 +270,7 @@ export const portfolioData = {
         "Knowledge base strictly verified against trusted healthcare authorities (WHO, MedlinePlus, NHS) across 14 clinical categories.",
         "Verified emergency detection protocols ensuring 100% fail-safe escalation for life-threatening symptom inputs."
       ],
-      githubUrl: "https://github.com/Amanamoni-Balaji",
+      githubUrl: "https://github.com/Amanamoni-Balaji/MediAssist-AI",
       liveUrl: null,
       primaryImage: "/assets/mediassist/mediassist-hero.png",
       gallery: [
@@ -318,7 +318,7 @@ export const portfolioData = {
         "Tested across regional rainfall and soil parameter datasets with consistent recommendation accuracy.",
         "Delivered verifiable decision support reducing planting uncertainty during erratic monsoons."
       ],
-      githubUrl: "https://github.com/Amanamoni-Balaji",
+      githubUrl: "https://github.com/Amanamoni-Balaji/Krishi-AI",
       liveUrl: null,
       primaryImage: "/assets/krishiai/hero-image.png",
       gallery: [
@@ -360,7 +360,7 @@ export const portfolioData = {
         "Delivered end-to-end travel booking platform with responsive dashboards and secure CRUD operations.",
         "Seamless performance supporting destination browsing, search filtering, and reservation management."
       ],
-      githubUrl: "https://github.com/Amanamoni-Balaji",
+      githubUrl: "https://github.com/Amanamoni-Balaji/Travelmate",
       liveUrl: null,
       primaryImage: "/assets/travelmate/Screenshot_2026-05-30_151658.png",
       gallery: [
@@ -404,7 +404,7 @@ export const portfolioData = {
         "Project contributed for the Smart India Hackathon (SIH) internal and national evaluation.",
         "Demonstrated automated clash-free schedule generation across multi-department academic programs."
       ],
-      githubUrl: "https://github.com/Amanamoni-Balaji",
+      githubUrl: "https://github.com/Amanamoni-Balaji/TimeTrackers",
       liveUrl: null,
       primaryImage: "/assets/smartclassroom/Screenshot 2025-09-24 184559.png",
       gallery: [
@@ -453,7 +453,7 @@ export const portfolioData = {
         "Accurate classification of potato leaf pathologies with high confidence thresholds.",
         "Seamless end-to-end integration: leaf upload to diagnosis in under 2 seconds on standard hardware."
       ],
-      githubUrl: "https://github.com/Amanamoni-Balaji",
+      githubUrl: "https://github.com/Amanamoni-Balaji/Agro_Guardian",
       liveUrl: null,
       primaryImage: "/assets/agroguardian/crop-disease.png",
       gallery: [
@@ -497,7 +497,7 @@ export const portfolioData = {
         "Competed in HackWithHyderabad 3.0 as part of team and demonstrated working incident response agent prototype.",
         "Showcased significant reduction in incident investigation time by instantly surfacing past resolutions."
       ],
-      githubUrl: "https://github.com/Amanamoni-Balaji/RecallOps-AI",
+      githubUrl: "https://github.com/Amanamoni-Balaji/RecallOpps-AI",
       liveUrl: null,
       primaryImage: "/assets/recallops/hero.png",
       gallery: [
@@ -539,7 +539,7 @@ export const portfolioData = {
         "100% error-free execution verified in headless Chromium testing.",
         "Optimized asset delivery and responsive UX across mobile, tablet, and desktop viewports."
       ],
-      githubUrl: "https://github.com/Amanamoni-Balaji",
+      githubUrl: "https://github.com/Amanamoni-Balaji/Personal-Portfolio",
       liveUrl: null,
       primaryImage: "/assets/portfolio/preview.svg",
       gallery: [
