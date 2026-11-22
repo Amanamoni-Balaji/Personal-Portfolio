@@ -40,6 +40,41 @@ export default function Home({ onOpenResume, onShowToast }) {
   const cleanPhone = personal.phone.replace(/[^0-9]/g, '');
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=Hi%20Balaji,%20I%20viewed%20your%20portfolio%20and%20would%20like%20to%20connect!`;
 
+  // Cinematic name character animation setup
+  const firstName = 'AMANAMONI';
+  const lastName = 'BALAJI';
+
+  const nameContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.038,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const charVariants = {
+    hidden: {
+      opacity: 0,
+      y: 26,
+      filter: 'blur(8px)',
+      scale: 0.9,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      scale: 1,
+      transition: {
+        type: 'spring',
+        damping: 14,
+        stiffness: 190,
+      },
+    },
+  };
+
   // 3D Tilt calculations for the portrait card
   const cardRef = useRef(null);
   const x = useMotionValue(0);
@@ -81,7 +116,7 @@ export default function Home({ onOpenResume, onShowToast }) {
 
   return (
     <div className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-28 sm:pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-      {/* Ambient Lighting Depth */}
+      {/* Ambient Atmospheric Lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[500px] bg-gradient-to-tr from-blue-600/10 via-indigo-600/10 to-emerald-500/5 blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute top-1/3 right-10 w-96 h-96 bg-sky-500/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute inset-0 editorial-grid-bg opacity-30 pointer-events-none" />
@@ -90,47 +125,68 @@ export default function Home({ onOpenResume, onShowToast }) {
       <div className="relative z-10 max-w-6xl mx-auto w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
-          {/* Left Column: Essential Professional Introduction */}
-          <div className="lg:col-span-7 space-y-7 text-center lg:text-left">
+          {/* Left Column: Natural, Confident Professional Introduction */}
+          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* Live Status Pill */}
+            {/* 1. HELLO, I'M Tag */}
             <BlurFade delay={0.05}>
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-xs font-mono text-ink-300 shadow-sm hover:border-white/20 transition-colors">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-                </span>
-                <span>Available for AI/ML &amp; Full-Stack Roles</span>
-                <span className="text-ink-600 hidden sm:inline">&bull;</span>
-                <span className="text-accent-sky hidden sm:inline font-medium">Hyderabad, India</span>
-              </div>
-            </BlurFade>
-
-            {/* Full Name & Grand Typography */}
-            <BlurFade delay={0.1} className="space-y-3">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white font-sans leading-[1.08]">
-                Hi, I'm{' '}
-                <span className="bg-gradient-to-r from-white via-sky-100 to-indigo-200 bg-clip-text text-transparent">
-                  Amanamoni Balaji
-                </span>
-              </h1>
-
-              {/* Strong Professional Headline */}
-              <p className="text-lg sm:text-xl lg:text-2xl font-mono font-medium text-accent-sky tracking-tight">
-                AI/ML Engineer &bull; Data Analytics &bull; Full-Stack Developer
+              <p className="text-xs sm:text-sm font-mono tracking-[0.28em] text-accent-sky uppercase font-semibold">
+                HELLO, I'M
               </p>
             </BlurFade>
 
-            {/* Concise 2-3 Line Engaging Introduction */}
-            <BlurFade delay={0.15}>
+            {/* 2. AMANAMONI BALAJI (Entirely in Capital Letters with Cinematic Character Reveal) */}
+            <div className="overflow-visible">
+              <motion.h1
+                variants={nameContainerVariants}
+                initial="hidden"
+                animate="visible"
+                className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-sans leading-[1.06] select-none"
+              >
+                <span className="inline-block whitespace-nowrap mr-3 sm:mr-4">
+                  {firstName.split('').map((char, index) => (
+                    <motion.span
+                      key={`first-${index}`}
+                      variants={charVariants}
+                      whileHover={{ y: -4, scale: 1.08 }}
+                      className="inline-block bg-gradient-to-b from-white via-neutral-100 to-neutral-400 bg-clip-text text-transparent transition-transform cursor-default"
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+                <span className="inline-block whitespace-nowrap">
+                  {lastName.split('').map((char, index) => (
+                    <motion.span
+                      key={`last-${index}`}
+                      variants={charVariants}
+                      whileHover={{ y: -4, scale: 1.08 }}
+                      className="inline-block bg-gradient-to-b from-white via-sky-100 to-indigo-300 bg-clip-text text-transparent transition-transform cursor-default"
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+              </motion.h1>
+            </div>
+
+            {/* 3. Professional Headline */}
+            <BlurFade delay={0.16}>
+              <p className="text-sm sm:text-base lg:text-lg font-mono font-bold text-accent-sky tracking-wider uppercase">
+                AI/ML | DATA ANALYTICS | FULL-STACK DEVELOPMENT
+              </p>
+            </BlurFade>
+
+            {/* 4. Short Professional Introduction */}
+            <BlurFade delay={0.2}>
               <p className="text-base sm:text-lg text-ink-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                Information Technology undergraduate at <strong className="text-white font-semibold">Matrusri Engineering College (9.6/10 CGPA)</strong>. I engineer mathematically grounded machine learning models, clinical process mining engines, and scalable full-stack web architectures.
+                I'm an Information Technology student passionate about building practical solutions using AI, data, and web technologies. I enjoy learning new technologies and turning ideas into useful projects.
               </p>
             </BlurFade>
 
-            {/* 1. Unified Single Contact Row: GitHub | LinkedIn | Email | WhatsApp */}
-            <BlurFade delay={0.2} className="space-y-2">
-              <div className="grid grid-cols-2 sm:flex sm:flex-wrap lg:flex-nowrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
+            {/* 5. Unified Single Contact Row: GitHub | LinkedIn | Email | WhatsApp */}
+            <BlurFade delay={0.24} className="space-y-2">
+              <div className="grid grid-cols-2 sm:flex sm:flex-wrap lg:flex-nowrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3 pt-1">
                 {/* 1. GitHub */}
                 <a
                   href={personal.github}
@@ -179,8 +235,8 @@ export default function Home({ onOpenResume, onShowToast }) {
               </div>
             </BlurFade>
 
-            {/* 2. Main Action Buttons: Explore My Work & Download Resume */}
-            <BlurFade delay={0.25}>
+            {/* 6. Main Action Buttons: Explore My Work & Download Resume */}
+            <BlurFade delay={0.28}>
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1">
                 <Link
                   to="/projects"
@@ -204,8 +260,15 @@ export default function Home({ onOpenResume, onShowToast }) {
 
           {/* Right Column: Interactive 3D Cinematic Portrait Presentation */}
           <div className="lg:col-span-5 flex justify-center perspective-container">
-            <BlurFade delay={0.2}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, filter: 'blur(12px)', y: 24 }}
+              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)', y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Continuous Gentle Parallax Float */}
               <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ repeat: Infinity, duration: 5.5, ease: 'easeInOut' }}
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
@@ -216,11 +279,15 @@ export default function Home({ onOpenResume, onShowToast }) {
                 }}
                 className="relative group cursor-pointer"
               >
-                {/* Outer Breathing Radiant Aura */}
-                <div className="absolute -inset-4 bg-gradient-to-tr from-blue-500/25 via-indigo-500/20 to-emerald-500/20 rounded-[3rem] blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                {/* Outer Radiant Breathing Aura */}
+                <motion.div
+                  animate={{ opacity: [0.65, 0.9, 0.65], scale: [1, 1.04, 1] }}
+                  transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut' }}
+                  className="absolute -inset-4 bg-gradient-to-tr from-blue-500/25 via-indigo-500/20 to-emerald-500/20 rounded-[3rem] blur-2xl pointer-events-none"
+                />
 
                 {/* Sculpted 3D Geometric Frame */}
-                <div className="relative w-64 sm:w-72 md:w-80 aspect-[4/4.8] rounded-[2.5rem] p-2.5 bg-[#0c101a]/95 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl overflow-hidden transition-all duration-300 group-hover:border-white/35">
+                <div className="relative w-64 sm:w-72 md:w-80 aspect-[4/4.8] rounded-[2.5rem] p-2.5 bg-[#0c101a]/95 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.85)] backdrop-blur-2xl overflow-hidden transition-all duration-300 group-hover:border-white/35">
                   
                   {/* Photo Canvas Container */}
                   <div className="w-full h-full rounded-[2rem] overflow-hidden bg-black relative">
@@ -265,7 +332,7 @@ export default function Home({ onOpenResume, onShowToast }) {
 
                 </div>
               </motion.div>
-            </BlurFade>
+            </motion.div>
           </div>
 
         </div>

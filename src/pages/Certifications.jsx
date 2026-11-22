@@ -234,6 +234,25 @@ export default function Certifications() {
                         </span>
                       </div>
 
+                      {/* Real Certificate Preview Thumbnail */}
+                      {cert.imageUrl && (
+                        <div
+                          onClick={() => setSelectedCert(cert)}
+                          className="relative w-full h-36 rounded-2xl overflow-hidden border border-white/10 group-hover:border-accent-sky/50 cursor-pointer bg-black/40 transition-all shadow-inner my-1"
+                        >
+                          <img
+                            src={cert.imageUrl}
+                            alt={cert.title}
+                            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d16] via-transparent to-transparent opacity-70" />
+                          <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md text-[10px] font-mono bg-black/80 backdrop-blur-sm border border-white/20 text-accent-sky flex items-center gap-1 font-semibold">
+                            <Eye className="w-3 h-3 text-accent-sky" /> Preview
+                          </span>
+                        </div>
+                      )}
+
                       {/* Title & Organization */}
                       <div>
                         <h3 className="text-base font-bold text-white group-hover:text-accent-sky transition-colors leading-snug font-sans tracking-tight">

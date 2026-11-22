@@ -819,6 +819,7 @@ export const portfolioData = {
       description: "Successfully completed intensive Certificate Course on Machine Learning using Python Programming conducted by the Soft Computing Research Society Students' Chapter at Matrusri Engineering College.",
       skills: ["Machine Learning", "Python Programming", "Model Validation", "Soft Computing"],
       pdfUrl: "/certificates/SCRS_Machine_Learning_Python.pdf",
+      imageUrl: "/certificates/SCRS_Machine_Learning_Python.jpg",
       issuerLogoText: "SCRS"
     },
     {
@@ -898,6 +899,7 @@ export const portfolioData = {
       description: "Certificate of Participation in the National Level Srinivasa Ramanujan Mathematical Competitions Level 1 (Chapter Level) conducted by ISTE for Engineering College Students.",
       skills: ["Advanced Mathematics", "Quantitative Aptitude", "Mathematical Logic"],
       pdfUrl: "/certificates/ISTE_Ramanujan_Math_Competition_Level_1.pdf",
+      imageUrl: "/certificates/ISTE_Ramanujan_Math_Competition_Level_1.jpg",
       issuerLogoText: "ISTE"
     },
     {
@@ -913,6 +915,7 @@ export const portfolioData = {
       description: "Certificate of Participation in the National Level Srinivasa Ramanujan Mathematical Competitions Level 2 (State Level) conducted by ISTE for Engineering College Students.",
       skills: ["State Level Mathematics", "Analytical Reasoning", "Competitive Computing"],
       pdfUrl: "/certificates/ISTE_Ramanujan_Math_Competition_Level_2.pdf",
+      imageUrl: "/certificates/ISTE_Ramanujan_Math_Competition_Level_2.jpg",
       issuerLogoText: "ISTE"
     },
     {
@@ -1153,6 +1156,48 @@ export const portfolioData = {
   ],
 
   achievements: [
+    {
+      id: "iste-ramanujan-level2",
+      title: "Srinivasa Ramanujan Mathematical Competitions 2024 – Level 2 (State Level)",
+      organization: "Indian Society for Technical Education (ISTE) Tamilnadu Section",
+      track: "State Level Mathematics Competition",
+      year: "2024–2025",
+      type: "State Level Competition",
+      badge: "State Level Finalist",
+      description:
+        "Participated in the National Level Srinivasa Ramanujan Mathematical Competitions Level 2 (State Level) conducted by ISTE Tamilnadu Section on 09th & 10th November 2024 for Engineering College Students.",
+      impact: "Qualified from Chapter Level to State Level, tackling advanced mathematical reasoning, quantitative problem-solving, and computational logic.",
+      pdfUrl: "/certificates/ISTE_Ramanujan_Math_Competition_Level_2.pdf",
+      imageUrl: "/certificates/ISTE_Ramanujan_Math_Competition_Level_2.jpg"
+    },
+    {
+      id: "iste-ramanujan-level1",
+      title: "Srinivasa Ramanujan Mathematical Competitions 2024 – Level 1 (Chapter Level)",
+      organization: "Indian Society for Technical Education (ISTE) Tamilnadu Section",
+      track: "National Level Mathematics Competition",
+      year: "2024–2025",
+      type: "National Competition",
+      badge: "Chapter Level Participant",
+      description:
+        "Participated in the National Level Srinivasa Ramanujan Mathematical Competitions Level 1 (Chapter Level) conducted by ISTE Tamilnadu Section on 19th & 20th October 2024 for Engineering College Students.",
+      impact: "Represented Matrusri Engineering College (II Year - IT) in nationwide mathematical evaluation testing algorithmic reasoning and analytical proofs.",
+      pdfUrl: "/certificates/ISTE_Ramanujan_Math_Competition_Level_1.pdf",
+      imageUrl: "/certificates/ISTE_Ramanujan_Math_Competition_Level_1.jpg"
+    },
+    {
+      id: "scrs-ml-course",
+      title: "Machine Learning using Python Programming Course",
+      organization: "Soft Computing Research Society (SCRS) Students' Chapter",
+      track: "Machine Learning & Computational Intelligence",
+      year: "2024–2025",
+      type: "Certified Academic Program",
+      badge: "SCRSCC088 Verified",
+      description:
+        "Successfully completed intensive Certificate Course on Machine Learning using Python Programming conducted by Soft Computing Research Society Students' Chapter at Matrusri Engineering College (Dec 18, 2024 – Jan 14, 2025).",
+      impact: "Completed 4-week rigorous program covering algorithmic model construction, validation benchmarks, and soft computing techniques under Dr. Jagdish Chand Bansal, General Secretary SCRS.",
+      pdfUrl: "/certificates/SCRS_Machine_Learning_Python.pdf",
+      imageUrl: "/certificates/SCRS_Machine_Learning_Python.jpg"
+    },
     {
       id: "datanyx-runnerup",
       title: "Runner-Up in Datanyx 2025 Datathon",

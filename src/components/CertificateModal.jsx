@@ -14,17 +14,31 @@ import {
   Minimize2,
   ShieldCheck,
   FileCheck,
-  Building
+  Building,
+  Image as ImageIcon
 } from 'lucide-react';
 
 export default function CertificateModal({ certificate, isOpen, onClose }) {
   const [zoom, setZoom] = useState(100);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Reset zoom on document change
+  const hasImage = Boolean(
+    certificate?.imageUrl ||
+      (certificate?.pdfUrl && /\.(jpe?g|png|webp)$/i.test(certificate.pdfUrl))
+  );
+  const imageUrl = certificate?.imageUrl || (hasImage ? certificate?.pdfUrl : null);
+  const pdfUrl =
+    certificate?.pdfUrl && /\.pdf$/i.test(certificate.pdfUrl)
+      ? certificate.pdfUrl
+      : null;
+
+  const [activeView, setActiveView] = useState(hasImage ? 'image' : 'pdf');
+
+  // Reset zoom & active view on document change
   useEffect(() => {
     setZoom(100);
-  }, [certificate]);
+    setActiveView(hasImage ? 'image' : 'pdf');
+  }, [certificate, hasImage]);
 
   // Handle ESC key press
   useEffect(() => {
@@ -45,8 +59,12 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
   const handleZoomOut = () => setZoom((prev) => Math.max(prev - 15, 75));
   const handleResetZoom = () => setZoom(100);
 
-  const pdfHref = certificate.pdfUrl;
-  const fileName = pdfHref ? pdfHref.split('/').pop() : 'certificate.pdf';
+  const currentHref =
+    activeView === 'image' && imageUrl
+      ? imageUrl
+      : pdfUrl || imageUrl || certificate.pdfUrl;
+  const downloadHref = pdfUrl || imageUrl || certificate.pdfUrl;
+  const fileName = downloadHref ? downloadHref.split('/').pop() : 'certificate.pdf';
 
   return (
     <AnimatePresence>
@@ -96,9 +114,35 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
             </div>
 
             {/* Toolbar Controls */}
-            <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
+            <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center flex-wrap">
+              {/* Dual View Toggle if both Image and PDF exist */}
+              {hasImage && pdfUrl && (
+                <div className="flex items-center rounded-lg bg-obsidian-950 border border-editorial-line p-0.5 text-xs font-mono mr-1">
+                  <button
+                    onClick={() => setActiveView('image')}
+                    className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all ${
+                      activeView === 'image'
+                        ? 'bg-blue-600 text-white shadow-sm'
+                        : 'text-ink-400 hover:text-white'
+                    }`}
+                  >
+                    HD Image
+                  </button>
+                  <button
+                    onClick={() => setActiveView('pdf')}
+                    className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all ${
+                      activeView === 'pdf'
+                        ? 'bg-blue-600 text-white shadow-sm'
+                        : 'text-ink-400 hover:text-white'
+                    }`}
+                  >
+                    Original PDF
+                  </button>
+                </div>
+              )}
+
               {/* Zoom Controls */}
-              {pdfHref && (
+              {currentHref && (
                 <div className="hidden md:flex items-center gap-1 px-2 py-1 rounded-lg bg-obsidian-950 border border-editorial-line text-xs font-mono mr-1">
                   <button
                     onClick={handleZoomOut}
@@ -147,26 +191,26 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
               </button>
 
               {/* Open in New Tab */}
-              {pdfHref && (
+              {currentHref && (
                 <a
-                  href={pdfHref}
+                  href={currentHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-ink-300 bg-obsidian-850 hover:bg-obsidian-800 border border-editorial-line hover:text-white transition-colors"
-                  title="Open PDF in a new browser tab"
+                  title="Open certificate in a new browser tab"
                 >
                   <ExternalLink className="w-3.5 h-3.5 text-accent-sky" />
                   <span className="hidden sm:inline">New Tab</span>
                 </a>
               )}
 
-              {/* Download PDF */}
-              {pdfHref && (
+              {/* Download Certificate */}
+              {downloadHref && (
                 <a
-                  href={pdfHref}
+                  href={downloadHref}
                   download={fileName}
                   className="btn-primary text-xs py-1.5 px-3 inline-flex items-center gap-1.5 shadow-sm"
-                  title="Download Certificate PDF"
+                  title="Download Certificate"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span className="hidden sm:inline">Download</span>
@@ -184,7 +228,7 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
             </div>
           </div>
 
-          {/* Sub-Header Notice for Multi-Page Documents & Details */}
+          {/* Sub-Header Notice */}
           <div className="px-5 py-2 bg-obsidian-950 border-b border-editorial-line/80 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
             <div className="flex items-center gap-2 text-ink-400">
               <span className="text-emerald-400 font-semibold flex items-center gap-1">
@@ -204,7 +248,21 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
 
           {/* Interactive Document Viewport */}
           <div className="flex-1 bg-obsidian-950 overflow-auto relative p-2 sm:p-4 flex items-center justify-center">
-            {pdfHref ? (
+            {activeView === 'image' && imageUrl ? (
+              <div
+                className="w-full h-full flex items-center justify-center transition-transform duration-200 p-2 sm:p-4 overflow-auto"
+                style={{
+                  transform: zoom !== 100 ? `scale(${zoom / 100})` : 'none',
+                  transformOrigin: 'top center'
+                }}
+              >
+                <img
+                  src={imageUrl}
+                  alt={certificate.title}
+                  className="max-w-full max-h-[75vh] object-contain rounded-xl border border-editorial-line/80 bg-white shadow-2xl"
+                />
+              </div>
+            ) : pdfUrl || certificate.pdfUrl ? (
               <div
                 className="w-full h-full flex items-center justify-center transition-transform duration-200"
                 style={{
@@ -213,7 +271,7 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
                 }}
               >
                 <iframe
-                  src={`${pdfHref}#toolbar=1&navpanes=0&view=FitH`}
+                  src={`${pdfUrl || certificate.pdfUrl}#toolbar=1&navpanes=0&view=FitH`}
                   title={certificate.title}
                   className="w-full h-full min-h-[480px] sm:min-h-[600px] rounded-xl border border-editorial-line/80 bg-white shadow-2xl"
                 />
