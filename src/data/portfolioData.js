@@ -1222,6 +1222,38 @@ export const portfolioData = {
           description:
             "Certificate of Participation proudly presented to Balaji Amanamoni for active participation in DATANYX'25, Telangana's 24-Hour Datathon, organized by the Department of Computer Science and Artificial Intelligence, Muffakham Jah College of Engineering and Technology (MJCET), held on 29th–30th November 2025."
         }
+      ],
+      teamGallery: [
+        {
+          id: "datanyx-team-cheque-outdoors",
+          title: "Team Aurum — ₹8,000 Runner-Up Award Cheque Celebration",
+          caption: "Team Aurum (Amanamoni Balaji and teammates) celebrating Second Position at DATANYX 2025 with the official ₹8,000 award cheque outdoors at MJCET.",
+          imageUrl: "/assets/datanyx/datanyx-team-cheque-outdoors.jpg"
+        },
+        {
+          id: "datanyx-team-project-presentation",
+          title: "Live AgroTech Project Demonstration",
+          caption: "Team Aurum presenting their AgroTech AI platform ('Sowing Seeds of Sustainability') live during the 24-hour datathon at MJCET.",
+          imageUrl: "/assets/datanyx/datanyx-team-project-presentation.jpg"
+        },
+        {
+          id: "datanyx-team-nyxbot",
+          title: "Team Aurum with DATANYX NYXBOT Mascot",
+          caption: "Teammates posing with the official NYXBOT robot mascot and DATANYX directional arrow at Muffakham Jah College of Engineering & Technology.",
+          imageUrl: "/assets/datanyx/datanyx-team-nyxbot.jpg"
+        },
+        {
+          id: "datanyx-award-stage-1",
+          title: "Amanamoni Balaji — Stage Felicitation & Award Cheque",
+          caption: "Amanamoni Balaji on stage holding the DATANYX 2025 Certificate of Achievement and the ₹8,000 award cheque against the official event backdrop.",
+          imageUrl: "/assets/datanyx/datanyx-award-stage-1.jpg"
+        },
+        {
+          id: "datanyx-award-stage-2",
+          title: "Amanamoni Balaji — Second Position Recognition",
+          caption: "Official stage photograph of Amanamoni Balaji with the Certificate of Achievement and ₹8,000 prize cheque at DATANYX 2025.",
+          imageUrl: "/assets/datanyx/datanyx-award-stage-2.jpg"
+        }
       ]
     },
     {

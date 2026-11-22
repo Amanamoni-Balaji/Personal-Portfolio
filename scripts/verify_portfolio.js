@@ -270,6 +270,36 @@ async function runVerification() {
         failed++;
       }
     }
+
+    // Verify DATANYX Team Gallery
+    if (datanyx.teamGallery && datanyx.teamGallery.length === 5) {
+      console.log('  [PASS] DATANYX 2025 has all 5 verified team & hackathon photographs cataloged');
+      passed++;
+
+      for (const photo of datanyx.teamGallery) {
+        const diskPath = path.join(process.cwd(), 'public', photo.imageUrl);
+        if (fs.existsSync(diskPath)) {
+          const size = fs.statSync(diskPath).size;
+          console.log(`  [PASS] Team Photo on disk: ${photo.title} (${size} bytes) -> ${photo.imageUrl}`);
+          passed++;
+        } else {
+          console.error(`  [FAIL] Missing team photo on disk: ${diskPath}`);
+          failed++;
+        }
+
+        const photoHttp = await fetchUrl(encodeURI(photo.imageUrl));
+        if (photoHttp.status === 200) {
+          console.log(`  [PASS] Team Photo served HTTP 200: ${photo.imageUrl}`);
+          passed++;
+        } else {
+          console.error(`  [FAIL] HTTP fetch failed for team photo: ${photo.imageUrl}`);
+          failed++;
+        }
+      }
+    } else {
+      console.error(`  [FAIL] Expected 5 team photos in DATANYX teamGallery, found ${datanyx.teamGallery?.length}`);
+      failed++;
+    }
   } else {
     console.error('  [FAIL] DATANYX 2025 entry missing expected certificates array');
     failed++;

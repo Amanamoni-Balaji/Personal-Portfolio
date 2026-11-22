@@ -16,11 +16,13 @@ import {
 } from 'lucide-react';
 import BlurFade from '../components/BlurFade';
 import CertificateModal from '../components/CertificateModal';
+import TeamGalleryModal from '../components/TeamGalleryModal';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Achievements() {
   const { achievements } = portfolioData;
   const [selectedCert, setSelectedCert] = useState(null);
+  const [isTeamGalleryOpen, setIsTeamGalleryOpen] = useState(false);
 
   React.useEffect(() => {
     if (window.location.hash) {
@@ -248,6 +250,15 @@ export default function Achievements() {
                           <span>View {cert.label}</span>
                         </button>
                       ))}
+                      {item.teamGallery && item.teamGallery.length > 0 && (
+                        <button
+                          onClick={() => setIsTeamGalleryOpen(true)}
+                          className="btn-glow-sky light-sweep text-xs py-2 px-3.5 inline-flex items-center gap-1.5 rounded-xl font-bold shadow-sm bg-gradient-to-r from-blue-600/30 to-sky-600/30 border border-sky-400/50 text-white"
+                        >
+                          <Users className="w-3.5 h-3.5 text-accent-sky" />
+                          <span>View Team Gallery</span>
+                        </button>
+                      )}
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -309,6 +320,37 @@ export default function Achievements() {
                     </div>
                   </div>
                 ) : null}
+
+                {/* Dedicated Team Gallery Showcase Box directly below DATANYX */}
+                {item.id === 'datanyx-runnerup' && item.teamGallery && (
+                  <div className="pt-3.5 border-t border-blue-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gradient-to-r from-blue-950/40 via-[#0a1020] to-[#07090e] p-4 rounded-2xl border border-blue-500/25">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-accent-sky shrink-0 shadow-inner">
+                        <Users className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h4 className="text-xs sm:text-sm font-bold text-white font-sans flex items-center gap-2 flex-wrap">
+                          <span>DATANYX 2025 Team &amp; Hackathon Moments</span>
+                          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold text-accent-sky bg-blue-500/10 border border-blue-500/30">
+                            {item.teamGallery.length} Verified Photos
+                          </span>
+                        </h4>
+                        <p className="text-[11px] text-ink-300 font-sans mt-0.5">
+                          Authentic event photos of Team Aurum with project presentation, robot mascot, and stage felicitations.
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => setIsTeamGalleryOpen(true)}
+                      className="btn-glow-sky light-sweep text-xs py-2.5 px-4 inline-flex items-center justify-center gap-2 rounded-xl font-bold text-white shadow-lg shrink-0 cursor-pointer"
+                      aria-label="View Team Gallery"
+                    >
+                      <Users className="w-3.5 h-3.5 text-accent-sky" />
+                      <span>View Team Gallery</span>
+                    </button>
+                  </div>
+                )}
               </div>
             </BlurFade>
           );
@@ -320,6 +362,13 @@ export default function Achievements() {
         certificate={selectedCert}
         isOpen={Boolean(selectedCert)}
         onClose={() => setSelectedCert(null)}
+      />
+
+      {/* Interactive Team & Teammates Photo Gallery Modal */}
+      <TeamGalleryModal
+        photos={achievements.find((a) => a.id === 'datanyx-runnerup')?.teamGallery || []}
+        isOpen={isTeamGalleryOpen}
+        onClose={() => setIsTeamGalleryOpen(false)}
       />
     </div>
   );

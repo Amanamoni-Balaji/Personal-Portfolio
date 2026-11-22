@@ -32,6 +32,50 @@ def verify_achievements_and_ui():
         assert len(images) == 2, f"ERROR: Expected 2 certificate thumbnails, found {len(images)}"
         print("  [PASS] Both DATANYX certificate thumbnails verified.")
 
+        # Test DATANYX Team Gallery Button & Modal
+        team_btn = datanyx_el.locator("button:has-text('View Team Gallery')").first
+        assert team_btn.count() == 1, "ERROR: 'View Team Gallery' button not found under DATANYX!"
+        print("  [PASS] 'View Team Gallery' button found directly under DATANYX achievement.")
+
+        team_btn.click()
+        page.wait_for_timeout(600)
+        gallery_modal = page.locator("h3:has-text('DATANYX 2025 — Team')")
+        assert gallery_modal.count() >= 1, "ERROR: Team Gallery modal did not open!"
+        print("  [PASS] Team Gallery modal opened successfully.")
+
+        # Verify all 5 photos are present in grid
+        photo_cards = page.locator("div[role='button'][aria-label^='View ']").all()
+        assert len(photo_cards) == 5, f"ERROR: Expected 5 team photos, found {len(photo_cards)}"
+        print("  [PASS] All 5 authentic team photographs rendered in gallery grid.")
+
+        # Click first photo to test enlarged view
+        photo_cards[0].click()
+        page.wait_for_timeout(600)
+        counter = page.locator("div:has-text('1 / 5')")
+        assert counter.count() >= 1, "ERROR: Enlarged photo 1 not active!"
+        print("  [PASS] Enlarged lightbox view opened for Photo 1.")
+
+        # Test Next navigation button
+        next_btn = page.locator("button[aria-label='Next photograph']")
+        next_btn.click()
+        page.wait_for_timeout(400)
+        counter2 = page.locator("div:has-text('2 / 5')")
+        assert counter2.count() >= 1, "ERROR: Next navigation failed!"
+        print("  [PASS] Next photo navigation works (now Photo 2).")
+
+        # Test Back to Gallery button
+        back_btn = page.locator("button:has-text('Back to Gallery')").first
+        back_btn.click()
+        page.wait_for_timeout(400)
+        assert page.locator("div[role='button'][aria-label^='View ']").count() == 5, "ERROR: Did not return to grid view!"
+        print("  [PASS] 'Back to Gallery' button returned to grid overview.")
+
+        # Close Team Gallery modal
+        close_gallery = page.locator("button[aria-label='Close team gallery']").first
+        close_gallery.click()
+        page.wait_for_timeout(400)
+        print("  [PASS] Team Gallery modal closed cleanly.")
+
         # Test HackWithHyderabad 3.0
         hwh_el = page.locator("#hackwithhyd")
         assert hwh_el.count() == 1, "ERROR: HackWithHyderabad entry not found!"
