@@ -275,6 +275,30 @@ async function runVerification() {
     failed++;
   }
 
+  // Check reorganization: Ramanujan Level 1, Level 2, and SCRS must NOT be in achievements
+  const achievementIds = portfolioData.achievements.map(a => a.id);
+  const removedFromAchievements = ['iste-ramanujan-level2', 'iste-ramanujan-level1', 'scrs-ml-course'];
+  const hasUnexpectedInAchievements = removedFromAchievements.some(id => achievementIds.includes(id));
+  if (!hasUnexpectedInAchievements && achievementIds.length === 5) {
+    console.log('  [PASS] Ramanujan Level 1, Level 2, and SCRS successfully removed from Achievements (5 genuine achievements remain)');
+    passed++;
+  } else {
+    console.error(`  [FAIL] Achievements contains unexpected or removed entries: ${achievementIds}`);
+    failed++;
+  }
+
+  // Check that all 3 are present in professionalCertifications
+  const profCertIds = portfolioData.professionalCertifications.map(c => c.id);
+  const requiredInProf = ['iste-ramanujan-level2', 'iste-ramanujan-level1', 'scrs-machine-learning'];
+  const allInProf = requiredInProf.every(id => profCertIds.includes(id));
+  if (allInProf && portfolioData.professionalCertifications.length === 18) {
+    console.log('  [PASS] Ramanujan Level 1, Level 2, and SCRS verified present in Professional Certifications without duplicates');
+    passed++;
+  } else {
+    console.error('  [FAIL] Missing required certificates in Professional Certifications');
+    failed++;
+  }
+
   // 7. Check Content & Data Validation
   console.log('\n7. Validating Content & Design Requirements:');
   

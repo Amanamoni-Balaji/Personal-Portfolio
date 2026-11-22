@@ -1,7 +1,7 @@
 import time
 from playwright.sync_api import sync_playwright
 
-def verify_achievements():
+def verify_reorganization():
     with sync_playwright() as p:
         browser = p.chromium.launch(
             executable_path=r'C:\Program Files\Google\Chrome\Application\chrome.exe',
@@ -10,73 +10,82 @@ def verify_achievements():
         context = browser.new_context(viewport={'width': 1440, 'height': 1200})
         page = context.new_page()
 
-        print("1. Navigating to http://localhost:3000/achievements...")
+        print("--- 1. VERIFYING ACHIEVEMENTS PAGE ---")
         page.goto("http://localhost:3000/achievements", wait_until="networkidle")
         page.wait_for_timeout(1000)
 
-        # Locate DATANYX card
+        page_content = page.content()
+        # Verify removed entries are NOT present on Achievements page
+        assert "Srinivasa Ramanujan" not in page_content, "ERROR: Srinivasa Ramanujan still found on Achievements page!"
+        print("  [PASS] Srinivasa Ramanujan Mathematical Competitions completely removed from Achievements page.")
+
+        assert "SCRSCC088" not in page_content, "ERROR: SCRSCC088 still found on Achievements page!"
+        print("  [PASS] Soft Computing Research Society (SCRS) completely removed from Achievements page.")
+
+        # Verify DATANYX 2025 is present as top featured achievement
         datanyx_el = page.locator("#datanyx-runnerup")
-        datanyx_el.scroll_into_view_if_needed()
-        page.wait_for_timeout(1000)
+        assert datanyx_el.count() == 1, "ERROR: DATANYX 2025 entry not found on Achievements page!"
+        print("  [PASS] DATANYX 2025 Runner-Up achievement entry verified.")
 
-        print("2. Capturing screenshot of DATANYX 2025 Achievement entry on Desktop...")
-        datanyx_el.screenshot(path="datanyx-entry-desktop.png")
-        print("  Saved datanyx-entry-desktop.png")
-
-        # Verify both certificate thumbnails exist inside datanyx_el
+        # Verify both thumbnails exist
         images = datanyx_el.locator("img").all()
-        print(f"3. Found {len(images)} images in DATANYX entry.")
-        for idx, img in enumerate(images):
-            src = img.get_attribute("src")
-            alt = img.get_attribute("alt")
-            print(f"   Image {idx+1}: alt='{alt}', src='{src}'")
+        assert len(images) == 2, f"ERROR: Expected 2 certificate thumbnails, found {len(images)}"
+        print("  [PASS] Both DATANYX certificate thumbnails verified.")
 
         # Test clicking Certificate of Achievement thumbnail
-        print("\n4. Clicking Certificate of Achievement thumbnail...")
         ach_card = datanyx_el.locator("text=Certificate of Achievement").first
         ach_card.click()
-        page.wait_for_timeout(800)
-
-        # Verify modal is open and inspect its title & image
-        modal = page.locator("role=dialog, .fixed.inset-0").first
-        page.screenshot(path="modal-achievement-preview.png")
-        print("  Saved modal-achievement-preview.png")
-
-        # Close modal
-        print("5. Closing modal via Close button...")
+        page.wait_for_timeout(600)
+        modal_title = page.locator("h3:has-text('DATANYX 2025')").first.inner_text()
+        print(f"  [PASS] Modal opened: '{modal_title}'")
         close_btn = page.locator("button[aria-label='Close certificate modal']").first
         close_btn.click()
         page.wait_for_timeout(500)
 
-        # Test clicking Certificate of Participation thumbnail
-        print("\n6. Clicking Certificate of Participation thumbnail...")
-        part_card = datanyx_el.locator("text=Certificate of Participation").first
-        part_card.click()
-        page.wait_for_timeout(800)
-        page.screenshot(path="modal-participation-preview.png")
-        print("  Saved modal-participation-preview.png")
+        print("\n--- 2. VERIFYING CERTIFICATIONS PAGE ---")
+        page.goto("http://localhost:3000/certifications", wait_until="networkidle")
+        page.wait_for_timeout(1000)
 
-        # Close modal
+        # Verify Ramanujan Level 2
+        level2_card = page.locator("text=Srinivasa Ramanujan Mathematical Competitions 2024 – Level 2 (State Level)").first
+        assert level2_card.count() == 1, "ERROR: Ramanujan Level 2 not found on Certifications page!"
+        print("  [PASS] Ramanujan Level 2 (State Level) present on Certifications page.")
+
+        # Verify Ramanujan Level 1
+        level1_card = page.locator("text=Srinivasa Ramanujan Mathematical Competitions 2024 – Level 1 (Chapter Level)").first
+        assert level1_card.count() == 1, "ERROR: Ramanujan Level 1 not found on Certifications page!"
+        print("  [PASS] Ramanujan Level 1 (Chapter Level) present on Certifications page.")
+
+        # Verify SCRS Course
+        scrs_card = page.locator("text=Machine Learning using Python Programming Course").first
+        assert scrs_card.count() == 1, "ERROR: SCRS Course not found on Certifications page!"
+        print("  [PASS] Machine Learning using Python Programming Course present on Certifications page.")
+
+        # Test opening modal on Certifications page
+        level2_thumb = page.locator("img[alt*='Level 2']").first
+        level2_thumb.scroll_into_view_if_needed()
+        level2_thumb.click()
+        page.wait_for_timeout(600)
+        assert page.locator("h3:has-text('Level 2')").count() >= 1, "ERROR: Level 2 modal did not open!"
+        print("  [PASS] Level 2 modal preview works perfectly.")
+        close_btn = page.locator("button[aria-label='Close certificate modal']").first
         close_btn.click()
         page.wait_for_timeout(500)
 
-        # Mobile Viewport Test (390px)
-        print("\n7. Testing Mobile Viewport (390px)...")
+        # Mobile check (390px)
+        print("\n--- 3. MOBILE VIEWPORT OVERFLOW CHECK ---")
         page.set_viewport_size({"width": 390, "height": 844})
-        datanyx_el.scroll_into_view_if_needed()
-        page.wait_for_timeout(1000)
-        datanyx_el.screenshot(path="datanyx-entry-mobile.png")
-        print("  Saved datanyx-entry-mobile.png")
-
-        # Check horizontal overflow
-        scroll_width = page.evaluate("() => document.documentElement.scrollWidth")
-        client_width = page.evaluate("() => document.documentElement.clientWidth")
-        print(f"  Mobile scrollWidth: {scroll_width}px, clientWidth: {client_width}px")
-        assert scroll_width == client_width, f"Horizontal overflow! scrollWidth={scroll_width} != clientWidth={client_width}"
-        print("  [PASS] Zero horizontal overflow on mobile!")
+        for path in ["/achievements", "/certifications"]:
+            page.goto(f"http://localhost:3000{path}", wait_until="networkidle")
+            page.wait_for_timeout(600)
+            sw = page.evaluate("() => document.documentElement.scrollWidth")
+            cw = page.evaluate("() => document.documentElement.clientWidth")
+            print(f"  Mobile {path}: scrollWidth={sw}px, clientWidth={cw}px")
+            assert sw == cw, f"Horizontal overflow on {path}!"
+            print(f"  [PASS] Zero horizontal overflow on {path}!")
 
         browser.close()
-        print("\n>>> ALL PLAYWRIGHT UI CHECKS PASSED PERFECTLY! <<<")
+        print("\n>>> ALL REORGANIZATION CHECKS PASSED 100% PERFECTLY! <<<")
 
 if __name__ == '__main__':
-    verify_achievements()
+    verify_reorganization()

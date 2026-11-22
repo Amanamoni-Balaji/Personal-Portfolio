@@ -32,9 +32,6 @@ export default function Achievements() {
   }, []);
 
   const icons = {
-    'iste-ramanujan-level2': Trophy,
-    'iste-ramanujan-level1': Award,
-    'scrs-ml-course': Sparkles,
     'datanyx-runnerup': Trophy,
     'hackwithhyd': Award,
     'smart-india-hackathon': Star,
@@ -62,9 +59,7 @@ export default function Achievements() {
       <div className="space-y-6">
         {achievements.map((item, idx) => {
           const Icon = icons[item.id] || Award;
-          const isFeatured =
-            item.id === 'datanyx-runnerup' ||
-            item.id === 'iste-ramanujan-level2';
+          const isFeatured = item.id === 'datanyx-runnerup';
 
           return (
             <BlurFade key={item.id} delay={idx * 0.06}>
