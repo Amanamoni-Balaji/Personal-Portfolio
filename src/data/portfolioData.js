@@ -121,6 +121,171 @@ export const portfolioData = {
 
   projects: [
     {
+      id: "careflow",
+      title: "CareFlow – Clinical Pathway Process Mining & Analytics System",
+      shortTitle: "CareFlow",
+      subtitle: "Clinical Pathway Process Mining & Operational Intelligence",
+      category: "Healthcare Analytics & Process Mining",
+      tagline: "Healthcare analytics and process-mining system analyzing clinical event logs, discovering patient pathways, detecting bottlenecks, and optimizing hospital workflows.",
+      overview:
+        "CareFlow is a specialized healthcare analytics and process-mining system engineered to analyze clinical pathway processes using hospital event-log data. By reconstructing end-to-end patient journeys, discovering Directly-Follows Graphs (DFG), quantifying inter-departmental transfer delays, and auditing guideline conformance, CareFlow empowers clinical administrators to uncover operational bottlenecks, reduce waiting times, and optimize care delivery.",
+      problem:
+        "Modern hospital administrators face severe operational opacity: aggregate statistics (such as average length of stay) obscure the granular sequence of patient transitions. Hidden delays in triage handoffs, diagnostic imaging backlogs, and non-conformant treatment deviations cause bed-blocking and inflated patient wait times.",
+      objectives: [
+        "Process and chronologically validate clinical event-log datasets with hospital department metadata.",
+        "Perform PM4Py Directly-Follows Graph (DFG) process discovery and trace variant extraction.",
+        "Detect operational bottlenecks and quantify inter-departmental handoff delays with transparent severity tiers.",
+        "Evaluate trace sequence fitness against reference clinical guidelines using conformance checking.",
+        "Train predictive machine learning models to forecast discharge delays without data leakage.",
+        "Deliver an interactive 9-page Streamlit analytics dashboard with multi-format automated reporting."
+      ],
+      solution:
+        "CareFlow leverages PM4Py process-mining discovery algorithms, statistical waiting-time decomposition, and interactive Plotly visualizations in a modular Streamlit dashboard. It identifies the slowest clinical transitions, quantifies cumulative bottleneck hours, evaluates trace fitness against clinical guidelines, and predicts patient discharge delays using machine learning.",
+      contribution:
+        "Designed and implemented the end-to-end process-mining engine using PM4Py and Python. Built automated event-log validation and chronological sorting pipelines, engineered bottleneck detection algorithms with severity tiers, developed an interactive 9-page Streamlit analytical dashboard, and created multi-format automated institutional reporting (PDF, Excel, PPTX).",
+      technologies: [
+        "Python",
+        "Streamlit",
+        "PM4Py",
+        "Data Analytics",
+        "Process Mining",
+        "Data Visualization",
+        "Plotly",
+        "Scikit-Learn",
+        "Pandas",
+        "SQLite"
+      ],
+      keyFeatures: [
+        "Clinical event-log processing and schema validation enforcing datetime chronology and mandatory case attributes.",
+        "Process discovery generating Directly-Follows Graphs (DFG) and frequency matrices across hospital departments.",
+        "Patient pathway analysis and trace variant extraction analyzing common and rare patient journeys.",
+        "Operational bottleneck detection calculating waiting times, ranking delays, and setting severity alerts.",
+        "Clinical guideline conformance checking with sequence fitness scores against reference clinical pathways.",
+        "Predictive machine learning forecasting potential discharge delays based on early admission characteristics.",
+        "Interactive 9-page Streamlit analytical suite with global cross-page cohort filters and Plotly charts.",
+        "Automated institutional reporting generating PDF summaries, Excel workbooks, and PowerPoint decks."
+      ],
+      implementationDetails: [
+        "Clinical event-log validation pipeline verifying timestamp chronology, mandatory case attributes, and schema consistency.",
+        "PM4Py Directly-Follows Graph (DFG) process discovery and variant extraction analyzing common patient journeys.",
+        "Operational bottleneck detection ranking transition durations, quantifying cumulative delay hours, and setting severity alerts.",
+        "Guideline conformance checking measuring sequence fitness scores against reference clinical pathways.",
+        "Predictive machine learning pipeline forecasting potential discharge delays based on early admission characteristics.",
+        "Interactive 9-page Streamlit analytical suite with global cross-page cohort filters and automated PDF/Excel/PPTX report export."
+      ],
+      architectureSteps: [
+        { step: "01", name: "Event-Log Ingestion & Cleaning", detail: "Validates clinical schema, enforces ISO datetime chronology, removes duplicates, and handles missing values." },
+        { step: "02", name: "Process Discovery Engine", detail: "Leverages PM4Py to construct Directly-Follows Graphs (DFG) and trace patient pathway variants across hospital departments." },
+        { step: "03", name: "Bottleneck & Transition Analysis", detail: "Calculates queue times between clinical activities, flags slowest handoffs, and categorizes delay severity tiers." },
+        { step: "04", name: "Conformance & Predictive Modeling", detail: "Audits pathway deviations against clinical reference standards and trains Random Forest classifiers to predict discharge delays." },
+        { step: "05", name: "Analytical Dashboard & Reporting", detail: "Renders interactive Plotly visual charts in Streamlit with instant exports for PDF summary reports, PPTX decks, and Excel workbooks." }
+      ],
+      results: [
+        "Analyzed 5,000+ patient journey event logs across multiple clinical departments (Emergency, Inpatient, Diagnostics, ICU, Discharge).",
+        "Successfully exposed key transition bottlenecks and quantified average handoff delays to support data-driven hospital scheduling.",
+        "Delivered 9-page production-quality analytics dashboard with zero data leakage in predictive modeling."
+      ],
+      githubUrl: "https://github.com/Amanamoni-Balaji",
+      liveUrl: null,
+      primaryImage: "/assets/careflow/careflow-hero.png",
+      gallery: [
+        { src: "/assets/careflow/careflow-hero.png", caption: "CareFlow: Executive Overview Dashboard & Hospital Operational KPIs" },
+        { src: "/assets/careflow/careflow-process-mining.png", caption: "CareFlow: PM4Py Process Discovery & Directly-Follows Graph (DFG)" },
+        { src: "/assets/careflow/careflow-bottlenecks.png", caption: "CareFlow: Clinical Bottleneck Analysis & Departmental Waiting Time Rankings" },
+        { src: "/assets/careflow/careflow-patient-journey.png", caption: "CareFlow: Individual Patient Trace & Chronological Event Log Journey" },
+        { src: "/assets/careflow/careflow-predictive.png", caption: "CareFlow: Machine Learning Predictive Analytics for Patient Discharge Delays" },
+        { src: "/assets/careflow/careflow-reports.png", caption: "CareFlow: Automated Institutional Reports & Multi-Format Export Engine" }
+      ],
+      featured: true,
+      badge: "Healthcare Process Mining"
+    },
+    {
+      id: "mediassist-ai",
+      title: "MediAssist AI – Intelligent Healthcare Chatbot Using NLP",
+      shortTitle: "MediAssist AI",
+      subtitle: "Intelligent Healthcare Chatbot Using Natural Language Processing",
+      category: "AI Healthcare & NLP Systems",
+      tagline: "Intelligent healthcare conversational assistant providing evidence-based health guidance, symptom triage, and emergency red-flag detection using NLP.",
+      overview:
+        "MediAssist AI is an intelligent healthcare conversational platform engineered to comprehend natural-language patient queries and deliver evidence-based health guidance grounded strictly in verified clinical literature from WHO, MedlinePlus, and NHS. Featuring a 7-stage NLP processing pipeline, machine learning intent classification, multi-symptom assessment, and automated emergency red-flag detection, MediAssist AI provides safe educational health guidance without diagnostic overreach.",
+      problem:
+        "Everyday patients turn to generic search engines and hallucination-prone AI tools for symptom guidance, frequently encountering catastrophized worst-case diagnoses, unverified dosages, and dangerous delays in recognizing life-threatening emergencies.",
+      objectives: [
+        "Build a specialized healthcare conversational assistant grounded in verified clinical authorities (WHO, MedlinePlus, NHS).",
+        "Implement an automated emergency red-flag detector triggering immediate urgent care escalation (911 / 112).",
+        "Classify healthcare queries across 12 medical intent classes using calibrated machine learning without hardcoded heuristics.",
+        "Perform medical entity extraction for reported symptoms, conditions, durations, and severity.",
+        "Provide an educational multi-symptom assessment tool evaluating symptom overlap without diagnostic claims.",
+        "Engineer a decoupled React (TypeScript) frontend and Django REST Framework backend with secure JWT authentication and admin analytics."
+      ],
+      solution:
+        "MediAssist AI implements a decoupled React (TypeScript) and Django REST Framework architecture with an isolated NLP engine. It uses calibrated intent classification, sublinear TF-IDF semantic retrieval against verified clinical sources, automated emergency red-flag triage, and strict medical disclaimer enforcement.",
+      contribution:
+        "Architected the full-stack system: built the modern React TypeScript frontend with Tailwind CSS and Recharts; implemented the Django REST Framework backend with JWT authentication and session history; developed the 7-stage NLP engine with custom preprocessors, calibrated intent classifier, symptom evaluator, and emergency red-flag safety protocols.",
+      technologies: [
+        "React.js",
+        "Vite",
+        "TypeScript",
+        "Tailwind CSS",
+        "Python",
+        "Django",
+        "Django REST Framework",
+        "NLP",
+        "NLTK",
+        "spaCy",
+        "Scikit-learn",
+        "TF-IDF",
+        "Cosine Similarity",
+        "SimpleJWT"
+      ],
+      keyFeatures: [
+        "Natural-language query processing with custom clinical preprocessor (tokenization, negation preservation, lemmatization).",
+        "Intent classification across 12 medical intents via Calibrated LinearSVC machine learning model.",
+        "Medical entity extraction identifying reported symptoms, conditions, durations, and severity levels.",
+        "Semantic similarity information retrieval scoring inquiries against verified clinical knowledge chunks (WHO, MedlinePlus, NHS).",
+        "Automated emergency red-flag detector triggering immediate urgent care escalation (911 / 112) for acute symptoms.",
+        "Interactive multi-symptom assessment tool evaluating symptom overlap against clinical condition profiles.",
+        "Health guidance with verified medical citations and clinical safety disclaimers emphasizing educational use.",
+        "Conversation context management and authenticated session history with JWT authentication.",
+        "Administrative analytics dashboard with interactive charts monitoring system health and query patterns."
+      ],
+      implementationDetails: [
+        "7-stage NLP pipeline incorporating tokenization, negation-preserving stopword filtering, and WordNet lemmatization.",
+        "Calibrated LinearSVC intent classifier trained across 12 distinct medical query intents with confidence scoring.",
+        "Medical entity extraction identifying reported symptoms, conditions, durations, and severity levels.",
+        "Semantic similarity information retrieval scoring inquiries against verified clinical knowledge chunks (WHO, MedlinePlus, NHS).",
+        "Automated emergency red-flag detector triggering immediate urgent care escalation (911 / 112) for acute symptoms.",
+        "Interactive multi-symptom assessment tool evaluating symptom overlap against clinical condition profiles.",
+        "Decoupled React TypeScript frontend with conversation context management, JWT auth, and administrative analytics dashboard."
+      ],
+      architectureSteps: [
+        { step: "01", name: "User Query & Emergency Gate", detail: "Evaluates incoming query for critical emergency keywords (e.g., chest pain, stroke signs) to trigger instant emergency escalation." },
+        { step: "02", name: "NLP Preprocessing & Lemmatization", detail: "Cleans text, preserves negation tokens, and applies WordNet lemmatization via NLTK to standardize clinical vocabulary." },
+        { step: "03", name: "Intent Classification & NER", detail: "Extracts TF-IDF n-grams (1-3) and executes Calibrated LinearSVC to classify user intent across 12 medical categories." },
+        { step: "04", name: "Semantic Knowledge Retrieval", detail: "Executes cosine similarity matching against structured medical chunks verified from WHO, MedlinePlus, and NHS clinical sources." },
+        { step: "05", name: "Safety Guard & Response Delivery", detail: "Injects mandatory clinical disclaimers, formats symptom guidance, and dispatches authenticated JSON payload to React frontend." }
+      ],
+      results: [
+        "Built end-to-end full-stack medical conversational platform with decoupled React 19 + TypeScript frontend and Django backend.",
+        "Knowledge base strictly verified against trusted healthcare authorities (WHO, MedlinePlus, NHS) across 14 clinical categories.",
+        "Verified emergency detection protocols ensuring 100% fail-safe escalation for life-threatening symptom inputs."
+      ],
+      githubUrl: "https://github.com/Amanamoni-Balaji",
+      liveUrl: null,
+      primaryImage: "/assets/mediassist/mediassist-hero.png",
+      gallery: [
+        { src: "/assets/mediassist/mediassist-hero.png", caption: "MediAssist AI: Responsive Healthcare Assistant Landing Page" },
+        { src: "/assets/mediassist/mediassist-chat.png", caption: "MediAssist AI: Interactive Natural Language Medical Consultation Interface" },
+        { src: "/assets/mediassist/mediassist-consultation.png", caption: "MediAssist AI: Health Guidance with Verified Clinical Sources & Safety Disclaimers" },
+        { src: "/assets/mediassist/mediassist-symptoms.png", caption: "MediAssist AI: Multi-Symptom Assessment Tool & Overlap Analysis" },
+        { src: "/assets/mediassist/mediassist-dashboard.png", caption: "MediAssist AI: Administrative Analytics Dashboard with Interactive Recharts" },
+        { src: "/assets/mediassist/mediassist-api.png", caption: "MediAssist AI: Django REST Framework API Endpoints & Verification Suite" },
+        { src: "/assets/mediassist/mediassist-history.png", caption: "MediAssist AI: Authenticated Patient Conversation History & Session Records" }
+      ],
+      featured: true,
+      badge: "NLP Healthcare Assistant"
+    },
+    {
       id: "krishiai",
       title: "KrishiAI – AI-Powered Smart Advisory for Farmers",
       shortTitle: "KrishiAI",

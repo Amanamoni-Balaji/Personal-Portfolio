@@ -97,7 +97,7 @@ export default function Home({ onOpenResume, onShowToast }) {
 
           {/* Featured Project Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {projects.slice(0, 4).map((project, idx) => (
+            {projects.slice(0, 6).map((project, idx) => (
               <ProjectCard key={project.id} project={project} index={idx} />
             ))}
           </div>

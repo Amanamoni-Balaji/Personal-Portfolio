@@ -198,13 +198,13 @@ async function runVerification() {
 
   // Resume Projects present
   const projectIds = portfolioData.projects.map(p => p.id);
-  const requiredProjects = ['krishiai', 'travelmate', 'time-trackers', 'agro-guardian', 'recallops-ai', 'personal-portfolio'];
+  const requiredProjects = ['careflow', 'mediassist-ai', 'krishiai', 'travelmate', 'time-trackers', 'agro-guardian', 'recallops-ai', 'personal-portfolio'];
   const allProjectsPresent = requiredProjects.every(id => projectIds.includes(id));
-  if (allProjectsPresent) {
-    console.log('  [PASS] All 6 resume projects present (KrishiAI, TravelMate, TimeTrackers, Agro_Guardian, RecallOps AI, Personal Portfolio)');
+  if (allProjectsPresent && portfolioData.projects.length === 8) {
+    console.log('  [PASS] All 8 engineering projects present (CareFlow, MediAssist AI, KrishiAI, TravelMate, TimeTrackers, Agro_Guardian, RecallOps AI, Personal Portfolio)');
     passed++;
   } else {
-    console.error('  [FAIL] Missing required projects');
+    console.error('  [FAIL] Missing required projects or unexpected project count');
     failed++;
   }
 

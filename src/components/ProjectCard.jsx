@@ -7,6 +7,40 @@ export default function ProjectCard({ project, index }) {
   const cardRef = useRef(null);
   const [hovered, setHovered] = useState(false);
 
+  // Category-specific visual differentiation
+  const isProcessMining = project.category?.includes('Process Mining') || project.id === 'careflow';
+  const isHealthcareNLP = project.category?.includes('NLP') || project.id === 'mediassist-ai';
+
+  const cardBorderClass = isProcessMining
+    ? 'border-emerald-500/35 hover:border-emerald-400/80 shadow-[0_0_20px_rgba(16,185,129,0.08)] hover:shadow-[0_0_30px_rgba(16,185,129,0.22)]'
+    : isHealthcareNLP
+    ? 'border-sky-500/35 hover:border-sky-400/80 shadow-[0_0_20px_rgba(14,165,233,0.08)] hover:shadow-[0_0_30px_rgba(14,165,233,0.22)]'
+    : 'border-editorial-line hover:border-editorial-lineFocus shadow-subtle hover:shadow-card-hover';
+
+  const categoryBadgeClass = isProcessMining
+    ? 'bg-emerald-950/90 text-emerald-300 border-emerald-500/40'
+    : isHealthcareNLP
+    ? 'bg-sky-950/90 text-sky-300 border-sky-500/40'
+    : 'bg-obsidian-950/80 text-ink-300 border-editorial-line';
+
+  const badgeAccentClass = isProcessMining
+    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+    : isHealthcareNLP
+    ? 'bg-sky-500/20 text-sky-300 border-sky-500/40'
+    : 'bg-obsidian-950/85 text-accent-sky border-editorial-line';
+
+  const titleHoverClass = isProcessMining
+    ? 'group-hover:text-emerald-400'
+    : isHealthcareNLP
+    ? 'group-hover:text-sky-400'
+    : 'group-hover:text-accent-sky';
+
+  const actionTextClass = isProcessMining
+    ? 'text-emerald-400 hover:text-emerald-300'
+    : isHealthcareNLP
+    ? 'text-sky-400 hover:text-sky-300'
+    : 'text-accent-sky hover:text-white';
+
   // Subtle 3D tilt effect on hover
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -51,7 +85,7 @@ export default function ProjectCard({ project, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="group relative rounded-2xl bg-obsidian-850/90 border border-editorial-line hover:border-editorial-lineFocus overflow-hidden flex flex-col justify-between shadow-subtle hover:shadow-card-hover transition-colors duration-300"
+      className={`group relative rounded-2xl bg-obsidian-850/90 border overflow-hidden flex flex-col justify-between transition-all duration-300 ${cardBorderClass}`}
     >
       {/* Top Media / Screenshot Container */}
       <div className="relative aspect-[16/10] overflow-hidden bg-obsidian-950 border-b border-editorial-line">
@@ -67,11 +101,11 @@ export default function ProjectCard({ project, index }) {
 
         {/* Category & Badge Tags */}
         <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
-          <span className="badge-editorial bg-obsidian-950/80 backdrop-blur-md text-[11px]">
+          <span className={`px-2.5 py-1 rounded-md text-[11px] font-mono border backdrop-blur-md ${categoryBadgeClass}`}>
             {project.category}
           </span>
           {project.badge && (
-            <span className="badge-accent bg-obsidian-950/85 backdrop-blur-md text-[10px]">
+            <span className={`px-2 py-0.5 rounded text-[10px] font-mono border backdrop-blur-md ${badgeAccentClass}`}>
               {project.badge}
             </span>
           )}
@@ -82,7 +116,7 @@ export default function ProjectCard({ project, index }) {
       <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
         <div>
           <div className="flex items-start justify-between gap-3 mb-2">
-            <h3 className="text-lg font-bold text-ink-50 group-hover:text-accent-sky transition-colors font-sans">
+            <h3 className={`text-lg font-bold text-ink-50 transition-colors font-sans ${titleHoverClass}`}>
               <Link to={`/projects/${project.id}`} className="focus:outline-none">
                 {project.shortTitle}
               </Link>
@@ -126,7 +160,7 @@ export default function ProjectCard({ project, index }) {
           <div className="flex items-center justify-between pt-1">
             <Link
               to={`/projects/${project.id}`}
-              className="text-xs font-semibold text-accent-sky hover:text-white inline-flex items-center gap-1 transition-colors"
+              className={`text-xs font-semibold inline-flex items-center gap-1 transition-colors ${actionTextClass}`}
             >
               <span>Case Study</span>
               <ArrowUpRight className="w-3.5 h-3.5" />

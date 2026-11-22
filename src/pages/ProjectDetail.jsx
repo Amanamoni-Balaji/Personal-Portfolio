@@ -19,7 +19,8 @@ import {
   FileText,
   Workflow,
   Sparkles,
-  Sliders
+  Sliders,
+  Target
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -249,6 +250,54 @@ export default function ProjectDetail() {
           </p>
         </div>
       </div>
+
+      {/* Project Objectives */}
+      {project.objectives && project.objectives.length > 0 && (
+        <div className="p-6 sm:p-8 rounded-2xl bg-obsidian-850/80 border border-editorial-line space-y-4">
+          <div className="flex items-center gap-2 text-xs font-mono font-bold text-accent-sky uppercase tracking-wider">
+            <Target className="w-4 h-4" />
+            <span>Project Objectives &amp; Scope</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {project.objectives.map((obj, idx) => (
+              <div
+                key={idx}
+                className="p-3.5 rounded-xl bg-obsidian-900/90 border border-editorial-line flex items-start gap-3"
+              >
+                <span className="text-xs font-mono font-bold text-accent-sky mt-0.5 shrink-0">
+                  {String(idx + 1).padStart(2, '0')}.
+                </span>
+                <span className="text-xs sm:text-sm text-ink-300 leading-relaxed font-sans">
+                  {obj}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Key Features & System Capabilities */}
+      {project.keyFeatures && project.keyFeatures.length > 0 && (
+        <div className="p-6 sm:p-8 rounded-2xl bg-obsidian-850/80 border border-editorial-line space-y-4">
+          <div className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
+            <Sparkles className="w-4 h-4" />
+            <span>Key Features &amp; Technical Capabilities</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {project.keyFeatures.map((feat, idx) => (
+              <div
+                key={idx}
+                className="p-3.5 rounded-xl bg-obsidian-900/90 border border-editorial-line flex items-start gap-3"
+              >
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span className="text-xs sm:text-sm text-ink-300 leading-relaxed font-sans">
+                  {feat}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Individual Contribution */}
       <div className="p-6 sm:p-8 rounded-2xl bg-obsidian-900 border border-editorial-lineLight space-y-3 shadow-subtle">

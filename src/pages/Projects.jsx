@@ -10,6 +10,8 @@ export default function Projects() {
 
   const categories = [
     'All',
+    'Healthcare Analytics & Process Mining',
+    'AI Healthcare & NLP Systems',
     'AI & Predictive Analytics',
     'Deep Learning & AgriTech',
     'Full Stack & Web Systems',
