@@ -17,8 +17,28 @@ import {
 import BlurFade from '../components/BlurFade';
 import { portfolioData } from '../data/portfolioData';
 
+function WhatsAppIcon({ className = 'w-4 h-4' }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+      <path d="M9.5 9a1 1 0 0 0-1 1c0 2.5 2 4.5 4.5 4.5a1 1 0 0 0 1-1v-.5a.5.5 0 0 0-.5-.5l-1-.2a.5.5 0 0 0-.5.2l-.3.3c-.5-.3-1.1-.9-1.4-1.4l.3-.3a.5.5 0 0 0 .2-.5l-.2-1a.5.5 0 0 0-.5-.5h-.6z" />
+    </svg>
+  );
+}
+
 export default function Contact({ onShowToast }) {
   const { personal } = portfolioData;
+  const cleanPhone = personal.phone.replace(/[^0-9]/g, '');
+  const whatsappUrl = `https://wa.me/${cleanPhone}?text=Hi%20Balaji,%20I%20viewed%20your%20portfolio%20and%20would%20like%20to%20connect!`;
 
   const [formState, setFormState] = useState({
     name: '',
@@ -104,7 +124,7 @@ export default function Contact({ onShowToast }) {
 
               <div className="space-y-3.5 text-xs font-mono">
                 {/* Email */}
-                <div className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1.5 hover:border-blue-400/30 transition-colors">
+                <div className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1.5 hover:border-sky-400/40 hover:shadow-[0_0_15px_rgba(14,165,233,0.15)] transition-all">
                   <span className="text-ink-500 uppercase tracking-wider text-[10px]">Email Address</span>
                   <div className="flex items-center justify-between gap-2">
                     <a
@@ -128,7 +148,7 @@ export default function Contact({ onShowToast }) {
                 </div>
 
                 {/* Phone */}
-                <div className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1.5 hover:border-blue-400/30 transition-colors">
+                <div className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1.5 hover:border-blue-400/40 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] transition-all">
                   <span className="text-ink-500 uppercase tracking-wider text-[10px]">Direct Phone</span>
                   <div className="flex items-center justify-between gap-2">
                     <a
@@ -150,6 +170,17 @@ export default function Contact({ onShowToast }) {
                     </button>
                   </div>
                 </div>
+
+                {/* Instant WhatsApp Action Button */}
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-glow-emerald light-sweep w-full py-3 flex items-center justify-center gap-2 rounded-2xl text-xs font-mono font-semibold"
+                >
+                  <WhatsAppIcon className="w-4 h-4 text-emerald-400" />
+                  <span>Chat on WhatsApp ({personal.phone})</span>
+                </a>
 
                 {/* Location */}
                 <div className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] space-y-1">
@@ -177,7 +208,7 @@ export default function Contact({ onShowToast }) {
                     href={personal.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-secondary text-xs py-2.5 px-4 flex-1 rounded-xl"
+                    className="btn-secondary light-sweep text-xs py-2.5 px-4 flex-1 rounded-xl"
                   >
                     <Linkedin className="w-4 h-4 text-accent-sky" />
                     <span>LinkedIn</span>
@@ -186,7 +217,7 @@ export default function Contact({ onShowToast }) {
                     href={personal.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-secondary text-xs py-2.5 px-4 flex-1 rounded-xl"
+                    className="btn-secondary light-sweep text-xs py-2.5 px-4 flex-1 rounded-xl"
                   >
                     <Github className="w-4 h-4 text-white" />
                     <span>GitHub</span>
@@ -295,7 +326,7 @@ export default function Contact({ onShowToast }) {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="btn-primary w-full text-xs py-3.5 justify-center rounded-xl shadow-md"
+                      className="btn-glow-sky light-sweep w-full text-xs py-3.5 justify-center rounded-xl shadow-md"
                     >
                       {submitting ? (
                         <span>Sending inquiry...</span>

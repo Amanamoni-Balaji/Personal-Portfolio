@@ -13,10 +13,10 @@ export default function ProjectCard({ project, index }) {
   const isHealthcareNLP = project.category?.includes('NLP') || project.id === 'mediassist-ai';
 
   const cardBorderClass = isProcessMining
-    ? 'border-emerald-500/30 hover:border-emerald-400/80 shadow-[0_0_20px_rgba(16,185,129,0.06)] hover:shadow-[0_0_35px_rgba(16,185,129,0.2)]'
+    ? 'border-emerald-500/30 hover:border-emerald-400/80 shadow-[0_0_20px_rgba(16,185,129,0.06)] hover:shadow-[0_0_35px_rgba(16,185,129,0.22)]'
     : isHealthcareNLP
-    ? 'border-sky-500/30 hover:border-sky-400/80 shadow-[0_0_20px_rgba(14,165,233,0.06)] hover:shadow-[0_0_35px_rgba(14,165,233,0.2)]'
-    : 'border-white/[0.08] hover:border-white/25 shadow-subtle hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]';
+    ? 'border-sky-500/30 hover:border-sky-400/80 shadow-[0_0_20px_rgba(14,165,233,0.06)] hover:shadow-[0_0_35px_rgba(14,165,233,0.22)]'
+    : 'border-white/[0.08] hover:border-white/25 shadow-subtle hover:shadow-[0_10px_35px_rgba(0,0,0,0.6)]';
 
   const categoryBadgeClass = isProcessMining
     ? 'bg-emerald-950/90 text-emerald-300 border-emerald-500/40'
@@ -36,31 +36,29 @@ export default function ProjectCard({ project, index }) {
     ? 'group-hover:text-sky-400'
     : 'group-hover:text-accent-sky';
 
-  const actionTextClass = isProcessMining
-    ? 'text-emerald-400 hover:text-emerald-300'
+  const actionButtonClass = isProcessMining
+    ? 'text-emerald-300 bg-emerald-500/10 border-emerald-500/30 hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(16,185,129,0.35)]'
     : isHealthcareNLP
-    ? 'text-sky-400 hover:text-sky-300'
-    : 'text-accent-sky hover:text-white';
+    ? 'text-sky-300 bg-sky-500/10 border-sky-500/30 hover:border-sky-400 hover:shadow-[0_0_15px_rgba(14,165,233,0.35)]'
+    : 'text-ink-100 bg-white/5 border-white/10 hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)]';
 
-  // Subtle 3D tilt effect on hover
+  // 3D tilt effect on hover
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
+  const mouseXSpring = useSpring(x, { stiffness: 160, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 160, damping: 20 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['5deg', '-5deg']);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-5deg', '5deg']);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['6deg', '-6deg']);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-6deg', '6deg']);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
+    const xPct = mouseX / rect.width - 0.5;
+    const yPct = mouseY / rect.height - 0.5;
     x.set(xPct);
     y.set(yPct);
   };
@@ -137,7 +135,7 @@ export default function ProjectCard({ project, index }) {
             </p>
           </div>
 
-          {/* Tech Stack Tags & Actions */}
+          {/* Tech Stack Tags & Actions with Glowing Feedback */}
           <div className="pt-3 border-t border-white/[0.06] space-y-3">
             <div className="flex flex-wrap gap-1.5">
               {project.technologies.slice(0, 4).map((tech, idx) => (
@@ -158,7 +156,7 @@ export default function ProjectCard({ project, index }) {
             <div className="flex items-center justify-between pt-1">
               <Link
                 to={`/projects/${project.id}`}
-                className={`text-xs font-semibold inline-flex items-center gap-1 transition-colors ${actionTextClass}`}
+                className={`light-sweep text-xs font-semibold px-3 py-1.5 rounded-lg border inline-flex items-center gap-1.5 transition-all ${actionButtonClass}`}
               >
                 <span>Read Case Study</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -169,7 +167,7 @@ export default function ProjectCard({ project, index }) {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-ink-400 hover:text-white inline-flex items-center gap-1.5 transition-colors font-mono"
+                  className="light-sweep text-xs text-ink-400 hover:text-white px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-white/30 inline-flex items-center gap-1.5 transition-all font-mono"
                   aria-label={`${project.shortTitle} repository`}
                 >
                   <Github className="w-3.5 h-3.5" />

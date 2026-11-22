@@ -7,6 +7,7 @@ import FloatingDock from './components/FloatingDock';
 import Footer from './components/Footer';
 import ResumeModal from './components/ResumeModal';
 import Toast from './components/Toast';
+import CinematicBackground from './components/CinematicBackground';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -36,11 +37,11 @@ function AnimatedRoutes({ onOpenResume, onShowToast }) {
     <AnimatePresence mode="wait">
       <motion.div
         key={location.pathname}
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.22, ease: 'easeOut' }}
-        className="min-h-[85vh]"
+        initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
+        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+        className="min-h-[85vh] relative z-10"
       >
         <Routes location={location}>
           <Route path="/" element={<Home onOpenResume={onOpenResume} onShowToast={onShowToast} />} />
@@ -74,11 +75,14 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="relative min-h-screen bg-obsidian-950 text-ink-100 antialiased selection:bg-accent-blue/20 selection:text-ink-50">
+      <div className="relative min-h-screen bg-[#050507] text-ink-100 antialiased selection:bg-blue-500/25 selection:text-white">
+        {/* Interactive 3D Cinematic Particle Canvas & Spotlight */}
+        <CinematicBackground />
+
         {/* Global Navigation Bar */}
         <Navbar onOpenResume={() => setResumeModalOpen(true)} />
 
-        {/* Dynamic Route Pages */}
+        {/* Dynamic Route Pages with Cinematic Page Transitions */}
         <main className="relative z-10">
           <AnimatedRoutes
             onOpenResume={() => setResumeModalOpen(true)}

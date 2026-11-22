@@ -295,7 +295,7 @@ export default function Certifications() {
                     <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between gap-2">
                       <button
                         onClick={() => setSelectedCert(cert)}
-                        className="btn-primary text-xs py-2 px-3.5 flex-1 inline-flex items-center justify-center gap-1.5 shadow-sm rounded-xl"
+                        className="btn-glow-sky light-sweep text-xs py-2 px-3.5 flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl font-semibold shadow-sm"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         <span>View Certificate</span>
@@ -307,7 +307,7 @@ export default function Certifications() {
                             href={cert.pdfUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2 text-ink-400 hover:text-white rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors"
+                            className="p-2 text-ink-300 hover:text-white rounded-xl bg-white/5 border border-white/10 hover:border-sky-400/50 hover:shadow-[0_0_15px_rgba(14,165,233,0.25)] transition-all"
                             title="Open PDF in new browser tab"
                             aria-label="Open in new tab"
                           >
@@ -317,7 +317,7 @@ export default function Certifications() {
                           <a
                             href={cert.pdfUrl}
                             download
-                            className="p-2 text-ink-400 hover:text-white rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors"
+                            className="p-2 text-ink-300 hover:text-white rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.25)] transition-all"
                             title="Download certificate PDF"
                             aria-label="Download PDF"
                           >
@@ -475,7 +475,7 @@ export default function Certifications() {
                     <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between gap-2">
                       <button
                         onClick={() => setSelectedCert(cert)}
-                        className="btn-primary text-xs py-2 px-3.5 flex-1 inline-flex items-center justify-center gap-1.5 shadow-sm rounded-xl"
+                        className="btn-glow-sky light-sweep text-xs py-2 px-3.5 flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl font-semibold shadow-sm"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         <span>View Certificate</span>
@@ -485,7 +485,7 @@ export default function Certifications() {
                         href={cert.pdfUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 text-ink-400 hover:text-white rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors"
+                        className="p-2 text-ink-300 hover:text-white rounded-xl bg-white/5 border border-white/10 hover:border-sky-400/50 hover:shadow-[0_0_15px_rgba(14,165,233,0.25)] transition-all"
                         title="Open PDF in new browser tab"
                         aria-label="Open in new tab"
                       >
@@ -495,7 +495,7 @@ export default function Certifications() {
                       <a
                         href={cert.pdfUrl}
                         download
-                        className="p-2 text-ink-400 hover:text-white rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors"
+                        className="p-2 text-ink-300 hover:text-white rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.25)] transition-all"
                         title="Download certificate PDF"
                         aria-label="Download PDF"
                       >

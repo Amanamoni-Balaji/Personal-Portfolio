@@ -207,7 +207,7 @@ export default function Experience() {
                       <div className="flex items-center gap-2 shrink-0">
                         <button
                           onClick={() => handleOpenCertificate(exp)}
-                          className="btn-primary text-xs py-1.5 px-3.5 inline-flex items-center gap-1.5 shadow-sm rounded-lg"
+                          className="btn-glow-sky light-sweep text-xs py-1.5 px-3.5 inline-flex items-center gap-1.5 shadow-sm rounded-xl font-semibold"
                         >
                           <Eye className="w-3.5 h-3.5" />
                           <span>View Certificate</span>
@@ -217,7 +217,7 @@ export default function Experience() {
                           href={exp.certificatePdf}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 text-ink-400 hover:text-white rounded-lg bg-white/5 border border-white/10 transition-colors"
+                          className="p-2 text-ink-300 hover:text-white rounded-xl bg-white/5 border border-white/10 hover:border-sky-400/50 hover:shadow-[0_0_15px_rgba(14,165,233,0.25)] transition-all"
                           title="Open PDF in new tab"
                           aria-label="Open PDF in new tab"
                         >
@@ -227,7 +227,7 @@ export default function Experience() {
                         <a
                           href={exp.certificatePdf}
                           download
-                          className="p-2 text-ink-400 hover:text-white rounded-lg bg-white/5 border border-white/10 transition-colors"
+                          className="p-2 text-ink-300 hover:text-white rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.25)] transition-all"
                           title="Download certificate PDF"
                           aria-label="Download PDF"
                         >
