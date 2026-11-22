@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-route
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Navbar from './components/Navbar';
+import FloatingDock from './components/FloatingDock';
 import Footer from './components/Footer';
 import ResumeModal from './components/ResumeModal';
 import Toast from './components/Toast';
@@ -87,6 +88,9 @@ export default function App() {
 
         {/* Global Footer */}
         <Footer />
+
+        {/* Modern macOS Floating Dock */}
+        <FloatingDock onOpenResume={() => setResumeModalOpen(true)} />
 
         {/* Interactive Resume Modal Dialog */}
         <ResumeModal

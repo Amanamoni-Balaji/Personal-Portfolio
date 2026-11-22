@@ -11,185 +11,280 @@ import {
   FileCheck,
   CheckCircle2,
   ExternalLink,
-  ArrowRight
+  ArrowRight,
+  Sparkles,
+  Activity,
+  Cpu,
+  Layers,
+  FileText,
+  Calendar,
+  MapPin,
+  ShieldCheck
 } from 'lucide-react';
+import BlurFade from '../components/BlurFade';
 import { portfolioData } from '../data/portfolioData';
 
 export default function About() {
   const { personal } = portfolioData;
 
-  const interests = [
-    {
-      title: "Predictive AI & Deep Learning",
-      description: "Developing robust convolutional models and predictive pipelines for high-stakes domains such as agronomic health and diagnostic classification."
-    },
+  const corePillars = [
     {
       title: "Clinical Process Mining & Analytics",
-      description: "Analyzing event logs to reconstruct organizational workflows, quantify operational bottlenecks, and derive data-driven clinical process intelligence."
+      tag: "Process Discovery",
+      icon: Activity,
+      color: "emerald",
+      borderClass: "hover:border-emerald-500/40 hover:shadow-[0_0_25px_rgba(16,185,129,0.15)]",
+      badgeClass: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
+      description: "Analyzing clinical event logs with PM4Py to reconstruct operational patient pathways, identify procedural bottlenecks, and compute stage-by-stage wait times."
+    },
+    {
+      title: "Healthcare AI & Natural Language Processing",
+      tag: "NLP & Intent Engines",
+      icon: Cpu,
+      color: "sky",
+      borderClass: "hover:border-sky-500/40 hover:shadow-[0_0_25px_rgba(14,165,233,0.15)]",
+      badgeClass: "bg-sky-500/10 text-sky-400 border-sky-500/30",
+      description: "Developing conversational medical assistants using NLTK and TF-IDF intent classification to provide reliable symptom triage, emergency disclaimers, and medication lookups."
     },
     {
       title: "Full-Stack Web Architectures",
-      description: "Engineering responsive React interfaces backed by modular Django REST APIs, structured SQL databases, and performant state pipelines."
+      tag: "Distributed Systems",
+      icon: Layers,
+      color: "indigo",
+      borderClass: "hover:border-indigo-500/40 hover:shadow-[0_0_25px_rgba(99,102,241,0.15)]",
+      badgeClass: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30",
+      description: "Engineering performant React and TypeScript interfaces backed by modular Django REST Framework APIs, JWT authentication, and structured relational databases."
     },
     {
       title: "Algorithmic Resource Optimization",
-      description: "Formulating constraint satisfaction algorithms to solve complex academic, timetable, and multi-department scheduling challenges."
+      tag: "Constraint Solvers",
+      icon: Terminal,
+      color: "violet",
+      borderClass: "hover:border-purple-500/40 hover:shadow-[0_0_25px_rgba(168,85,247,0.15)]",
+      badgeClass: "bg-purple-500/10 text-purple-400 border-purple-500/30",
+      description: "Formulating multi-variable constraint satisfaction algorithms to solve complex academic, timetable, and department scheduling challenges without room or teacher collisions."
     }
   ];
 
+  const quickStats = [
+    { label: "Academic CGPA", value: "9.6 / 10", note: "Matrusri Eng College" },
+    { label: "Engineering Systems", value: "8 Shipped", note: "ML, Full-Stack & Mining" },
+    { label: "Practical Internships", value: "4 Engagements", note: "AI, Full-Stack & Analytics" },
+    { label: "Official Credentials", value: "23 Verified", note: "Original PDFs in Vault" }
+  ];
+
   return (
-    <div className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-16">
-      {/* Editorial Header */}
-      <div className="border-b border-editorial-line pb-8 space-y-3">
-        <span className="text-xs font-mono font-semibold text-accent-sky uppercase tracking-wider">
-          Editorial Profile &amp; Background
-        </span>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink-50 font-sans tracking-tight">
+    <div className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-16">
+      {/* Editorial Header with BlurFade */}
+      <BlurFade delay={0.05} className="border-b border-editorial-line pb-8 space-y-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-accent-sky text-xs font-mono">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>Biographical Profile &amp; Technical Foundation</span>
+        </div>
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-ink-50 font-sans tracking-tight">
           About Amanamoni Balaji
         </h1>
-        <p className="text-sm sm:text-base text-ink-400 max-w-3xl leading-relaxed">
+        <p className="text-sm sm:text-base text-ink-300 max-w-3xl leading-relaxed">
           {personal.positioning}
         </p>
-      </div>
+      </BlurFade>
 
-      {/* Main Narrative & Education Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-        {/* Left Column: Biographical Narrative */}
-        <div className="lg:col-span-7 space-y-6 text-sm text-ink-300 leading-relaxed font-normal">
-          <div className="p-6 rounded-2xl bg-obsidian-850 border border-editorial-line space-y-4">
-            <h2 className="text-lg font-bold text-ink-50">Professional Positioning</h2>
-            <p className="leading-relaxed">
-              I am an undergraduate in Information Technology at <strong>Matrusri Engineering College, Hyderabad</strong>, currently maintaining a <strong>9.6/10 CGPA</strong>. My technical journey is anchored in the belief that software should be both mathematically grounded and practically impactful.
-            </p>
-            <p className="leading-relaxed">
-              Throughout my academic and internship engagements, I have focused on translating complex requirements into reliable data-driven solutions and intelligent software systems. From analyzing clinical event logs in <strong>CareFlow</strong> and developing NLP healthcare assistants in <strong>MediAssist AI</strong>, to predicting rainfall patterns in <strong>KrishiAI</strong>, diagnosing crop leaf pathologies in <strong>Agro_Guardian</strong>, and developing automated timetable scheduling engines in <strong>TimeTrackers</strong> (SIH), I build systems that solve real-world problems.
-            </p>
-            <p className="leading-relaxed">
-              I avoid surface-level hype or exaggerated claims. Instead, I prioritize clean architectural foundations, systematic testing, verifiable metrics, and readable codebases.
-            </p>
-          </div>
-
-          {/* Core Interests Grid */}
-          <div className="space-y-4 pt-2">
-            <h3 className="text-base font-bold text-ink-50 font-sans">
-              Areas of Technical Interest
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {interests.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="p-4 rounded-xl bg-obsidian-850/60 border border-editorial-line space-y-2 hover:border-editorial-lineFocus transition-colors"
-                >
-                  <p className="text-xs font-bold text-accent-sky font-mono">
-                    {item.title}
-                  </p>
-                  <p className="text-xs text-ink-400 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
+      {/* Quick Stats Grid */}
+      <BlurFade delay={0.1}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {quickStats.map((stat, idx) => (
+            <div
+              key={idx}
+              className="p-5 rounded-2xl bg-[#0b0e17]/80 border border-white/[0.08] hover:border-white/20 transition-all space-y-1 group"
+            >
+              <span className="text-[11px] font-mono text-ink-400 block uppercase tracking-wider">{stat.label}</span>
+              <p className="text-xl sm:text-2xl font-bold text-white font-sans tracking-tight group-hover:text-accent-sky transition-colors">
+                {stat.value}
+              </p>
+              <p className="text-[11px] text-ink-500 font-mono">{stat.note}</p>
             </div>
-          </div>
-
-          {/* Career Objectives */}
-          <div className="p-5 rounded-xl bg-obsidian-900 border border-editorial-line space-y-2">
-            <h3 className="text-xs font-mono font-bold text-ink-200 uppercase tracking-wider">
-              Career Objectives
-            </h3>
-            <p className="text-xs text-ink-400 leading-relaxed">
-              Aspiring to contribute to engineering teams building scalable machine learning services, data intelligence pipelines, or high-performance web products. Looking forward to challenging internship and software engineering roles where rigorous problem solving, clean code, and continuous learning are valued.
-            </p>
-          </div>
+          ))}
         </div>
+      </BlurFade>
 
-        {/* Right Column: Portrait & Academic Record */}
-        <div className="lg:col-span-5 space-y-6">
-          {/* Executive Portrait Card in About */}
-          <div className="rounded-2xl bg-obsidian-900 border border-editorial-lineLight overflow-hidden shadow-elevated group/portrait">
-            <div className="relative aspect-[4/3.4] overflow-hidden bg-obsidian-950">
-              <picture>
-                <source srcSet={personal.avatarWebp} type="image/webp" />
-                <img
-                  src={personal.avatar}
-                  alt="Amanamoni Balaji - Professional Portrait"
-                  className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover/portrait:scale-105"
-                />
-              </picture>
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent opacity-80" />
-              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-                <div>
-                  <h3 className="text-sm font-bold text-ink-50 font-sans">{personal.name}</h3>
-                  <p className="text-[11px] text-accent-sky font-mono">B.E. Information Technology</p>
-                </div>
-                <span className="badge-editorial text-xs border-accent-blue/40 text-accent-sky">
-                  CGPA: 9.6
+      {/* Main Narrative & Portrait Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        {/* Left Column: Narrative & Technical Focus */}
+        <div className="lg:col-span-7 space-y-8 text-sm text-ink-300 leading-relaxed font-normal">
+          <BlurFade delay={0.15}>
+            <div className="p-7 rounded-3xl bg-[#0b0e17]/90 border border-white/[0.08] space-y-4 shadow-elevated">
+              <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+                <h2 className="text-base sm:text-lg font-bold text-white font-sans">
+                  Engineering Philosophy &amp; Approach
+                </h2>
+                <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                  Verified 9.6 CGPA
                 </span>
               </div>
-            </div>
-            <div className="p-4 border-t border-editorial-line bg-obsidian-850/60">
-              <p className="text-xs text-ink-300 italic leading-relaxed">
-                "{personal.heroIntro}"
+              <p className="leading-relaxed text-ink-300">
+                I am an Information Technology undergraduate at <strong>Matrusri Engineering College, Hyderabad</strong>, maintaining a cumulative <strong>9.6 / 10 CGPA</strong>. My technical journey is anchored in the conviction that software should be mathematically rigorous, operationally transparent, and demonstrably beneficial to end users.
+              </p>
+              <p className="leading-relaxed text-ink-300">
+                Throughout my academic tenure and four industry internships, I have focused on translating ambiguous problem statements into deployable architectures. From clinical event-log analysis in <strong>CareFlow</strong> and conversational healthcare triage in <strong>MediAssist AI</strong>, to automated timetable scheduling engines in <strong>TimeTrackers (SIH)</strong> and deep learning plant pathology in <strong>Agro_Guardian</strong>, I emphasize modularity, explainability, and measurable outcomes.
+              </p>
+              <p className="leading-relaxed text-ink-300">
+                I deliberately avoid superficial claims or inflated percentage bars. Every capability documented in this portfolio is backed by reproducible code, verified datasets, and original institutional certificates.
               </p>
             </div>
-          </div>
+          </BlurFade>
 
-          <div className="rounded-2xl bg-obsidian-900 border border-editorial-lineLight p-6 space-y-6 shadow-elevated">
-            <div className="flex items-center gap-2.5 pb-4 border-b border-editorial-line">
-              <GraduationCap className="w-5 h-5 text-accent-sky" />
-              <div>
-                <h3 className="text-base font-bold text-ink-50">Educational History</h3>
-                <p className="text-xs text-ink-400 font-mono">Academic Track Record</p>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {personal.academicHistory.map((edu, idx) => (
-                <div
-                  key={idx}
-                  className="p-4 rounded-xl bg-obsidian-850/80 border border-editorial-line space-y-2"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <p className="text-xs font-mono text-ink-500">{edu.period}</p>
-                      <h4 className="text-sm font-bold text-ink-100">{edu.institution}</h4>
-                      <p className="text-xs text-accent-sky font-mono mt-0.5">{edu.degree}</p>
+          {/* Core Technical Pillars (Bento Style) */}
+          <BlurFade delay={0.2} className="space-y-4">
+            <h3 className="text-base font-bold text-white font-sans flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-accent-sky" />
+              <span>Core Areas of Specialization</span>
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {corePillars.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className={`p-5 rounded-2xl bg-[#0a0d16]/80 border border-white/[0.07] transition-all space-y-3 ${item.borderClass}`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white">
+                        <Icon className="w-4 h-4 text-accent-sky" />
+                      </div>
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${item.badgeClass}`}>
+                        {item.tag}
+                      </span>
                     </div>
-                    <span className="badge-editorial text-xs font-bold text-accent-sky shrink-0">
-                      {edu.score}
-                    </span>
+                    <h4 className="text-sm font-bold text-white font-sans leading-snug">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-ink-400 leading-relaxed font-sans">
+                      {item.description}
+                    </p>
                   </div>
-                  <p className="text-xs text-ink-400 leading-relaxed">
-                    {edu.details}
-                  </p>
+                );
+              })}
+            </div>
+          </BlurFade>
+
+          {/* Career Target & Collaboration Callout */}
+          <BlurFade delay={0.25}>
+            <div className="p-6 rounded-2xl bg-[#0d111d] border border-blue-500/20 space-y-3">
+              <div className="flex items-center gap-2 text-accent-sky text-xs font-mono font-bold">
+                <Compass className="w-4 h-4" />
+                <span>Career Focus &amp; Collaboration</span>
+              </div>
+              <p className="text-xs text-ink-300 leading-relaxed">
+                Currently exploring software engineering, artificial intelligence, and data analytics opportunities where clean architecture, empirical verification, and algorithmic problem-solving drive product excellence.
+              </p>
+            </div>
+          </BlurFade>
+        </div>
+
+        {/* Right Column: Portrait Card & Academic Track Record */}
+        <div className="lg:col-span-5 space-y-8">
+          {/* Executive Portrait Card */}
+          <BlurFade delay={0.2}>
+            <div className="rounded-3xl bg-[#0b0e17] border border-white/15 overflow-hidden shadow-2xl group/portrait relative">
+              {/* Subtle top glow bar */}
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-sky-400 z-10" />
+
+              <div className="relative aspect-[4/3.8] overflow-hidden bg-black">
+                <picture>
+                  <source srcSet={personal.avatarWebp} type="image/webp" />
+                  <img
+                    src={personal.avatar}
+                    alt="Amanamoni Balaji - Official Portrait"
+                    className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover/portrait:scale-105"
+                  />
+                </picture>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e17] via-transparent to-transparent opacity-85" />
+
+                {/* Floating pill tags on portrait */}
+                <div className="absolute top-4 left-4">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-mono bg-black/60 backdrop-blur-md text-emerald-400 border border-emerald-500/40 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Active Student</span>
+                  </span>
                 </div>
-              ))}
-            </div>
 
-            <div className="p-4 rounded-xl bg-obsidian-850 border border-editorial-line text-xs font-mono text-ink-300 space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-ink-500">Degree Status</span>
-                <span className="text-emerald-400 font-semibold">Active (Expected 2027)</span>
+                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                  <div>
+                    <h3 className="text-base font-bold text-white font-sans">{personal.name}</h3>
+                    <p className="text-xs text-accent-sky font-mono">B.E. Information Technology</p>
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-500/20 text-accent-sky border border-blue-400/40 backdrop-blur-md">
+                    CGPA: 9.6
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-ink-500">Cumulative GPA</span>
-                <span className="text-accent-sky font-bold">9.6 / 10.0</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-ink-500">Department</span>
-                <span>Information Technology</span>
-              </div>
-            </div>
 
-            <div className="pt-2">
-              <Link
-                to="/contact"
-                className="btn-primary w-full text-xs py-2.5"
-              >
-                <span>Initiate Professional Discussion</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <div className="p-5 border-t border-white/[0.08] bg-[#07090e]/80 space-y-3">
+                <p className="text-xs text-ink-300 italic leading-relaxed">
+                  "{personal.heroIntro}"
+                </p>
+                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-ink-400 border-t border-white/[0.06]">
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-accent-sky" />
+                    <span>{personal.location}</span>
+                  </span>
+                  <span className="text-emerald-400 font-medium">Available for Internships</span>
+                </div>
+              </div>
             </div>
-          </div>
+          </BlurFade>
+
+          {/* Academic History Timeline */}
+          <BlurFade delay={0.25}>
+            <div className="rounded-3xl bg-[#0b0e17]/90 border border-white/[0.08] p-6 sm:p-7 space-y-6 shadow-elevated">
+              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+                <div className="flex items-center gap-2.5">
+                  <GraduationCap className="w-5 h-5 text-accent-sky" />
+                  <div>
+                    <h3 className="text-base font-bold text-white font-sans">Educational History</h3>
+                    <p className="text-xs text-ink-400 font-mono">Academic Track Record</p>
+                  </div>
+                </div>
+                <span className="badge-editorial text-xs">
+                  All Verifiable
+                </span>
+              </div>
+
+              <div className="space-y-4">
+                {personal.academicHistory.map((edu, idx) => (
+                  <div
+                    key={idx}
+                    className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] hover:border-white/20 transition-all space-y-2"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <span className="text-[11px] font-mono text-ink-500 block">{edu.period}</span>
+                        <h4 className="text-sm font-bold text-white font-sans">{edu.institution}</h4>
+                        <p className="text-xs text-accent-sky font-mono mt-0.5">{edu.degree}</p>
+                      </div>
+                      <span className="px-2 py-0.5 rounded text-xs font-bold font-mono text-accent-sky bg-blue-500/10 border border-blue-500/30 shrink-0">
+                        {edu.score}
+                      </span>
+                    </div>
+                    <p className="text-xs text-ink-400 leading-relaxed font-sans">
+                      {edu.details}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Status Summary & CTA */}
+              <div className="pt-2">
+                <Link
+                  to="/contact"
+                  className="btn-primary w-full text-xs py-3 rounded-xl shadow-md"
+                >
+                  <span>Initiate Discussion</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          </BlurFade>
         </div>
       </div>
     </div>

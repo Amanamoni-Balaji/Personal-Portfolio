@@ -22,6 +22,7 @@ import {
   Sliders,
   Target
 } from 'lucide-react';
+import BlurFade from '../components/BlurFade';
 import { portfolioData } from '../data/portfolioData';
 
 export default function ProjectDetail() {
@@ -47,11 +48,11 @@ export default function ProjectDetail() {
   if (!project) {
     return (
       <div className="pt-36 pb-20 px-4 text-center max-w-lg mx-auto space-y-4">
-        <h2 className="text-2xl font-bold text-ink-50 font-sans">Project Not Found</h2>
+        <h2 className="text-2xl font-bold text-white font-sans">Project Not Found</h2>
         <p className="text-sm text-ink-400">
           The requested case study could not be located in the portfolio archive.
         </p>
-        <Link to="/projects" className="btn-primary text-xs py-2 px-4">
+        <Link to="/projects" className="btn-primary text-xs py-2 px-4 rounded-xl">
           &larr; Return to Projects
         </Link>
       </div>
@@ -75,9 +76,9 @@ export default function ProjectDetail() {
     projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null;
 
   return (
-    <div className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-12">
+    <div className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-12">
       {/* Back button & Breadcrumb */}
-      <div className="flex items-center justify-between text-xs font-mono text-ink-400 border-b border-editorial-line pb-4">
+      <BlurFade delay={0.03} className="flex items-center justify-between text-xs font-mono text-ink-400 border-b border-white/[0.08] pb-4">
         <Link
           to="/projects"
           className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
@@ -86,35 +87,35 @@ export default function ProjectDetail() {
           <span>Back to all projects</span>
         </Link>
         <span className="badge-editorial text-[11px]">{project.category}</span>
-      </div>
+      </BlurFade>
 
       {/* Project Title & Hero Header */}
-      <div className="space-y-4">
+      <BlurFade delay={0.06} className="space-y-4">
         <div className="flex flex-wrap items-center gap-2">
           {project.badge && (
             <span className="badge-accent text-xs">{project.badge}</span>
           )}
           <span className="badge-editorial text-xs">Technical Case Study</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink-50 font-sans tracking-tight leading-tight">
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-ink-50 font-sans tracking-tight leading-tight">
           {project.title}
         </h1>
         <p className="text-base sm:text-lg text-accent-sky font-mono">
           {project.subtitle}
         </p>
-        <p className="text-sm sm:text-base text-ink-300 max-w-3xl leading-relaxed">
+        <p className="text-sm sm:text-base text-ink-300 max-w-3xl leading-relaxed font-sans">
           {project.overview}
         </p>
-      </div>
+      </BlurFade>
 
       {/* Actions & Repository Links */}
-      <div className="flex flex-wrap items-center gap-3 pt-1">
+      <BlurFade delay={0.09} className="flex flex-wrap items-center gap-3 pt-1">
         {project.githubUrl && (
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary text-xs py-2 px-4 shadow-sm"
+            className="btn-primary text-xs py-2.5 px-5 shadow-sm rounded-xl"
           >
             <Github className="w-4 h-4" />
             <span>GitHub Repository</span>
@@ -125,16 +126,16 @@ export default function ProjectDetail() {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary text-xs py-2 px-4"
+            className="btn-secondary text-xs py-2.5 px-5 rounded-xl"
           >
             <span>Live Demonstration</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         )}
-      </div>
+      </BlurFade>
 
       {/* Interactive Screenshot Carousel / Slider */}
-      <div className="space-y-3">
+      <BlurFade delay={0.12} className="space-y-3">
         <div className="flex items-center justify-between text-xs font-mono text-ink-400">
           <span className="flex items-center gap-1.5 text-ink-300 font-semibold">
             <Sliders className="w-3.5 h-3.5 text-accent-sky" />
@@ -146,7 +147,7 @@ export default function ProjectDetail() {
         </div>
 
         {/* Main Display Screen */}
-        <div className="relative rounded-2xl overflow-hidden border border-editorial-line bg-obsidian-950 shadow-elevated group aspect-[16/10]">
+        <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-black shadow-2xl group aspect-[16/10]">
           <AnimatePresence mode="wait">
             <motion.img
               key={currentSlide}
@@ -161,8 +162,8 @@ export default function ProjectDetail() {
           </AnimatePresence>
 
           {/* Vignette Overlay for Captions */}
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/70 to-transparent p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pointer-events-none">
-            <p className="text-xs sm:text-sm text-ink-100 font-mono drop-shadow">
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/75 to-transparent p-5 sm:p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pointer-events-none">
+            <p className="text-xs sm:text-sm text-white font-mono drop-shadow">
               {slides[currentSlide].caption}
             </p>
             <span className="text-[11px] font-mono text-ink-400 hidden sm:inline-block">
@@ -174,7 +175,7 @@ export default function ProjectDetail() {
           {slides.length > 1 && (
             <button
               onClick={prevSlide}
-              className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-obsidian-950/80 hover:bg-obsidian-900 border border-editorial-line text-ink-200 hover:text-white backdrop-blur-md transition-all opacity-80 group-hover:opacity-100 shadow-elevated"
+              className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-black/80 hover:bg-neutral-900 border border-white/15 text-white backdrop-blur-md transition-all opacity-80 group-hover:opacity-100 shadow-xl"
               aria-label="Previous screenshot"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -185,7 +186,7 @@ export default function ProjectDetail() {
           {slides.length > 1 && (
             <button
               onClick={nextSlide}
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-obsidian-950/80 hover:bg-obsidian-900 border border-editorial-line text-ink-200 hover:text-white backdrop-blur-md transition-all opacity-80 group-hover:opacity-100 shadow-elevated"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-black/80 hover:bg-neutral-900 border border-white/15 text-white backdrop-blur-md transition-all opacity-80 group-hover:opacity-100 shadow-xl"
               aria-label="Next screenshot"
             >
               <ChevronRight className="w-5 h-5" />
@@ -195,7 +196,7 @@ export default function ProjectDetail() {
           {/* Enlarge / Lightbox Button */}
           <button
             onClick={() => setSelectedImage(slides[currentSlide].src)}
-            className="absolute top-4 right-4 p-2.5 rounded-xl bg-obsidian-950/80 hover:bg-obsidian-900 border border-editorial-line text-ink-200 hover:text-white backdrop-blur-md transition-colors shadow-subtle"
+            className="absolute top-4 right-4 p-2.5 rounded-xl bg-black/80 hover:bg-neutral-900 border border-white/15 text-white backdrop-blur-md transition-colors shadow-xl"
             aria-label="Enlarge image"
           >
             <Maximize2 className="w-4 h-4" />
@@ -209,10 +210,10 @@ export default function ProjectDetail() {
               <button
                 key={idx}
                 onClick={() => setCurrentSlide(idx)}
-                className={`relative flex-shrink-0 w-20 sm:w-24 aspect-[16/10] rounded-lg overflow-hidden border transition-all ${
+                className={`relative flex-shrink-0 w-20 sm:w-24 aspect-[16/10] rounded-xl overflow-hidden border transition-all ${
                   currentSlide === idx
-                    ? 'border-accent-blue ring-2 ring-accent-blue/30 scale-105'
-                    : 'border-editorial-line opacity-60 hover:opacity-100'
+                    ? 'border-blue-500 ring-2 ring-blue-500/40 scale-105'
+                    : 'border-white/10 opacity-60 hover:opacity-100'
                 }`}
               >
                 <img
@@ -224,146 +225,154 @@ export default function ProjectDetail() {
             ))}
           </div>
         )}
-      </div>
+      </BlurFade>
 
       {/* Structured Case Study Grid: Problem vs Solution */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <BlurFade delay={0.15} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Problem Statement */}
-        <div className="p-6 rounded-2xl bg-obsidian-850/80 border border-editorial-line space-y-3">
+        <div className="p-7 rounded-3xl bg-[#0a0d16]/90 border border-white/[0.08] space-y-3 shadow-elevated">
           <div className="flex items-center gap-2 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider">
             <AlertTriangle className="w-4 h-4" />
             <span>The Problem Statement</span>
           </div>
-          <p className="text-sm text-ink-300 leading-relaxed">
+          <p className="text-sm text-ink-300 leading-relaxed font-sans">
             {project.problem}
           </p>
         </div>
 
         {/* Proposed Solution */}
-        <div className="p-6 rounded-2xl bg-obsidian-850/80 border border-editorial-line space-y-3">
+        <div className="p-7 rounded-3xl bg-[#0a0d16]/90 border border-white/[0.08] space-y-3 shadow-elevated">
           <div className="flex items-center gap-2 text-accent-sky text-xs font-mono font-bold uppercase tracking-wider">
             <Lightbulb className="w-4 h-4" />
             <span>The Proposed Solution</span>
           </div>
-          <p className="text-sm text-ink-300 leading-relaxed">
+          <p className="text-sm text-ink-300 leading-relaxed font-sans">
             {project.solution}
           </p>
         </div>
-      </div>
+      </BlurFade>
 
       {/* Project Objectives */}
       {project.objectives && project.objectives.length > 0 && (
-        <div className="p-6 sm:p-8 rounded-2xl bg-obsidian-850/80 border border-editorial-line space-y-4">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-accent-sky uppercase tracking-wider">
-            <Target className="w-4 h-4" />
-            <span>Project Objectives &amp; Scope</span>
+        <BlurFade delay={0.18}>
+          <div className="p-7 sm:p-8 rounded-3xl bg-[#0a0d16]/90 border border-white/[0.08] space-y-4 shadow-elevated">
+            <div className="flex items-center gap-2 text-xs font-mono font-bold text-accent-sky uppercase tracking-wider">
+              <Target className="w-4 h-4" />
+              <span>Project Objectives &amp; Scope</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {project.objectives.map((obj, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] flex items-start gap-3"
+                >
+                  <span className="text-xs font-mono font-bold text-accent-sky mt-0.5 shrink-0">
+                    {String(idx + 1).padStart(2, '0')}.
+                  </span>
+                  <span className="text-xs sm:text-sm text-ink-300 leading-relaxed font-sans">
+                    {obj}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {project.objectives.map((obj, idx) => (
-              <div
-                key={idx}
-                className="p-3.5 rounded-xl bg-obsidian-900/90 border border-editorial-line flex items-start gap-3"
-              >
-                <span className="text-xs font-mono font-bold text-accent-sky mt-0.5 shrink-0">
-                  {String(idx + 1).padStart(2, '0')}.
-                </span>
-                <span className="text-xs sm:text-sm text-ink-300 leading-relaxed font-sans">
-                  {obj}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        </BlurFade>
       )}
 
       {/* Key Features & System Capabilities */}
       {project.keyFeatures && project.keyFeatures.length > 0 && (
-        <div className="p-6 sm:p-8 rounded-2xl bg-obsidian-850/80 border border-editorial-line space-y-4">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
-            <Sparkles className="w-4 h-4" />
-            <span>Key Features &amp; Technical Capabilities</span>
+        <BlurFade delay={0.2}>
+          <div className="p-7 sm:p-8 rounded-3xl bg-[#0a0d16]/90 border border-white/[0.08] space-y-4 shadow-elevated">
+            <div className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
+              <Sparkles className="w-4 h-4" />
+              <span>Key Features &amp; Technical Capabilities</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {project.keyFeatures.map((feat, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-2xl bg-[#07090e] border border-white/[0.06] flex items-start gap-3"
+                >
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm text-ink-300 leading-relaxed font-sans">
+                    {feat}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {project.keyFeatures.map((feat, idx) => (
-              <div
-                key={idx}
-                className="p-3.5 rounded-xl bg-obsidian-900/90 border border-editorial-line flex items-start gap-3"
-              >
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span className="text-xs sm:text-sm text-ink-300 leading-relaxed font-sans">
-                  {feat}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        </BlurFade>
       )}
 
       {/* Individual Contribution */}
-      <div className="p-6 sm:p-8 rounded-2xl bg-obsidian-900 border border-editorial-lineLight space-y-3 shadow-subtle">
-        <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
-          <UserCheck className="w-4 h-4" />
-          <span>My Individual Contribution &amp; Ownership</span>
+      <BlurFade delay={0.22}>
+        <div className="p-7 sm:p-8 rounded-3xl bg-[#0b0e17] border border-white/10 space-y-3 shadow-2xl">
+          <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
+            <UserCheck className="w-4 h-4" />
+            <span>My Individual Contribution &amp; Ownership</span>
+          </div>
+          <p className="text-sm sm:text-base text-ink-200 leading-relaxed font-sans">
+            {project.contribution}
+          </p>
         </div>
-        <p className="text-sm sm:text-base text-ink-200 leading-relaxed">
-          {project.contribution}
-        </p>
-      </div>
+      </BlurFade>
 
       {/* Interactive System Architecture & Pipeline Explorer */}
       {project.architectureSteps && (
-        <div className="p-6 sm:p-8 rounded-2xl bg-obsidian-850 border border-editorial-line space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-editorial-line pb-4">
-            <div className="flex items-center gap-2.5 text-xs font-mono font-bold text-ink-100 uppercase tracking-wider">
-              <Workflow className="w-4 h-4 text-accent-sky" />
-              <span>System Architecture &amp; Data Pipeline Flow</span>
+        <BlurFade delay={0.24}>
+          <div className="p-7 sm:p-8 rounded-3xl bg-[#0a0d16] border border-white/10 space-y-6 shadow-elevated">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-4">
+              <div className="flex items-center gap-2.5 text-xs font-mono font-bold text-white uppercase tracking-wider">
+                <Workflow className="w-4 h-4 text-accent-sky" />
+                <span>System Architecture &amp; Data Pipeline Flow</span>
+              </div>
+              <span className="text-[11px] font-mono text-ink-400">
+                Select stage to inspect engineering details
+              </span>
             </div>
-            <span className="text-[11px] font-mono text-ink-500">
-              Select stage to inspect engineering details
-            </span>
-          </div>
 
-          {/* Stepper Buttons */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
-            {project.architectureSteps.map((step, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveStep(idx)}
-                className={`p-3 rounded-xl border text-left transition-all ${
-                  activeStep === idx
-                    ? 'bg-accent-blue/15 border-accent-blue text-accent-sky shadow-subtle'
-                    : 'bg-obsidian-900 border-editorial-line text-ink-400 hover:text-ink-200 hover:border-editorial-lineFocus'
-                }`}
-              >
-                <span className="block text-[10px] font-mono text-ink-500 mb-1">
-                  Stage {step.step}
-                </span>
-                <span className="text-xs font-bold font-sans block truncate">
-                  {step.name}
-                </span>
-              </button>
-            ))}
-          </div>
+            {/* Stepper Buttons */}
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+              {project.architectureSteps.map((step, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveStep(idx)}
+                  className={`p-3.5 rounded-2xl border text-left transition-all ${
+                    activeStep === idx
+                      ? 'bg-blue-600/20 border-blue-500 text-accent-sky shadow-[0_0_15px_rgba(59,130,246,0.25)]'
+                      : 'bg-[#07090e] border-white/10 text-ink-400 hover:text-white hover:border-white/20'
+                  }`}
+                >
+                  <span className="block text-[10px] font-mono text-ink-500 mb-1">
+                    Stage {step.step}
+                  </span>
+                  <span className="text-xs font-bold font-sans block truncate">
+                    {step.name}
+                  </span>
+                </button>
+              ))}
+            </div>
 
-          {/* Active Step Detailed Callout */}
-          <div className="p-4 rounded-xl bg-obsidian-900/90 border border-editorial-line flex items-start gap-3">
-            <span className="px-2 py-0.5 rounded text-xs font-mono font-bold bg-accent-blue/20 text-accent-sky border border-accent-blue/30 shrink-0">
-              Stage {project.architectureSteps[activeStep].step}
-            </span>
-            <div className="space-y-1">
-              <p className="text-sm font-bold text-ink-50">
-                {project.architectureSteps[activeStep].name}
-              </p>
-              <p className="text-xs text-ink-300 leading-relaxed font-sans">
-                {project.architectureSteps[activeStep].detail}
-              </p>
+            {/* Active Step Detailed Callout */}
+            <div className="p-5 rounded-2xl bg-[#07090e] border border-white/[0.08] flex items-start gap-3">
+              <span className="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-blue-500/20 text-accent-sky border border-blue-500/30 shrink-0">
+                Stage {project.architectureSteps[activeStep].step}
+              </span>
+              <div className="space-y-1">
+                <p className="text-sm font-bold text-white font-sans">
+                  {project.architectureSteps[activeStep].name}
+                </p>
+                <p className="text-xs text-ink-300 leading-relaxed font-sans">
+                  {project.architectureSteps[activeStep].detail}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </BlurFade>
       )}
 
       {/* Technology Stack Badges */}
-      <div className="space-y-4">
+      <BlurFade delay={0.26} className="space-y-4">
         <div className="flex items-center gap-2 text-xs font-mono font-bold text-ink-400 uppercase tracking-wider">
           <Cpu className="w-4 h-4 text-accent-sky" />
           <span>Technologies &amp; Frameworks</span>
@@ -372,50 +381,54 @@ export default function ProjectDetail() {
           {project.technologies.map((tech, idx) => (
             <span
               key={idx}
-              className="badge-editorial text-xs py-1.5 px-3 bg-obsidian-850"
+              className="badge-editorial text-xs py-1.5 px-3 bg-[#0a0d16] border border-white/10 text-ink-200"
             >
               {tech}
             </span>
           ))}
         </div>
-      </div>
+      </BlurFade>
 
       {/* Implementation Details List */}
-      <div className="p-6 sm:p-8 rounded-2xl bg-obsidian-850 border border-editorial-line space-y-4">
-        <div className="flex items-center gap-2 text-xs font-mono font-bold text-ink-200 uppercase tracking-wider">
-          <Layers className="w-4 h-4 text-accent-sky" />
-          <span>Implementation Notes &amp; Engineering Specifications</span>
-        </div>
-        <ul className="space-y-3">
-          {project.implementationDetails.map((detail, idx) => (
-            <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ink-300 leading-relaxed">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-sky mt-2 shrink-0" />
-              <span>{detail}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Verified Results & Learnings */}
-      {project.results && project.results.length > 0 && (
-        <div className="p-6 rounded-2xl bg-obsidian-900 border border-editorial-line space-y-3">
-          <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
-            <CheckCircle2 className="w-4 h-4" />
-            <span>Verified Results &amp; Takeaways</span>
+      <BlurFade delay={0.28}>
+        <div className="p-7 sm:p-8 rounded-3xl bg-[#0a0d16]/90 border border-white/[0.08] space-y-4 shadow-elevated">
+          <div className="flex items-center gap-2 text-xs font-mono font-bold text-ink-200 uppercase tracking-wider">
+            <Layers className="w-4 h-4 text-accent-sky" />
+            <span>Implementation Notes &amp; Engineering Specifications</span>
           </div>
-          <ul className="space-y-2">
-            {project.results.map((res, idx) => (
-              <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink-300">
-                <span className="text-emerald-400 font-bold">&bull;</span>
-                <span>{res}</span>
+          <ul className="space-y-3">
+            {project.implementationDetails.map((detail, idx) => (
+              <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ink-300 leading-relaxed font-sans">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-sky mt-2 shrink-0" />
+                <span>{detail}</span>
               </li>
             ))}
           </ul>
         </div>
+      </BlurFade>
+
+      {/* Verified Results & Learnings */}
+      {project.results && project.results.length > 0 && (
+        <BlurFade delay={0.3}>
+          <div className="p-7 rounded-3xl bg-[#0b0e17] border border-white/10 space-y-3 shadow-elevated">
+            <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
+              <CheckCircle2 className="w-4 h-4" />
+              <span>Verified Results &amp; Takeaways</span>
+            </div>
+            <ul className="space-y-2">
+              {project.results.map((res, idx) => (
+                <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink-300 font-sans">
+                  <span className="text-emerald-400 font-bold">&bull;</span>
+                  <span>{res}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </BlurFade>
       )}
 
       {/* Prev / Next Navigation Footer */}
-      <div className="pt-8 border-t border-editorial-line flex items-center justify-between">
+      <BlurFade delay={0.32} className="pt-8 border-t border-white/[0.08] flex items-center justify-between">
         {prevProject ? (
           <Link
             to={`/projects/${prevProject.id}`}
@@ -439,25 +452,25 @@ export default function ProjectDetail() {
         ) : (
           <div />
         )}
-      </div>
+      </BlurFade>
 
       {/* Fullscreen Lightbox Modal */}
       <AnimatePresence>
         {selectedImage && (
           <div
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian-950/92 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-md"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-5xl w-full bg-obsidian-900 border border-editorial-lineLight rounded-2xl p-2 shadow-2xl overflow-hidden"
+              className="relative max-w-5xl w-full bg-[#0a0d16] border border-white/20 rounded-3xl p-2 shadow-2xl overflow-hidden"
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 z-10 p-2 rounded-lg bg-obsidian-950/80 text-white hover:bg-obsidian-800 border border-editorial-line transition-colors"
+                className="absolute top-4 right-4 z-10 p-2.5 rounded-xl bg-black/80 text-white hover:bg-neutral-800 border border-white/20 transition-colors"
                 aria-label="Close image lightbox"
               >
                 <X className="w-5 h-5" />
@@ -465,7 +478,7 @@ export default function ProjectDetail() {
               <img
                 src={selectedImage}
                 alt="Enlarged screenshot"
-                className="w-full max-h-[85vh] object-contain rounded-xl"
+                className="w-full max-h-[85vh] object-contain rounded-2xl"
               />
             </motion.div>
           </div>
