@@ -188,7 +188,7 @@ export default function Achievements() {
                         description: item.description
                       })
                     }
-                    className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-56 rounded-2xl overflow-hidden border border-white/10 hover:border-accent-sky/50 cursor-pointer bg-[#05070d] transition-all shadow-inner group flex items-center justify-center"
+                    className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-64 sm:max-h-72 rounded-2xl overflow-hidden border border-white/10 hover:border-accent-sky/50 cursor-pointer bg-[#05070d] transition-all shadow-inner group flex items-center justify-center"
                     role="button"
                     tabIndex={0}
                     onKeyDown={(e) => {
@@ -282,7 +282,7 @@ export default function Achievements() {
                       className="btn-glow-sky light-sweep text-xs py-2 px-4 inline-flex items-center gap-2 rounded-xl font-semibold shadow-sm"
                     >
                       <Eye className="w-3.5 h-3.5" />
-                      <span>View Official Certificate</span>
+                      <span>{item.id === 'academic-excellence' ? 'View Official Grade Report' : 'View Official Certificate'}</span>
                     </button>
 
                     <div className="flex items-center gap-2">

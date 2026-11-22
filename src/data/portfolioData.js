@@ -1226,27 +1226,30 @@ export const portfolioData = {
     },
     {
       id: "hackwithhyd",
-      title: "HackWithHyderabad 3.0 Competitor",
-      organization: "HackWithHyderabad Community",
-      track: "AI Incident Response",
-      year: "2024 / 2025",
+      title: "HackWithHyderabad 3.0 – Certificate of Participation",
+      organization: "Hack With India × Devnovate",
+      track: "8-Hour Technology Hackathon • Microsoft Office, Hyderabad",
+      year: "October 2026",
       type: "Hackathon",
       badge: "Hackathon Competitor",
       description:
-        "Competed in HackWithHyderabad 3.0 as part of a team and contributed to the development of RecallOps AI, an AI-powered incident response solution.",
-      impact: "Contributed to RAG architecture and prompt evaluation to enable fast evidence-based diagnosis during complex server outages."
+        "Participated in HackWithHyderabad 3.0, an 8-hour technology hackathon organized by Hack With India in collaboration with Devnovate, held on 3rd October 2026 at Microsoft Office, Hyderabad. Contributed to the development of RecallOps AI, an AI-powered incident response copilot.",
+      impact: "Engineered automated runbook retrieval and similarity-based diagnosis pipelines under high-intensity hackathon time constraints.",
+      imageUrl: "/certificates/HackWithHyderabad_3_0_Certificate.jpg",
+      pdfUrl: "/certificates/HackWithHyderabad_3_0_Certificate.pdf"
     },
     {
       id: "smart-india-hackathon",
-      title: "Smart India Hackathon (SIH) Contributor",
-      organization: "Ministry of Education / SIH",
+      title: "Internal Hackathon for Smart India Hackathon 2025",
+      organization: "Matrusri Engineering College & MoE's Innovation Cell",
       track: "Smart Classroom & Timetable Scheduler",
-      year: "Hackathon",
+      year: "September 2025",
       type: "National Hackathon",
-      badge: "SIH Contributor",
+      badge: "SIH 2025 Participant",
       description:
-        "Contributed to Smart India Hackathon (SIH) through the development of a Smart Classroom & Timetable Scheduler.",
-      impact: "Eliminated timetable slot overlaps and faculty workload distribution conflicts through automated constraint matching algorithms."
+        "Successfully participated in the Internal Hackathon for Smart India Hackathon 2025 held on 25th September 2025 at Matrusri Engineering College, organized in association with the Ministry of Education's Innovation Cell (MoE) and AICTE. Contributed to the development of TimeTrackers, an automated smart classroom and timetable constraint scheduling system.",
+      impact: "Eliminated timetable slot overlaps and faculty workload distribution conflicts through automated constraint matching algorithms.",
+      imageUrl: "/certificates/Smart_India_Hackathon_2025_Certificate.jpg"
     },
     {
       id: "tech-tycoons",
@@ -1262,15 +1265,16 @@ export const portfolioData = {
     },
     {
       id: "academic-excellence",
-      title: "Academic Excellence — 9.6 CGPA",
-      organization: "Matrusri Engineering College",
-      track: "Information Technology",
+      title: "Academic Excellence — 9.6 CGPA (B.E. Information Technology)",
+      organization: "Matrusri Engineering College (Osmania University)",
+      track: "Academic Performance & Coursework Honors",
       year: "2023 – Present",
       type: "Academic Standing",
       badge: "CGPA: 9.6 / 10",
       description:
-        "Maintained a CGPA of 9.6 while consistently excelling in technical coursework. Secured 98.2% in Intermediate and 10.0 GPA in SSC, demonstrating strong academic performance.",
-      impact: "Ranked among top percentiles across academic terms with deep mastery of computing foundations."
+        "Official academic performance record at Matrusri Engineering College (Osmania University), maintaining a cumulative CGPA of 9.6 out of 10 with a semester SGPA of 9.71 in Year III Sem VI. Consistent top-grade performance (A+ / A) across Machine Learning, Design & Analysis of Algorithms, Embedded Systems, Cloud Computing, and Network Security.",
+      impact: "Maintained a consistent top-tier academic ranking throughout B.E. Information Technology, combining theoretical rigor with practical software and AI engineering implementation.",
+      imageUrl: "/certificates/Academic_Excellence_Grade_Report.jpg"
     }
   ]
 };

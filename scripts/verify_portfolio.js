@@ -275,6 +275,59 @@ async function runVerification() {
     failed++;
   }
 
+  // Check single certificate achievements: HackWithHyderabad, Smart India Hackathon, Academic Excellence
+  const singleCertAchievements = ['hackwithhyd', 'smart-india-hackathon', 'academic-excellence'];
+  for (const achId of singleCertAchievements) {
+    const ach = portfolioData.achievements.find(a => a.id === achId);
+    if (!ach) {
+      console.error(`  [FAIL] Missing achievement: ${achId}`);
+      failed++;
+      continue;
+    }
+
+    if (ach.imageUrl) {
+      const imgDisk = path.join(process.cwd(), 'public', ach.imageUrl);
+      if (fs.existsSync(imgDisk)) {
+        const size = fs.statSync(imgDisk).size;
+        console.log(`  [PASS] ${ach.title} thumbnail on disk: ${ach.imageUrl} (${size} bytes)`);
+        passed++;
+      } else {
+        console.error(`  [FAIL] Missing thumbnail image on disk: ${imgDisk}`);
+        failed++;
+      }
+
+      const imgHttp = await fetchUrl(encodeURI(ach.imageUrl));
+      if (imgHttp.status === 200) {
+        console.log(`  [PASS] ${ach.title} thumbnail served HTTP 200: ${ach.imageUrl}`);
+        passed++;
+      } else {
+        console.error(`  [FAIL] HTTP fetch failed for ${ach.imageUrl}`);
+        failed++;
+      }
+    }
+
+    if (ach.pdfUrl) {
+      const pdfDisk = path.join(process.cwd(), 'public', ach.pdfUrl);
+      if (fs.existsSync(pdfDisk)) {
+        const size = fs.statSync(pdfDisk).size;
+        console.log(`  [PASS] ${ach.title} PDF on disk: ${ach.pdfUrl} (${size} bytes)`);
+        passed++;
+      } else {
+        console.error(`  [FAIL] Missing PDF on disk: ${pdfDisk}`);
+        failed++;
+      }
+
+      const pdfHttp = await fetchUrl(encodeURI(ach.pdfUrl));
+      if (pdfHttp.status === 200) {
+        console.log(`  [PASS] ${ach.title} PDF served HTTP 200: ${ach.pdfUrl}`);
+        passed++;
+      } else {
+        console.error(`  [FAIL] HTTP fetch failed for ${ach.pdfUrl}`);
+        failed++;
+      }
+    }
+  }
+
   // Check reorganization: Ramanujan Level 1, Level 2, and SCRS must NOT be in achievements
   const achievementIds = portfolioData.achievements.map(a => a.id);
   const removedFromAchievements = ['iste-ramanujan-level2', 'iste-ramanujan-level1', 'scrs-ml-course'];

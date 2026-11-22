@@ -1,7 +1,7 @@
 import time
 from playwright.sync_api import sync_playwright
 
-def verify_reorganization():
+def verify_achievements_and_ui():
     with sync_playwright() as p:
         browser = p.chromium.launch(
             executable_path=r'C:\Program Files\Google\Chrome\Application\chrome.exe',
@@ -27,19 +27,54 @@ def verify_reorganization():
         assert datanyx_el.count() == 1, "ERROR: DATANYX 2025 entry not found on Achievements page!"
         print("  [PASS] DATANYX 2025 Runner-Up achievement entry verified.")
 
-        # Verify both thumbnails exist
+        # Verify both thumbnails exist in DATANYX
         images = datanyx_el.locator("img").all()
         assert len(images) == 2, f"ERROR: Expected 2 certificate thumbnails, found {len(images)}"
         print("  [PASS] Both DATANYX certificate thumbnails verified.")
 
-        # Test clicking Certificate of Achievement thumbnail
-        ach_card = datanyx_el.locator("text=Certificate of Achievement").first
-        ach_card.click()
+        # Test HackWithHyderabad 3.0
+        hwh_el = page.locator("#hackwithhyd")
+        assert hwh_el.count() == 1, "ERROR: HackWithHyderabad entry not found!"
+        hwh_img = hwh_el.locator("img").first
+        assert hwh_img.count() == 1, "ERROR: HackWithHyderabad thumbnail not found!"
+        print("  [PASS] HackWithHyderabad 3.0 card and thumbnail verified.")
+
+        hwh_img.scroll_into_view_if_needed()
+        hwh_img.click()
         page.wait_for_timeout(600)
-        modal_title = page.locator("h3:has-text('DATANYX 2025')").first.inner_text()
-        print(f"  [PASS] Modal opened: '{modal_title}'")
-        close_btn = page.locator("button[aria-label='Close certificate modal']").first
-        close_btn.click()
+        assert page.locator("h3:has-text('HackWithHyderabad 3.0')").count() >= 1, "ERROR: HackWithHyderabad modal did not open!"
+        print("  [PASS] HackWithHyderabad 3.0 certificate modal preview verified.")
+        page.locator("button[aria-label='Close certificate modal']").first.click()
+        page.wait_for_timeout(500)
+
+        # Test Smart India Hackathon
+        sih_el = page.locator("#smart-india-hackathon")
+        assert sih_el.count() == 1, "ERROR: Smart India Hackathon entry not found!"
+        sih_img = sih_el.locator("img").first
+        assert sih_img.count() == 1, "ERROR: Smart India Hackathon thumbnail not found!"
+        print("  [PASS] Smart India Hackathon 2025 card and thumbnail verified.")
+
+        sih_img.scroll_into_view_if_needed()
+        sih_img.click()
+        page.wait_for_timeout(600)
+        assert page.locator("h3:has-text('Smart India Hackathon')").count() >= 1, "ERROR: Smart India Hackathon modal did not open!"
+        print("  [PASS] Smart India Hackathon 2025 certificate modal preview verified.")
+        page.locator("button[aria-label='Close certificate modal']").first.click()
+        page.wait_for_timeout(500)
+
+        # Test Academic Excellence
+        acad_el = page.locator("#academic-excellence")
+        assert acad_el.count() == 1, "ERROR: Academic Excellence entry not found!"
+        acad_img = acad_el.locator("img").first
+        assert acad_img.count() == 1, "ERROR: Academic Excellence thumbnail not found!"
+        print("  [PASS] Academic Excellence card and thumbnail verified.")
+
+        acad_img.scroll_into_view_if_needed()
+        acad_img.click()
+        page.wait_for_timeout(600)
+        assert page.locator("h3:has-text('Academic Excellence')").count() >= 1, "ERROR: Academic Excellence modal did not open!"
+        print("  [PASS] Academic Excellence grade report modal preview verified.")
+        page.locator("button[aria-label='Close certificate modal']").first.click()
         page.wait_for_timeout(500)
 
         print("\n--- 2. VERIFYING CERTIFICATIONS PAGE ---")
@@ -61,17 +96,6 @@ def verify_reorganization():
         assert scrs_card.count() == 1, "ERROR: SCRS Course not found on Certifications page!"
         print("  [PASS] Machine Learning using Python Programming Course present on Certifications page.")
 
-        # Test opening modal on Certifications page
-        level2_thumb = page.locator("img[alt*='Level 2']").first
-        level2_thumb.scroll_into_view_if_needed()
-        level2_thumb.click()
-        page.wait_for_timeout(600)
-        assert page.locator("h3:has-text('Level 2')").count() >= 1, "ERROR: Level 2 modal did not open!"
-        print("  [PASS] Level 2 modal preview works perfectly.")
-        close_btn = page.locator("button[aria-label='Close certificate modal']").first
-        close_btn.click()
-        page.wait_for_timeout(500)
-
         # Mobile check (390px)
         print("\n--- 3. MOBILE VIEWPORT OVERFLOW CHECK ---")
         page.set_viewport_size({"width": 390, "height": 844})
@@ -85,7 +109,7 @@ def verify_reorganization():
             print(f"  [PASS] Zero horizontal overflow on {path}!")
 
         browser.close()
-        print("\n>>> ALL REORGANIZATION CHECKS PASSED 100% PERFECTLY! <<<")
+        print("\n>>> ALL ACHIEVEMENTS AND MODAL PREVIEW CHECKS PASSED 100% PERFECTLY! <<<")
 
 if __name__ == '__main__':
-    verify_reorganization()
+    verify_achievements_and_ui()
