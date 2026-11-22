@@ -541,9 +541,10 @@ export const portfolioData = {
       ],
       githubUrl: "https://github.com/Amanamoni-Balaji/Personal-Portfolio",
       liveUrl: null,
-      primaryImage: "/assets/portfolio/preview.svg",
+      primaryImage: "/assets/portfolio/portfolio-hero.png",
       gallery: [
-        { src: "/assets/portfolio/preview.svg", caption: "Personal Portfolio: Dark Editorial Architecture & Interactive React UI" }
+        { src: "/assets/portfolio/portfolio-hero.png", caption: "Personal Portfolio: High-Performance Dark Editorial Architecture & Interactive React UI" },
+        { src: "/assets/portfolio/preview.svg", caption: "Personal Portfolio: System Wireframe & Component Architecture" }
       ],
       featured: false,
       badge: "React.js Production"
