@@ -1230,15 +1230,38 @@ export const portfolioData = {
     },
     {
       id: "datanyx-runnerup",
-      title: "Runner-Up in Datanyx 2025 Datathon",
+      title: "DATANYX 2025 – Runner-Up",
       organization: "MJCET, Hyderabad",
-      track: "AgroTech Domain",
+      track: "Telangana's 24-Hour Datathon • AgroTech Domain",
       year: "2025",
       type: "Competition",
-      badge: "Runner-Up",
+      badge: "Runner-Up (2nd Position)",
       description:
-        "Runner-Up in Datanyx 2025 Datathon conducted by MJCET, Hyderabad, for developing an innovative AI-based solution addressing challenges in the AgroTech domain.",
-      impact: "Developed predictive agricultural intelligence pipelines under strict competition time constraints, recognized by the judging panel for methodological rigor and practical utility."
+        "Secured Second Position in DATANYX 2025, Telangana's 24-Hour Datathon, organized by Muffakham Jah College of Engineering and Technology (MJCET), on 29–30 November 2025. Also received a separate Certificate of Participation for the event. Developed an innovative AI-based solution addressing challenges in the AgroTech domain.",
+      impact: "Developed predictive agricultural intelligence pipelines under strict competition time constraints, recognized by the judging panel for methodological rigor and practical utility.",
+      imageUrl: "/certificates/Datanyx_2025_Certificate_of_Achievement.jpg",
+      certificates: [
+        {
+          id: "datanyx-achievement",
+          title: "DATANYX 2025 – Certificate of Achievement (Second Position)",
+          label: "Certificate of Achievement",
+          badge: "Runner-Up • 2nd Position",
+          organization: "MJCET & IEEE SMC / AWS Cloud Clubs",
+          imageUrl: "/certificates/Datanyx_2025_Certificate_of_Achievement.jpg",
+          description:
+            "Certificate of Achievement proudly presented to Balaji Amanamoni for securing Second Position in DATANYX'25, Telangana's 24-Hour Datathon, organized by the Department of Computer Science and Artificial Intelligence, Muffakham Jah College of Engineering and Technology (MJCET), held on 29th–30th November 2025."
+        },
+        {
+          id: "datanyx-participation",
+          title: "DATANYX 2025 – Certificate of Participation",
+          label: "Certificate of Participation",
+          badge: "Active Participation",
+          organization: "MJCET & IEEE SMC / AWS Cloud Clubs",
+          imageUrl: "/certificates/Datanyx_2025_Certificate_of_Participation.jpg",
+          description:
+            "Certificate of Participation proudly presented to Balaji Amanamoni for active participation in DATANYX'25, Telangana's 24-Hour Datathon, organized by the Department of Computer Science and Artificial Intelligence, Muffakham Jah College of Engineering and Technology (MJCET), held on 29th–30th November 2025."
+        }
+      ]
     },
     {
       id: "hackwithhyd",

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
@@ -66,9 +67,11 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
   const downloadHref = pdfUrl || imageUrl || certificate.pdfUrl;
   const fileName = downloadHref ? downloadHref.split('/').pop() : 'certificate.pdf';
 
-  return (
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden">
         {/* Backdrop with Blur */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -247,27 +250,27 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
           </div>
 
           {/* Interactive Document Viewport */}
-          <div className="flex-1 bg-obsidian-950 overflow-auto relative p-2 sm:p-4 flex items-center justify-center">
+          <div className="flex-1 bg-obsidian-950 overflow-auto relative p-2 sm:p-4 flex flex-col items-center justify-center min-h-0">
             {activeView === 'image' && imageUrl ? (
               <div
-                className="w-full h-full flex items-center justify-center transition-transform duration-200 p-2 sm:p-4 overflow-auto"
+                className="w-full h-full flex items-center justify-center transition-transform duration-200 p-1 sm:p-2 min-h-0"
                 style={{
                   transform: zoom !== 100 ? `scale(${zoom / 100})` : 'none',
-                  transformOrigin: 'top center'
+                  transformOrigin: 'center center'
                 }}
               >
                 <img
                   src={imageUrl}
                   alt={certificate.title}
-                  className="max-w-full max-h-[75vh] object-contain rounded-xl border border-editorial-line/80 bg-white shadow-2xl"
+                  className="max-w-full max-h-full object-contain rounded-xl border border-editorial-line/80 bg-white shadow-2xl"
                 />
               </div>
             ) : pdfUrl || certificate.pdfUrl ? (
               <div
-                className="w-full h-full flex items-center justify-center transition-transform duration-200"
+                className="w-full h-full flex items-center justify-center transition-transform duration-200 min-h-0"
                 style={{
                   transform: zoom !== 100 ? `scale(${zoom / 100})` : 'none',
-                  transformOrigin: 'top center'
+                  transformOrigin: 'center center'
                 }}
               >
                 <iframe
@@ -326,6 +329,7 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
           </div>
         </motion.div>
       </div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

@@ -243,8 +243,40 @@ async function runVerification() {
     }
   }
 
-  // 6. Check Content & Data Validation
-  console.log('\n6. Validating Content & Design Requirements:');
+  // 6. Verify Achievements & Datanyx Certificates
+  console.log('\n6. Verifying Achievement Certificates (including DATANYX 2025):');
+  const datanyx = portfolioData.achievements.find(a => a.id === 'datanyx-runnerup');
+  if (datanyx && datanyx.certificates && datanyx.certificates.length === 2) {
+    console.log('  [PASS] DATANYX 2025 has both Certificate of Achievement and Certificate of Participation');
+    passed++;
+
+    for (const cert of datanyx.certificates) {
+      const diskPath = path.join(process.cwd(), 'public', cert.imageUrl);
+      if (fs.existsSync(diskPath)) {
+        const size = fs.statSync(diskPath).size;
+        console.log(`  [PASS] ${cert.label} on disk: ${cert.imageUrl} (${size} bytes)`);
+        passed++;
+      } else {
+        console.error(`  [FAIL] Missing Datanyx certificate on disk: ${diskPath}`);
+        failed++;
+      }
+
+      const certHttp = await fetchUrl(encodeURI(cert.imageUrl));
+      if (certHttp.status === 200) {
+        console.log(`  [PASS] ${cert.label} served HTTP 200: ${cert.imageUrl}`);
+        passed++;
+      } else {
+        console.error(`  [FAIL] HTTP fetch failed for ${cert.imageUrl}`);
+        failed++;
+      }
+    }
+  } else {
+    console.error('  [FAIL] DATANYX 2025 entry missing expected certificates array');
+    failed++;
+  }
+
+  // 7. Check Content & Data Validation
+  console.log('\n7. Validating Content & Design Requirements:');
   
   // Wordmark check
   if (portfolioData.personal.cleanWordmark === "Amanamoni Balaji") {
