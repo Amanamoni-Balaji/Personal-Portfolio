@@ -10,7 +10,8 @@ import {
   Copy,
   Clock,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Phone
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -27,6 +28,7 @@ export default function Contact({ onShowToast }) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -45,11 +47,23 @@ export default function Contact({ onShowToast }) {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(personal.phone);
+    setCopiedPhone(true);
+    if (onShowToast) {
+      onShowToast({
+        type: 'success',
+        title: 'Copied to Clipboard',
+        message: `${personal.phone} copied.`
+      });
+    }
+    setTimeout(() => setCopiedPhone(false), 2500);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
 
-    // Simulate sending with realistic feedback
     setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
@@ -74,7 +88,7 @@ export default function Contact({ onShowToast }) {
           Get in Touch
         </h1>
         <p className="text-sm sm:text-base text-ink-400 max-w-2xl leading-relaxed">
-          Open to inquiries regarding engineering internships, data analytics opportunities, or software collaboration. Responses are typically returned within 24 hours.
+          Open to inquiries regarding engineering internships, full stack opportunities, AI/ML research projects, or software collaboration.
         </p>
       </div>
 
@@ -84,10 +98,10 @@ export default function Contact({ onShowToast }) {
           <div className="p-6 rounded-2xl bg-obsidian-850/90 border border-editorial-line space-y-6 shadow-subtle">
             <h2 className="text-base font-bold text-ink-50">Contact Channels</h2>
 
-            <div className="space-y-4 text-xs font-mono">
+            <div className="space-y-3.5 text-xs font-mono">
               {/* Email */}
               <div className="p-3.5 rounded-xl bg-obsidian-900 border border-editorial-line space-y-1.5">
-                <span className="text-ink-500 uppercase tracking-wider text-[10px]">Email</span>
+                <span className="text-ink-500 uppercase tracking-wider text-[10px]">Email Address</span>
                 <div className="flex items-center justify-between gap-2">
                   <a
                     href={`mailto:${personal.email}`}
@@ -101,6 +115,30 @@ export default function Contact({ onShowToast }) {
                     title="Copy email"
                   >
                     {copiedEmail ? (
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    ) : (
+                      <Copy className="w-3.5 h-3.5" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="p-3.5 rounded-xl bg-obsidian-900 border border-editorial-line space-y-1.5">
+                <span className="text-ink-500 uppercase tracking-wider text-[10px]">Direct Phone</span>
+                <div className="flex items-center justify-between gap-2">
+                  <a
+                    href={`tel:${personal.phone}`}
+                    className="text-ink-100 hover:text-accent-sky transition-colors font-medium"
+                  >
+                    {personal.phone}
+                  </a>
+                  <button
+                    onClick={handleCopyPhone}
+                    className="p-1.5 text-ink-400 hover:text-white rounded hover:bg-obsidian-800 transition-colors"
+                    title="Copy phone"
+                  >
+                    {copiedPhone ? (
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
                     ) : (
                       <Copy className="w-3.5 h-3.5" />
@@ -199,7 +237,7 @@ export default function Contact({ onShowToast }) {
                       required
                       value={formState.name}
                       onChange={handleChange}
-                      placeholder="e.g. Sarah Jenkins"
+                      placeholder="e.g. Recruiter Name"
                       className="w-full px-3.5 py-2.5 rounded-lg bg-obsidian-850 border border-editorial-line text-ink-100 placeholder:text-ink-600 focus:outline-none focus:border-accent-blue transition-colors font-sans"
                     />
                   </div>

@@ -62,7 +62,7 @@ export default function About() {
               I am an undergraduate in Information Technology at <strong>Matrusri Engineering College, Hyderabad</strong>, currently maintaining a <strong>9.6/10 CGPA</strong>. My technical journey is anchored in the belief that software should be both mathematically grounded and practically impactful.
             </p>
             <p className="leading-relaxed">
-              Throughout my academic and internship engagements, I have focused on translating messy data into structured insights and intelligent software tools. From predicting rainfall patterns and plant leaf pathologies in <strong>AgroGuardian</strong> and <strong>KrishiAI</strong>, to analyzing clinical patient throughput in <strong>CareFlow</strong>, I build systems that solve real operational problems.
+              Throughout my academic and internship engagements, I have focused on translating complex requirements into reliable data-driven solutions and intelligent software systems. From predicting rainfall patterns in <strong>KrishiAI</strong> and diagnosing crop leaf pathologies in <strong>Agro_Guardian</strong>, to developing full-stack booking workflows in <strong>TravelMate</strong> and automated timetable scheduling engines in <strong>TimeTrackers</strong> (SIH), I build systems that solve real-world problems.
             </p>
             <p className="leading-relaxed">
               I avoid surface-level hype or exaggerated claims. Instead, I prioritize clean architectural foundations, systematic testing, verifiable metrics, and readable codebases.

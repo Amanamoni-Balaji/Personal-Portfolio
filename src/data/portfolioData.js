@@ -2,16 +2,24 @@ export const portfolioData = {
   personal: {
     name: "Amanamoni Balaji",
     cleanWordmark: "Amanamoni Balaji",
-    headline: "AI & Machine Learning | Data Analytics | Full Stack Development",
+    headline: "AI/ML | Data Analytics | Full Stack Development",
+    subHeadline: "Information Technology Undergrad @ Matrusri Engineering College (CGPA: 9.6)",
     positioning:
-      "An aspiring technology professional interested in building intelligent applications, developing data-driven solutions, and creating useful software products.",
+      "Information Technology undergraduate with a 9.6 CGPA and hands-on experience in AI/ML, Data Analytics, and Full Stack Development. Experienced in building AI-powered applications using Python, Django, React.js, SQL, machine learning, RAG, and data analytics tools. Strong problem-solving skills with experience developing solutions across agriculture, software incident management, and academic scheduling.",
     heroIntro:
-      "Building intelligent solutions, turning data into insights, and creating meaningful digital experiences.",
+      "Building intelligent applications, turning data into actionable insights, and engineering modern full-stack web solutions.",
     aboutBio:
-      "I am an Information Technology undergraduate at Matrusri Engineering College, Hyderabad (CGPA 9.6). I combine machine learning modeling, analytical rigor, and modern full-stack development to solve real-world problems. My projects span agricultural advisory systems, clinical process mining, incident recovery assistants, and automated scheduling platforms.",
+      "I am an Information Technology undergraduate at Matrusri Engineering College, Hyderabad, maintaining an exceptional 9.6/10 CGPA. I specialize in developing AI-powered systems, data-driven analytical pipelines, and scalable web architectures. My engineering work spans smart agricultural advisory systems, incident response agents with persistent memory, institutional scheduling optimizers, and full-stack web applications.",
+    email: "amanamonibalaji1828@gmail.com",
+    phone: "+91 7981591655",
+    github: "https://github.com/Amanamoni-Balaji",
+    linkedin: "https://www.linkedin.com/in/amanamoni-balaji",
+    location: "Hyderabad, Telangana, India",
+    resumeUrl: "/Amanamoni_Balaji_Resume.pdf",
+    availability: "Available for Internships & High-Impact Engineering Roles",
     education: {
       college: "Matrusri Engineering College, Hyderabad",
-      degree: "B.E. Information Technology",
+      degree: "Bachelor of Engineering (Information Technology)",
       period: "2023 – 2027",
       cgpa: "9.6 / 10",
       status: "Currently Pursuing (3rd Year)",
@@ -23,103 +31,88 @@ export const portfolioData = {
     },
     academicHistory: [
       {
-        institution: "Matrusri Engineering College",
-        degree: "B.E. in Information Technology",
+        institution: "Matrusri Engineering College, Hyderabad",
+        degree: "Bachelor of Engineering (Information Technology)",
         period: "2023 – 2027",
         score: "CGPA: 9.6 / 10",
         location: "Hyderabad, Telangana",
         badge: "Current",
-        details: "Specializing in AI/ML, Data Analytics, and Web Architectures. Deep focus on data structures, algorithmic design, and distributed systems."
+        details: "Core focus on Data Structures & Algorithms, Object-Oriented Programming, AI/ML, Database Systems, and Full Stack Web Architectures."
       },
       {
-        institution: "Narayana Junior College",
-        degree: "Intermediate MPC (Maths, Physics, Chemistry)",
+        institution: "Narayana Junior College, Hyderabad",
+        degree: "Intermediate (MPC)",
         period: "2021 – 2023",
-        score: "98.2%",
+        score: "Percentage: 98.2%",
         location: "Hyderabad, Telangana",
         badge: "Distinction",
-        details: "Strong foundations in differential calculus, linear algebra, analytical mechanics, and chemical principles."
+        details: "Rigorous analytical grounding in Mathematics, Physics, and Chemistry, graduating with a 98.2% aggregate."
       },
       {
-        institution: "Gowthami High School",
-        degree: "Secondary School Certificate (SSC)",
+        institution: "Gowthami High School, Achampet",
+        degree: "SSC (Class X)",
         period: "Completed",
         score: "GPA: 10.0 / 10",
         location: "Achampet, Telangana",
         badge: "Perfect Score",
-        details: "Graduated with perfect 10.0 GPA across all academic disciplines, building quantitative and computational curiosity."
+        details: "Graduated with a perfect 10.0 GPA across all academic disciplines, demonstrating strong quantitative aptitude."
       }
-    ],
-    email: "balajiamanamoni@gmail.com",
-    github: "https://github.com/Amanamoni-Balaji",
-    linkedin: "https://www.linkedin.com/in/amanamoni-balaji",
-    location: "Hyderabad, Telangana, India",
-    resumeUrl: "/Amanamoni_Balaji_Resume.pdf",
-    availability: "Available for Internships & Engineering Roles"
+    ]
   },
 
   skills: [
     {
       category: "Programming",
-      description: "Core algorithmic languages for systems, logic, and data processing",
+      description: "Core algorithmic and software development languages",
       items: [
-        { name: "Python", context: "Primary language for AI/ML, data pipelines & Django", level: "Core" },
-        { name: "Java", context: "Object-oriented software design & academic computing", level: "Proficient" }
+        { name: "Python", context: "Primary language for AI/ML, Django & data processing", level: "Primary" },
+        { name: "C", context: "Foundational systems programming and memory concepts", level: "Core" },
+        { name: "Java", context: "Object-oriented software design & academic computing", level: "Core" },
+        { name: "SQL", context: "Relational queries, aggregations, joins & database schemas", level: "Database" }
       ]
     },
     {
-      category: "Frontend",
-      description: "Modern, responsive, accessible web engineering",
+      category: "Core Fundamentals",
+      description: "Theoretical computer science & computational reasoning",
       items: [
-        { name: "React.js", context: "Hooks, SPA routing, modular UI architecture", level: "Primary UI" },
-        { name: "JavaScript", context: "ES6+, asynchronous flows, DOM manipulation", level: "Core" },
-        { name: "HTML", context: "Semantic document structuring & accessibility", level: "Core" },
-        { name: "CSS", context: "Modern layouts, Flexbox, Grid, transitions", level: "Core" },
-        { name: "Tailwind CSS", context: "Utility-first design systems & dark themes", level: "Styling" }
-      ]
-    },
-    {
-      category: "Backend",
-      description: "Server architecture, API contracts, and business logic",
-      items: [
-        { name: "Django", context: "MVC framework, ORM, authentication & middleware", level: "Framework" },
-        { name: "REST APIs", context: "Resource modeling, endpoint design & JSON interchange", level: "Architecture" }
-      ]
-    },
-    {
-      category: "Database",
-      description: "Structured storage, schema integrity, and query optimization",
-      items: [
-        { name: "SQL", context: "Relational queries, aggregations, joins & indexing", level: "Relational" },
-        { name: "SQLite", context: "Embedded relational storage for application backends", level: "Database" }
-      ]
-    },
-    {
-      category: "Data Analytics",
-      description: "Extracting actionable intelligence and communicating insights",
-      items: [
-        { name: "Data Analysis", context: "EDA, anomaly detection, statistical summaries", level: "Analytics" },
-        { name: "Data Visualization", context: "Communicating trends with charts & dashboards", level: "Visuals" },
-        { name: "Excel", context: "Formulas, pivot tables, statistical modeling", level: "Analytics" }
+        { name: "Data Structures & Algorithms", context: "Problem-solving, asymptotic efficiency & algorithmic design", level: "Core" },
+        { name: "Object-Oriented Programming", context: "Encapsulation, inheritance, modularity & design patterns", level: "Core" }
       ]
     },
     {
       category: "AI & Machine Learning",
-      description: "Predictive intelligence, computer vision, and foundation models",
+      description: "Neural architectures, predictive intelligence & generative agents",
       items: [
-        { name: "Machine Learning", context: "Supervised classification, regression, clustering", level: "ML Core" },
-        { name: "Model Development", context: "Feature engineering, validation & evaluation metrics", level: "Modeling" },
-        { name: "Generative AI", context: "LLMs, prompt engineering, context augmentation", level: "GenAI" },
-        { name: "Retrieval-Augmented Generation (RAG)", context: "Context injection, semantic similarity & vector lookups", level: "Architecture" }
+        { name: "Artificial Intelligence", context: "Intelligent search, heuristics & advisory systems", level: "AI" },
+        { name: "Machine Learning", context: "Supervised classification, regression, clustering & validation", level: "Core ML" },
+        { name: "CNN (Convolutional Neural Networks)", context: "Computer vision image classification for crop leaf pathologies", level: "Vision" },
+        { name: "RAG (Retrieval-Augmented Generation)", context: "Persistent memory retrieval & context injection for incident triage", level: "GenAI" }
       ]
     },
     {
-      category: "Tools",
-      description: "Developer workflows, version control, and environments",
+      category: "Web Development",
+      description: "Full-stack web application frameworks and responsive UI",
       items: [
-        { name: "Git", context: "Branching workflows, version tracking & commit hygiene", level: "VCS" },
-        { name: "GitHub", context: "Pull requests, code reviews & repository hosting", level: "Collaboration" },
-        { name: "VS Code", context: "Primary development environment & tooling extensions", level: "IDE" }
+        { name: "Django", context: "MVC framework, ORM, REST endpoints & user authentication", level: "Backend" },
+        { name: "React.js", context: "Component architecture, SPA routing, state management & hooks", level: "Frontend" },
+        { name: "Python Full Stack Development", context: "End-to-end integration of Django backends with React interfaces", level: "Full Stack" }
+      ]
+    },
+    {
+      category: "Data Analytics",
+      description: "Statistical inference, data exploration & business insights",
+      items: [
+        { name: "Data Analysis", context: "Exploratory data analysis, cleaning, anomaly detection & modeling", level: "Analytics" },
+        { name: "Microsoft Excel", context: "Formulas, pivot tables, statistical summaries & analytical dashboards", level: "Analytics" }
+      ]
+    },
+    {
+      category: "Tools & Platforms",
+      description: "Developer tooling, database engines & collaborative VCS",
+      items: [
+        { name: "Git", context: "Version control, branching workflows & commit hygiene", level: "VCS" },
+        { name: "GitHub", context: "Code hosting, collaboration, repository management", level: "Platform" },
+        { name: "SQLite", context: "Relational database engine for web backends & local services", level: "Storage" }
       ]
     }
   ],
@@ -127,25 +120,25 @@ export const portfolioData = {
   projects: [
     {
       id: "krishiai",
-      title: "KrishiAI – AI-Powered Agricultural Advisory System",
+      title: "KrishiAI – AI-Powered Smart Advisory for Farmers",
       shortTitle: "KrishiAI",
-      subtitle: "Intelligent Agricultural Advisory System",
+      subtitle: "AI-Powered Smart Advisory for Farmers",
       category: "AI & Predictive Analytics",
-      tagline: "Empowering farmers with rainfall forecasts, soil analysis, and data-driven crop recommendations.",
+      tagline: "Intelligent agriculture solution leveraging AI and data analytics to support farm decision-making.",
       overview:
-        "KrishiAI is an intelligent agricultural advisory platform engineered to help farmers make informed, data-driven farming decisions. By synthesizing historical meteorological data, soil nutrient profiles (NPK, pH), and machine learning models, the system predicts rainfall trends and recommends the most viable crops for each specific farmland.",
+        "Developed an intelligent agriculture solution leveraging AI and data analytics to support farm decision-making. Integrated rainfall forecasting, soil-health insights, and crop advisory modules for improved planning. Applied machine learning techniques to generate recommendations that enhance productivity and reduce cultivation risks.",
       problem:
-        "Agriculture in many regions continues to rely on traditional heuristics that struggle with climate volatility, unpredictable precipitation patterns, and declining soil health. Farmers frequently suffer crop failures or suboptimal yields because they lack accessible, data-driven forecasting tools before planting.",
+        "Farmers frequently face crop failure, unpredictable yields, and soil degradation due to erratic weather patterns and a lack of data-driven forecasting tools before planting season.",
       solution:
-        "KrishiAI addresses this gap with an intuitive advisory system that couples machine learning predictions with agronomic knowledge. It delivers seasonal rainfall estimates, evaluates soil suitability, and outputs actionable planting guidance formatted for easy interpretation by agricultural stakeholders.",
+        "KrishiAI couples historical meteorological trends and soil nutrient profiles with machine learning models to forecast rainfall probabilities, evaluate soil viability, and deliver actionable crop cultivation advisories.",
       contribution:
-        "Designed and implemented the core machine learning pipelines for precipitation estimation and crop suitability scoring. Cleaned and prepared multi-year meteorological datasets, engineered seasonal features, and integrated model outputs into an interactive dashboard for intuitive farmer advisory.",
+        "Designed and implemented the core machine learning pipelines for rainfall forecasting and crop suitability scoring. Cleaned multi-year meteorological datasets, engineered seasonal features, and integrated model outputs into an interactive dashboard for farm advisory.",
       technologies: ["Python", "Machine Learning", "Data Analytics", "Pandas", "Scikit-Learn", "Weather APIs"],
       implementationDetails: [
-        "Historical precipitation analysis using time-series and regression techniques to detect seasonal patterns.",
+        "Time-series and regression techniques to model rainfall probabilities across seasonal crop cycles.",
         "Soil condition evaluation combining NPK levels and pH balance against crop growth thresholds.",
         "Rule-assisted ML recommendation engine prioritizing drought resistance and yield stability.",
-        "Exploratory analytics dashboards providing clear visual breakdowns of expected rainfall vs. crop water requirements."
+        "Intuitive visual reporting showing expected precipitation vs. specific crop water requirements."
       ],
       architectureSteps: [
         { step: "01", name: "Data Ingestion", detail: "Collect multi-year meteorological precipitation records & soil NPK nutrient profiles." },
@@ -156,7 +149,7 @@ export const portfolioData = {
       ],
       results: [
         "Tested across regional rainfall and soil parameter datasets with consistent recommendation accuracy.",
-        "Provided verifiable decision support reducing planting uncertainty during erratic monsoons."
+        "Delivered verifiable decision support reducing planting uncertainty during erratic monsoons."
       ],
       githubUrl: "https://github.com/Amanamoni-Balaji",
       liveUrl: null,
@@ -168,21 +161,114 @@ export const portfolioData = {
       badge: "Featured AI Project"
     },
     {
-      id: "agroguardian",
-      title: "AgroGuardian – AI-Based Crop Recommendation and Disease Prediction System",
-      shortTitle: "AgroGuardian",
-      subtitle: "AI-Based Crop Recommendation & Disease Prediction",
-      category: "Deep Learning & AgriTech",
-      tagline: "End-to-end agricultural platform integrating crop suitability recommendations with deep learning leaf disease diagnostics.",
+      id: "travelmate",
+      title: "TravelMate – Travel Booking & Destination Management System",
+      shortTitle: "TravelMate",
+      subtitle: "Travel Booking & Destination Management System",
+      category: "Full Stack & Web Systems",
+      tagline: "Django-based web application for destination exploration, package reservations, and itinerary management.",
       overview:
-        "AgroGuardian is a dual-function agricultural intelligence system combining soil-based crop recommendation with computer-vision disease diagnosis. The platform allows farmers to select optimal crops for their land while enabling instant diagnosis of plant diseases (such as early and late potato leaf blight) from uploaded field photographs.",
+        "Engineered a Django-based web application for destination exploration and package reservations. Implemented booking management, itinerary tracking, and personalized user dashboards. Designed scalable backend workflows to ensure secure and efficient travel management.",
       problem:
-        "Crop diseases can devastate entire yields within days if left undetected, yet expert plant pathologists are inaccessible to most rural farming communities. Concurrently, improper crop selection without soil nutrient awareness exhausts farmlands and reduces agricultural returns.",
+        "Travelers often struggle with fragmented booking flows, lack of unified itinerary tracking, and clunky destination exploration interfaces when planning vacations.",
       solution:
-        "AgroGuardian provides an accessible web application where farmers can upload photographs of crop foliage for instant CNN-based disease diagnosis with treatment recommendations, alongside an input form that matches nitrogen, phosphorus, potassium, and soil pH to recommended crop varieties.",
+        "TravelMate provides a centralized, secure web platform where users can discover travel packages, reserve accommodations, manage itineraries, and track booking statuses through a clean personalized dashboard.",
       contribution:
-        "Engineered the responsive frontend with React.js, structured the Django backend to serve REST endpoints for computer vision inference, integrated the trained deep learning model, and authored the mitigation advisory workflow for detected leaf diseases.",
-      technologies: ["React.js", "Django", "Python", "Machine Learning", "TensorFlow / Keras", "REST APIs"],
+        "Architected the entire Django backend structure including models for destinations, bookings, and user profiles. Implemented REST API views, user authentication, and responsive frontend templates with dynamic search and booking management workflows.",
+      technologies: ["Django", "Python", "SQLite", "JavaScript", "HTML5", "CSS3", "REST APIs"],
+      implementationDetails: [
+        "Relational database schema modeling destinations, travel packages, bookings, and user authentication.",
+        "Personalized user dashboard displaying active bookings, past trips, and status updates.",
+        "Dynamic search and filtering interface for exploring destination packages by category and budget.",
+        "Secure server-side validation and backend workflows preventing double-booking and ensuring data integrity."
+      ],
+      architectureSteps: [
+        { step: "01", name: "Destination Discovery", detail: "Cataloging destinations with high-resolution imagery, pricing, and package details." },
+        { step: "02", name: "User Authentication", detail: "Secure registration and session handling for personalized dashboards." },
+        { step: "03", name: "Booking Engine", detail: "Handles reservations, date validations, and availability checks." },
+        { step: "04", name: "Database Operations", detail: "SQLite relational storage with ORM modeling and transactional integrity." },
+        { step: "05", name: "User Dashboard", detail: "Real-time reservation summary, itinerary schedule, and booking cancellation controls." }
+      ],
+      results: [
+        "Delivered end-to-end travel booking platform with responsive dashboards and secure CRUD operations.",
+        "Seamless performance supporting destination browsing, search filtering, and reservation management."
+      ],
+      githubUrl: "https://github.com/Amanamoni-Balaji",
+      liveUrl: null,
+      primaryImage: "/assets/travelmate/Screenshot_2026-05-30_151658.png",
+      gallery: [
+        { src: "/assets/travelmate/Screenshot_2026-05-30_151658.png", caption: "TravelMate: Destination Exploration & Curated Tour Packages" },
+        { src: "/assets/travelmate/Screenshot_2026-05-30_195004.png", caption: "TravelMate: Package Booking Interface & Travel Details" },
+        { src: "/assets/travelmate/Screenshot_2026-05-30_200040.png", caption: "TravelMate: Personalized User Dashboard & Booking Management" }
+      ],
+      featured: true,
+      badge: "Django Full Stack"
+    },
+    {
+      id: "time-trackers",
+      title: "TimeTrackers – Smart Classroom & Timetable Scheduler (SIH)",
+      shortTitle: "TimeTrackers",
+      subtitle: "Smart Classroom & Timetable Scheduler (SIH)",
+      category: "Optimization & Full Stack",
+      tagline: "Automated institutional scheduling solution eliminating timetable conflicts and optimizing academic resources.",
+      overview:
+        "Contributed to frontend and backend development of a Smart Classroom solution with an automated timetable scheduler to improve academic planning and resource utilization. Implemented scheduling logic to minimize timetable conflicts and enable efficient allocation of classrooms and faculty. Developed features to streamline timetable management and improve coordination of academic resources.",
+      problem:
+        "Academic institutions lose weeks manually creating semester timetables, frequently encountering faculty double-booking, room capacity mismatches, and irregular lecture distributions.",
+      solution:
+        "TimeTrackers provides an algorithmic academic scheduling engine that processes teacher constraints, classroom sizes, and batch credits to generate 100% conflict-free institutional timetables.",
+      contribution:
+        "Designed original UI wireframes and system architecture notes. Developed key frontend interfaces using React, built the interactive timetable grid view, and contributed to constraint modeling for faculty-room matching for the Smart India Hackathon submission.",
+      technologies: ["React.js", "Python", "Optimization Algorithms", "Tailwind CSS", "JavaScript"],
+      implementationDetails: [
+        "Multi-constraint scheduling logic considering teacher availability periods, subject credit hours, and classroom physical capacities.",
+        "Role-based authentication architecture with dedicated views for Administrators, Faculty, and Students.",
+        "Interactive schedule visualizer allowing weekly timetable inspection by class, faculty, or room number.",
+        "Conflict detection engine highlighting potential schedule clashes before timetable commitment."
+      ],
+      architectureSteps: [
+        { step: "01", name: "Constraints Modeling", detail: "Inputs faculty slot availability, subject hours, room seating sizes, and cohort requirements." },
+        { step: "02", name: "Clash Matrix", detail: "Maps overlapping professor allocations and resource bottlenecks before assignment." },
+        { step: "03", name: "Constraint Satisfaction", detail: "Optimization algorithms solve allocation graph to eliminate timetable clashes." },
+        { step: "04", name: "Schedule Visualizer", detail: "Builds responsive matrix views filtered by Department, Batch, Semester, or Faculty." },
+        { step: "05", name: "Export & Access", detail: "Multi-role access (Admin/Faculty/Student) with instant timetable verification and export." }
+      ],
+      results: [
+        "Project contributed for the Smart India Hackathon (SIH) internal and national evaluation.",
+        "Demonstrated automated clash-free schedule generation across multi-department academic programs."
+      ],
+      githubUrl: "https://github.com/Amanamoni-Balaji",
+      liveUrl: null,
+      primaryImage: "/assets/smartclassroom/Screenshot 2025-09-24 184559.png",
+      gallery: [
+        { src: "/assets/smartclassroom/Screenshot 2025-09-24 184559.png", caption: "TimeTrackers: Role Selection & Academic Portal Login" },
+        { src: "/assets/smartclassroom/Screenshot 2025-09-24 184644.png", caption: "Institution Setup: Academic Year & Department Configuration" },
+        { src: "/assets/smartclassroom/Screenshot 2025-09-24 184702.png", caption: "Faculty Constraints & Teaching Availability Matrix" },
+        { src: "/assets/smartclassroom/Screenshot 2025-09-24 184805.png", caption: "Classroom Capacity & Laboratory Resource Management" },
+        { src: "/assets/smartclassroom/Screenshot 2025-09-24 184833.png", caption: "Automated Timetable Generation Engine & Visual Grid" },
+        { src: "/assets/smartclassroom/Screenshot 2025-09-24 185019.png", caption: "Weekly Class Schedule View with Faculty Allocation" },
+        { src: "/assets/wireframes/WhatsApp Image 2025-09-18 at 20.35.18_2e718084.jpg", caption: "Original Engineering Wireframe Sketch: System Architecture & Login Flow" },
+        { src: "/assets/wireframes/WhatsApp Image 2025-09-18 at 20.35.19_041c100c.jpg", caption: "Original Engineering Wireframe Sketch: Teacher Slot Constraints" }
+      ],
+      featured: true,
+      badge: "Smart India Hackathon"
+    },
+    {
+      id: "agro-guardian",
+      title: "Agro_Guardian – AI-Based Crop Recommendation and Disease Prediction",
+      shortTitle: "Agro_Guardian",
+      subtitle: "AI-Based Crop Recommendation and Disease Prediction",
+      category: "Deep Learning & AgriTech",
+      tagline: "AI-based system for crop recommendation and disease prediction using CNN and soil analytics.",
+      overview:
+        "Developed an AI-based system for crop recommendation and disease prediction. Recommends suitable crops based on soil and weather conditions. Uses CNN to detect potato leaf diseases from images.",
+      problem:
+        "Foliage diseases like early and late potato blight destroy harvests if unaddressed, while improper crop selection without soil nutrient awareness exhausts arable farmlands.",
+      solution:
+        "Agro_Guardian combines computer vision CNN models for rapid leaf disease classification with an agronomic soil chemistry recommendation engine that pairs soil NPK/pH metrics with ideal crops.",
+      contribution:
+        "Engineered the responsive frontend in React.js, structured the Django backend to serve REST endpoints for computer vision inference, integrated the trained deep learning model, and authored the disease mitigation advisory workflows.",
+      technologies: ["React.js", "Django", "Python", "Machine Learning", "CNN", "TensorFlow / Keras", "REST APIs"],
       implementationDetails: [
         "Convolutional Neural Network (CNN) trained on curated leaf pathology datasets to identify healthy leaves, early blight, and late blight.",
         "Django REST Framework backend handling image uploads, preprocessing, model inference, and confidence score calculation.",
@@ -206,124 +292,27 @@ export const portfolioData = {
       gallery: [
         { src: "/assets/agroguardian/crop-disease.png", caption: "Deep Learning Leaf Disease Classification & Diagnostic View" },
         { src: "/assets/agroguardian/crop-recommend.png", caption: "Soil Nutrient Matrix & Crop Recommendation Interface" },
-        { src: "/assets/agroguardian/hero-farm.jpg", caption: "AgroGuardian Field Platform Overview" }
+        { src: "/assets/agroguardian/hero-farm.jpg", caption: "Agro_Guardian Field Platform Overview" }
       ],
       featured: true,
-      badge: "Deep Learning"
-    },
-    {
-      id: "careflow",
-      title: "CareFlow – Clinical Pathway Process Mining and Analytics System",
-      shortTitle: "CareFlow",
-      subtitle: "Clinical Pathway Process Mining & Analytics",
-      category: "Healthcare Analytics & Process Mining",
-      tagline: "Uncovering hospital workflow bottlenecks and analyzing patient care pathways through data-driven process mining.",
-      overview:
-        "CareFlow is a comprehensive healthcare process intelligence and analytics platform designed to analyze hospital event logs, reconstruct clinical patient journeys, detect operational bottlenecks, and present actionable executive insights for medical directors and hospital administrators.",
-      problem:
-        "Modern hospital operations suffer from hidden workflow inefficiencies: extended emergency waiting times, delayed lab turnaround, and deviations from standardized treatment pathways. Administrators typically rely on static reports that fail to show where delays actually accumulate in multi-department patient journeys.",
-      solution:
-        "CareFlow applies process mining algorithms to hospital electronic health records (EHR) and event logs. It visually maps actual clinical pathways, quantifies transition durations between care stages, flags operational bottlenecks, and generates executive-grade compliance and performance reports.",
-      contribution:
-        "Engineered the complete analytical dashboard in React with modular views: Executive Overview, Bottleneck Analysis, Process Mining Graph, Patient Journey Tracker, and Automated Reports. Implemented KPI aggregations, duration heatmaps, and downloadable clinical process intelligence summaries.",
-      technologies: ["React.js", "Python", "Process Mining", "Data Analytics", "Data Visualization", "Chart.js"],
-      implementationDetails: [
-        "Clinical event log ingestion mapping Patient ID, Care Department, Event Activity, Timestamp, and Outcome.",
-        "Interactive process variant visualizer tracing pathway transitions from intake through triage, diagnostics, treatment, and discharge.",
-        "Bottleneck identification engine calculating stage-by-stage wait times and identifying statistical outliers.",
-        "Executive KPI cards tracking median length of stay (LOS), pathway deviation rates, and department throughput.",
-        "Automated clinical reporting module generating formal performance summaries."
-      ],
-      architectureSteps: [
-        { step: "01", name: "EHR Log Extraction", detail: "Ingest structured hospital event streams with Patient ID, Department, Activity, and Timestamps." },
-        { step: "02", name: "Variant Discovery", detail: "Process mining algorithms discover empirical treatment pathways and detect deviation variants." },
-        { step: "03", name: "Bottleneck Profiling", detail: "Computes transition durations across emergency, lab, and radiology to pinpoint queues." },
-        { step: "04", name: "Journey Reconstruction", detail: "Traces individual patient timelines against standard clinical guidelines." },
-        { step: "05", name: "Executive Intelligence", detail: "Renders interactive duration heatmaps, department throughput KPIs, and audit-ready reports." }
-      ],
-      results: [
-        "Successfully mapped multi-stage clinical pathways across emergency and inpatient departments.",
-        "Identified diagnostic-to-treatment transition lag as the primary operational bottleneck in hospital event log analysis."
-      ],
-      githubUrl: "https://github.com/Amanamoni-Balaji",
-      liveUrl: null,
-      primaryImage: "/assets/careflow/executive_overview_charts_1793367709015.png",
-      gallery: [
-        { src: "/assets/careflow/executive_overview_charts_1793367709015.png", caption: "Executive Overview: Throughput Trends & Clinical Metrics" },
-        { src: "/assets/careflow/bottleneck_analysis_1793367892183.png", caption: "Bottleneck Analysis: Stage-by-Stage Wait Time Identification" },
-        { src: "/assets/careflow/process_mining_1793367828718.png", caption: "Process Mining Discovery: Variant Pathways & Flow Transitions" },
-        { src: "/assets/careflow/patient_journey_1793367769964.png", caption: "Patient Journey Tracker: Individual Pathway Tracing" },
-        { src: "/assets/careflow/predictive_analytics_1793367968054.png", caption: "Predictive Analytics: Duration Forecasts & Risk Stratification" },
-        { src: "/assets/careflow/reports_1793368053255.png", caption: "Clinical Performance & Compliance Reporting View" }
-      ],
-      featured: true,
-      badge: "Process Mining"
-    },
-    {
-      id: "smart-classroom",
-      title: "Smart Classroom and Timetable Scheduler",
-      shortTitle: "Smart Classroom",
-      subtitle: "Automated Academic Scheduling & Resource Optimization",
-      category: "Optimization & Full Stack",
-      tagline: "Algorithmic institutional scheduling system eliminating timetable conflicts and optimizing room capacities.",
-      overview:
-        "The Smart Classroom and Timetable Scheduler (Time Trackers) is an automated academic resource planning platform built for institutions. It eliminates manual scheduling bottlenecks by algorithmically distributing subjects, faculty availability, and room capacities into clash-free academic timetables.",
-      problem:
-        "Creating academic timetables manually is a tedious, error-prone task that takes academic committees weeks each semester. Scheduling conflicts — such as assigning a professor to two simultaneous classes, exceeding room capacities, or uneven student lecture distributions — cause frequent administrative friction.",
-      solution:
-        "An algorithmic scheduling web platform that models teacher time constraints, course hour requirements, room seating capacities, and student cohort schedules. The system generates conflict-free schedules and allows administrators and faculty to inspect and modify them interactively.",
-      contribution:
-        "Researched and conceptualized system design wireframes (hand-sketched architecture notes preserved in project archive). Developed key frontend interfaces using React, built the interactive timetable grid view, and contributed to constraint modeling for faculty-room matching.",
-      technologies: ["React.js", "Python", "Optimization Algorithms", "Tailwind CSS", "JavaScript"],
-      implementationDetails: [
-        "Multi-constraint logic considering faculty availability periods, subject credit hours, and classroom physical capacities.",
-        "Role-based authentication architecture with dedicated views for Administrators, Faculty, and Students.",
-        "Interactive schedule visualizer allowing weekly timetable inspection by class, faculty, or room number.",
-        "Conflict detection engine highlighting potential schedule clashes before timetable commitment."
-      ],
-      architectureSteps: [
-        { step: "01", name: "Constraints Modeling", detail: "Inputs faculty slot availability, subject hours, room seating sizes, and cohort requirements." },
-        { step: "02", name: "Clash Matrix", detail: "Maps overlapping professor allocations and resource bottlenecks before assignment." },
-        { step: "03", name: "Constraint Satisfaction", detail: "Optimization algorithms solve allocation graph to eliminate timetable clashes." },
-        { step: "04", name: "Schedule Visualizer", detail: "Builds responsive matrix views filtered by Department, Batch, Semester, or Faculty." },
-        { step: "05", name: "Export & Access", detail: "Multi-role access (Admin/Faculty/Student) with instant timetable verification and export." }
-      ],
-      results: [
-        "Project contributed for the Smart India Hackathon internal evaluation.",
-        "Demonstrated automated clash-free schedule generation across multi-department academic programs."
-      ],
-      githubUrl: "https://github.com/Amanamoni-Balaji",
-      liveUrl: null,
-      primaryImage: "/assets/smartclassroom/Screenshot 2025-09-24 184559.png",
-      gallery: [
-        { src: "/assets/smartclassroom/Screenshot 2025-09-24 184559.png", caption: "Time Trackers: Role Selection & Academic Portal Login" },
-        { src: "/assets/smartclassroom/Screenshot 2025-09-24 184644.png", caption: "Institution Setup: Academic Year & Department Configuration" },
-        { src: "/assets/smartclassroom/Screenshot 2025-09-24 184702.png", caption: "Faculty Constraints & Teaching Availability Matrix" },
-        { src: "/assets/smartclassroom/Screenshot 2025-09-24 184805.png", caption: "Classroom Capacity & Laboratory Resource Management" },
-        { src: "/assets/smartclassroom/Screenshot 2025-09-24 184833.png", caption: "Automated Timetable Generation Engine & Visual Grid" },
-        { src: "/assets/smartclassroom/Screenshot 2025-09-24 185019.png", caption: "Weekly Class Schedule View with Faculty Allocation" },
-        { src: "/assets/wireframes/WhatsApp Image 2025-09-18 at 20.35.18_2e718084.jpg", caption: "Original Engineering Wireframe Sketch: System Architecture & Login Flow" },
-        { src: "/assets/wireframes/WhatsApp Image 2025-09-18 at 20.35.19_041c100c.jpg", caption: "Original Engineering Wireframe Sketch: Teacher Slot Constraints" }
-      ],
-      featured: true,
-      badge: "Hackathon Project"
+      badge: "Deep Learning & CNN"
     },
     {
       id: "recallops-ai",
-      title: "RecallOps AI – AI-Powered Incident Response & Root Cause Investigation",
+      title: "RecallOps AI – Hindsight-Powered Incident Response & Root Cause Investigation Agent",
       shortTitle: "RecallOps AI",
-      subtitle: "Incident Response & Root Cause Investigation",
+      subtitle: "Hindsight-Powered Incident Response & Root Cause Investigation Agent",
       category: "Generative AI & SRE Operations",
-      tagline: "Persistent memory incident response assistant built for HackWithHyderabad 3.0 to accelerate technical outage recovery.",
+      tagline: "AI-powered SRE agent utilizing RAG and persistent memory to investigate incidents and identify root causes.",
       overview:
-        "RecallOps AI is an intelligent incident management assistant concept created during HackWithHyderabad 3.0. It harnesses persistent operational knowledge and retrieval-augmented generation to surface relevant historical precedents, pinpoint likely root causes, and recommend proven diagnostic procedures during live production outages.",
+        "Developed an AI-powered SRE agent to investigate software incidents, analyze logs and symptoms, and identify potential root causes. Implemented RAG with persistent memory to retrieve relevant past incidents and resolutions, enabling faster and context-aware investigations. Built a closed-loop learning workflow that stores confirmed resolutions and uses them to improve recommendations for future incidents.",
       problem:
-        "When critical software infrastructure fails, site reliability engineers (SREs) waste valuable minutes manually querying logs and searching past post-mortems. High-stress environments increase time-to-mitigation (MTTR) because institutional troubleshooting knowledge is scattered across static docs and incident channels.",
+        "When software infrastructure fails, site reliability engineers waste critical minutes querying logs and searching past incident post-mortems under high-stress conditions.",
       solution:
         "RecallOps AI indexes prior outage reports, error traces, and remediation actions into a persistent vector memory store. When a new alert occurs, the assistant retrieves the closest past failure patterns and synthesizes step-by-step diagnostic recommendations using LLMs.",
       contribution:
         "Contributed to project architecture during HackWithHyderabad 3.0: structured incident similarity search pipelines, designed the investigation dashboard, and evaluated LLM response quality for technical post-mortem analysis.",
-      technologies: ["React", "FastAPI", "Python", "LLMs", "RAG", "Vector Search"],
+      technologies: ["React.js", "FastAPI", "Python", "LLMs", "RAG", "Persistent Memory", "Vector Search"],
       implementationDetails: [
         "Persistent memory pipeline indexing past incident post-mortems with metadata tagging.",
         "Semantic vector similarity search linking current alerts to historical troubleshooting cases.",
@@ -333,20 +322,64 @@ export const portfolioData = {
       architectureSteps: [
         { step: "01", name: "Outage Ingestion", detail: "Captures error logs, exception traces, and monitoring alerts from production environments." },
         { step: "02", name: "Vector Indexing", detail: "Embeds post-mortems and historical runbooks into persistent vector embeddings." },
-        { step: "03", name: "Similarity Search", detail: "Semantic similarity retrieval identifies the closest historical incidents with resolution notes." },
+        { step: "03", name: "Semantic Retrieval", detail: "Semantic similarity retrieval identifies the closest historical incidents with resolution notes." },
         { step: "04", name: "RAG Synthesis", detail: "Grounds foundation models in verified post-mortem documentation to suggest diagnostic actions." },
-        { step: "05", name: "SRE Console", detail: "Interactive troubleshooting dashboard presenting evidence-based remediation recommendations." }
+        { step: "05", name: "Closed-Loop Learning", detail: "Stores confirmed resolutions back into persistent memory to enhance future recommendations." }
       ],
       results: [
-        "Demonstrated working prototype at HackWithHyderabad 3.0 hackathon.",
+        "Competed in HackWithHyderabad 3.0 as part of team and demonstrated working incident response agent prototype.",
         "Showcased significant reduction in incident investigation time by instantly surfacing past resolutions."
       ],
       githubUrl: "https://github.com/Amanamoni-Balaji/RecallOps-AI",
       liveUrl: null,
-      primaryImage: "/assets/careflow/predictive_analytics_1793367968054.png",
-      gallery: [],
-      featured: false,
+      primaryImage: "/assets/recallops/hero.png",
+      gallery: [
+        { src: "/assets/recallops/hero.png", caption: "RecallOps AI: SRE Incident Investigation & Persistent Memory Copilot" }
+      ],
+      featured: true,
       badge: "HackWithHyderabad 3.0"
+    },
+    {
+      id: "personal-portfolio",
+      title: "Personal Portfolio Website",
+      shortTitle: "Personal Portfolio",
+      subtitle: "Personal Portfolio Website",
+      category: "Frontend & Creative Engineering",
+      tagline: "Responsive React.js portfolio platform presenting projects, technical expertise, certifications, and achievements.",
+      overview:
+        "Built a responsive React.js portfolio platform to present projects, technical expertise, certifications, and achievements. Implemented reusable components, intuitive navigation, and mobile-first design principles. Optimized performance and accessibility for a seamless user experience across devices.",
+      problem:
+        "Recruiters need an authentic, fast-loading, visually distinctive showcase of a candidate's verified capabilities without generic AI clutter.",
+      solution:
+        "A dark editorial portfolio combining GitHub's developer clarity, Kaggle's analytical rigor, and Notion's typography, equipped with interactive 3D cards, project carousels, and client-side routing.",
+      contribution:
+        "Single-handedly designed and engineered the complete application architecture from scratch using React, Vite, Tailwind CSS, and Framer Motion.",
+      technologies: ["React.js", "Vite", "Tailwind CSS", "Framer Motion", "React Router"],
+      implementationDetails: [
+        "Client-side routing across multi-page architecture with smooth route transitions.",
+        "Reusable component architecture separating presentation from centralized portfolio data.",
+        "Responsive navigation drawer and custom mobile layouts without horizontal overflow.",
+        "Accessible contrast, semantic HTML, and zero console error verification."
+      ],
+      architectureSteps: [
+        { step: "01", name: "Design System", detail: "Created custom dark editorial palette with obsidian, charcoal, and restrained blue accents." },
+        { step: "02", name: "Data Architecture", detail: "Centralized verified resume credentials into structured, typed data objects." },
+        { step: "03", name: "Interactive UI", detail: "Engineered 3D tilt cards, screenshot carousels, and credential inspection modals." },
+        { step: "04", name: "Motion & Accessibility", detail: "Implemented spring physics respecting prefers-reduced-motion standards." },
+        { step: "05", name: "Production Optimization", detail: "Vite bundling yielding sub-5s build times with zero runtime exceptions." }
+      ],
+      results: [
+        "100% error-free execution verified in headless Chromium testing.",
+        "Optimized asset delivery and responsive UX across mobile, tablet, and desktop viewports."
+      ],
+      githubUrl: "https://github.com/Amanamoni-Balaji",
+      liveUrl: null,
+      primaryImage: "/assets/portfolio/preview.svg",
+      gallery: [
+        { src: "/assets/portfolio/preview.svg", caption: "Personal Portfolio: Dark Editorial Architecture & Interactive React UI" }
+      ],
+      featured: false,
+      badge: "React.js Production"
     }
   ],
 
@@ -366,7 +399,23 @@ export const portfolioData = {
         "Leveraging Python and Microsoft Excel for analytical transformations and metric evaluations.",
         "Collaborating with team members to translate analytical observations into clear recommendations."
       ],
-      technologies: ["Python", "Data Analysis", "Data Visualization", "Microsoft Excel"]
+      technologies: ["Data Analytics", "Python", "Data Analysis", "Microsoft Excel"]
+    },
+    {
+      id: "blackbucks",
+      role: "AI Machine Learning Engineer Intern",
+      company: "Blackbucks Education Pvt. Ltd.",
+      duration: "May 2026 – June 2026",
+      status: "Scheduled",
+      type: "Internship",
+      description:
+        "Scheduled engineering internship covering end-to-end AI/ML modeling, algorithm evaluation, and deployment of predictive intelligence modules.",
+      responsibilities: [
+        "Hands-on curriculum covering end-to-end machine learning model lifecycles.",
+        "Deep dive into predictive modeling, neural architectures, and model deployment pipelines.",
+        "Collaborative project execution under industry mentor guidance."
+      ],
+      technologies: ["AI/ML", "Python", "Machine Learning", "Model Deployment"]
     },
     {
       id: "innovation-hacks",
@@ -383,7 +432,7 @@ export const portfolioData = {
         "Ensured cross-browser compatibility and optimized rendering performance across viewports.",
         "Followed Git version control best practices and participated in iterative code reviews."
       ],
-      technologies: ["React.js", "JavaScript", "HTML5", "CSS3", "REST APIs"]
+      technologies: ["React.js", "Django", "JavaScript", "HTML/CSS", "REST APIs"]
     },
     {
       id: "blend-vidya",
@@ -400,37 +449,11 @@ export const portfolioData = {
         "Assisted in benchmarking algorithm performance using precision, recall, and F1-score metrics.",
         "Researched practical applications of computer vision and natural language processing concepts."
       ],
-      technologies: ["Machine Learning", "Python", "Google Colab", "Feature Engineering"]
-    },
-    {
-      id: "blackbucks",
-      role: "AI/ML Internship",
-      company: "Blackbucks Education Pvt. Ltd.",
-      duration: "1 May – 15 June 2026",
-      status: "Scheduled",
-      type: "Upcoming Internship (6 Weeks)",
-      description:
-        "Scheduled six-week intensive engineering internship focused on end-to-end AI/ML modeling, algorithm evaluation, and deployment of predictive intelligence modules.",
-      responsibilities: [
-        "Rigorous hands-on curriculum covering end-to-end machine learning model lifecycles.",
-        "Deep dive into predictive modeling, neural architectures, and model deployment pipelines.",
-        "Collaborative project execution under industry mentor guidance."
-      ],
-      technologies: ["AI/ML Modeling", "Python", "Deep Learning", "Model Deployment"]
+      technologies: ["Artificial Intelligence", "Machine Learning", "Python", "Feature Engineering"]
     }
   ],
 
   certifications: [
-    {
-      id: "cisco-networking",
-      title: "Networking Basics",
-      issuer: "Cisco Networking Academy",
-      date: "Certified",
-      status: "Verified Credential",
-      description: "Fundamental networking concepts, IP addressing, subnetting, TCP/IP protocol suite, Ethernet architecture, and basic network troubleshooting.",
-      skills: ["Computer Networks", "TCP/IP Protocol", "Subnetting", "Routing & Switching"],
-      pdfUrl: "/certificates/Cisco_Networking_Basics.pdf"
-    },
     {
       id: "aws-genai",
       title: "AWS Generative AI Virtual Internship",
@@ -468,8 +491,18 @@ export const portfolioData = {
       date: "Certified",
       status: "Verified Credential",
       description: "Hands-on machine learning implementations with Python, scikit-learn, data preprocessing, classification, regression, and model validation techniques.",
-      skills: ["Python", "scikit-learn", "Classification", "Regression", "Data Preprocessing"],
+      skills: ["Python", "Machine Learning", "Classification", "Regression"],
       pdfUrl: null
+    },
+    {
+      id: "cisco-networking",
+      title: "Networking Basics",
+      issuer: "Cisco",
+      date: "Certified",
+      status: "Verified Credential",
+      description: "Fundamental networking concepts, IP addressing, subnetting, TCP/IP protocol suite, Ethernet architecture, and basic network troubleshooting.",
+      skills: ["Networking Basics", "TCP/IP Protocol", "Subnetting", "Routing & Switching"],
+      pdfUrl: "/certificates/Cisco_Networking_Basics.pdf"
     },
     {
       id: "cisco-python",
@@ -496,51 +529,63 @@ export const portfolioData = {
   achievements: [
     {
       id: "datanyx-runnerup",
-      title: "Runner-Up — Datanyx 2025 Datathon",
+      title: "Runner-Up in Datanyx 2025 Datathon",
       organization: "MJCET, Hyderabad",
       track: "AgroTech Domain",
       year: "2025",
       type: "Competition",
       badge: "Runner-Up",
       description:
-        "Secured the prestigious Runner-Up position at the Datanyx 2025 Datathon in the AgroTech domain, competing against top university teams across Hyderabad with data-driven agricultural prediction models.",
+        "Runner-Up in Datanyx 2025 Datathon conducted by MJCET, Hyderabad, for developing an innovative AI-based solution addressing challenges in the AgroTech domain.",
       impact: "Developed predictive agricultural intelligence pipelines under strict competition time constraints, recognized by the judging panel for methodological rigor and practical utility."
     },
     {
       id: "hackwithhyd",
-      title: "HackWithHyderabad 3.0 Contributor",
+      title: "HackWithHyderabad 3.0 Competitor",
       organization: "HackWithHyderabad Community",
-      track: "AI & SRE Operations",
+      track: "AI Incident Response",
       year: "2024 / 2025",
       type: "Hackathon",
-      badge: "Contributor",
+      badge: "Hackathon Competitor",
       description:
-        "Active project contributor with RecallOps AI — an intelligent incident response and root-cause retrieval assistant utilizing persistent incident knowledge bases.",
+        "Competed in HackWithHyderabad 3.0 as part of a team and contributed to the development of RecallOps AI, an AI-powered incident response solution.",
       impact: "Contributed to RAG architecture and prompt evaluation to enable fast evidence-based diagnosis during complex server outages."
     },
     {
       id: "smart-india-hackathon",
-      title: "Smart India Hackathon – Project Contributor",
+      title: "Smart India Hackathon (SIH) Contributor",
       organization: "Ministry of Education / SIH",
-      track: "Academic Scheduling & Resource Optimization",
-      year: "Participation",
+      track: "Smart Classroom & Timetable Scheduler",
+      year: "Hackathon",
       type: "National Hackathon",
       badge: "SIH Contributor",
       description:
-        "Key contributor to the Smart Classroom and Timetable Scheduler project, designing constraint-satisfaction wireframes and frontend modules for automated academic timetable generation.",
+        "Contributed to Smart India Hackathon (SIH) through the development of a Smart Classroom & Timetable Scheduler.",
       impact: "Eliminated timetable slot overlaps and faculty workload distribution conflicts through automated constraint matching algorithms."
     },
     {
       id: "tech-tycoons",
-      title: "Active Member — Tech Tycoons Club",
+      title: "Active Member of Tech Tycoons Club",
       organization: "Matrusri Engineering College",
-      track: "Technical Community & Peer Mentorship",
+      track: "Technical Community & Project Activities",
       year: "2023 – Present",
       type: "Community Leadership",
       badge: "Active Member",
       description:
-        "Student leader and member participating in peer coding workshops, hackathons, technical symposiums, and collaborative knowledge-sharing sessions.",
-      impact: "Fosters peer-to-peer technical learning in Python, web development, and AI fundamentals across student cohorts."
+        "Active Member of the Tech Tycoons Club at Matrusri Engineering College, contributing to technical and project-based activities.",
+      impact: "Participates in peer coding workshops, hackathons, technical symposiums, and collaborative knowledge-sharing sessions."
+    },
+    {
+      id: "academic-excellence",
+      title: "Academic Excellence — 9.6 CGPA",
+      organization: "Matrusri Engineering College",
+      track: "Information Technology",
+      year: "2023 – Present",
+      type: "Academic Standing",
+      badge: "CGPA: 9.6 / 10",
+      description:
+        "Maintained a CGPA of 9.6 while consistently excelling in technical coursework. Secured 98.2% in Intermediate and 10.0 GPA in SSC, demonstrating strong academic performance.",
+      impact: "Ranked among top percentiles across academic terms with deep mastery of computing foundations."
     }
   ]
 };

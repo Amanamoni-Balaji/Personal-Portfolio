@@ -309,16 +309,16 @@ export default function Hero({ onOpenResume, onShowToast }) {
                   <span className="text-ink-300 text-[10px]">rainfall &amp; crop advisory</span>
                 </div>
                 <div className="text-ink-400 flex items-center justify-between">
-                  <span>careflow/</span>
-                  <span className="text-ink-300 text-[10px]">clinical process mining</span>
+                  <span>travelmate/</span>
+                  <span className="text-ink-300 text-[10px]">full stack django booking</span>
                 </div>
                 <div className="text-ink-400 flex items-center justify-between">
-                  <span>agroguardian/</span>
-                  <span className="text-ink-300 text-[10px]">crop recommend &amp; CNN</span>
-                </div>
-                <div className="text-ink-400 flex items-center justify-between">
-                  <span>smart-classroom/</span>
+                  <span>timetrackers/</span>
                   <span className="text-ink-300 text-[10px]">sih timetable scheduler</span>
+                </div>
+                <div className="text-ink-400 flex items-center justify-between">
+                  <span>agro_guardian/</span>
+                  <span className="text-ink-300 text-[10px]">crop disease &amp; CNN</span>
                 </div>
               </div>
             </motion.div>

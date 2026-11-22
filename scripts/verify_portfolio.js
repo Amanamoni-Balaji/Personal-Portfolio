@@ -138,12 +138,12 @@ async function runVerification() {
     failed++;
   }
 
-  // Four key projects present
+  // Resume Projects present
   const projectIds = portfolioData.projects.map(p => p.id);
-  const requiredProjects = ['krishiai', 'agroguardian', 'careflow', 'smart-classroom'];
+  const requiredProjects = ['krishiai', 'travelmate', 'time-trackers', 'agro-guardian', 'recallops-ai', 'personal-portfolio'];
   const allProjectsPresent = requiredProjects.every(id => projectIds.includes(id));
   if (allProjectsPresent) {
-    console.log('  [PASS] All 4 required projects present (KrishiAI, AgroGuardian, CareFlow, Smart Classroom)');
+    console.log('  [PASS] All 6 resume projects present (KrishiAI, TravelMate, TimeTrackers, Agro_Guardian, RecallOps AI, Personal Portfolio)');
     passed++;
   } else {
     console.error('  [FAIL] Missing required projects');

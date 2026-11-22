@@ -27,12 +27,11 @@ export default function Skills() {
 
   const categoryIcons = {
     Programming: Terminal,
-    Frontend: Code2,
-    Backend: Layers,
-    Database: Database,
-    'Data Analytics': LineChart,
+    'Core Fundamentals': Code2,
     'AI & Machine Learning': Brain,
-    Tools: Wrench,
+    'Web Development': Layers,
+    'Data Analytics': LineChart,
+    'Tools & Platforms': Wrench,
   };
 
   return (

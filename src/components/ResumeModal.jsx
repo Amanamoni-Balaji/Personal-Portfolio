@@ -10,13 +10,16 @@ import {
   Award,
   CheckCircle,
   FileCheck,
-  FileText
+  FileText,
+  Phone,
+  Mail,
+  MapPin
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function ResumeModal({ isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState('summary'); // 'summary' or 'pdf'
-  const { personal, internships, skills, education } = portfolioData;
+  const { personal, internships, skills, projects } = portfolioData;
 
   if (!isOpen) return null;
 
@@ -108,11 +111,31 @@ export default function ResumeModal({ isOpen, onClose }) {
                   <div>
                     <h4 className="text-lg font-bold text-ink-50">{personal.name}</h4>
                     <p className="text-xs text-accent-sky font-mono mt-0.5">{personal.headline}</p>
-                    <p className="text-xs text-ink-400 mt-1">{personal.location} &bull; {personal.email}</p>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-400 mt-1 font-mono">
+                      <span>{personal.location}</span>
+                      <span>&bull;</span>
+                      <a href={`mailto:${personal.email}`} className="text-accent-sky hover:underline">
+                        {personal.email}
+                      </a>
+                      <span>&bull;</span>
+                      <a href={`tel:${personal.phone}`} className="text-ink-300">
+                        {personal.phone}
+                      </a>
+                    </div>
                   </div>
                   <div className="flex items-center gap-2 text-xs font-mono">
                     <span className="badge-status">Available for Internships</span>
                   </div>
+                </div>
+
+                {/* Professional Summary */}
+                <div className="p-4 rounded-xl bg-obsidian-850/60 border border-editorial-line space-y-1.5">
+                  <p className="text-xs font-mono font-bold text-ink-300 uppercase tracking-wider">
+                    Professional Summary
+                  </p>
+                  <p className="text-xs text-ink-300 leading-relaxed font-sans">
+                    {personal.positioning}
+                  </p>
                 </div>
 
                 {/* Education */}
@@ -140,11 +163,37 @@ export default function ResumeModal({ isOpen, onClose }) {
                   </div>
                 </div>
 
+                {/* Featured Projects Highlight */}
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-ink-300 uppercase tracking-wider mb-3">
+                    <Layers className="w-4 h-4 text-accent-sky" />
+                    <span>Featured Projects</span>
+                  </div>
+                  <div className="space-y-2.5">
+                    {projects.map((proj) => (
+                      <div
+                        key={proj.id}
+                        className="p-3.5 rounded-lg bg-obsidian-850/60 border border-editorial-line space-y-1"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <p className="text-xs font-bold text-ink-100">{proj.title}</p>
+                          <span className="text-[10px] font-mono text-accent-sky px-2 py-0.5 rounded bg-obsidian-900 border border-editorial-line">
+                            {proj.technologies.slice(0, 3).join(', ')}
+                          </span>
+                        </div>
+                        <p className="text-xs text-ink-400 leading-relaxed">
+                          {proj.tagline || proj.overview}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 {/* Internships & Experience */}
                 <div>
                   <div className="flex items-center gap-2 text-xs font-mono font-bold text-ink-300 uppercase tracking-wider mb-3">
                     <Briefcase className="w-4 h-4 text-accent-sky" />
-                    <span>Internships & Experience</span>
+                    <span>Internships &amp; Experience</span>
                   </div>
                   <div className="space-y-3">
                     {internships.map((exp) => (
@@ -160,6 +209,8 @@ export default function ResumeModal({ isOpen, onClose }) {
                           <span className={`text-[11px] font-mono px-2 py-0.5 rounded border ${
                             exp.status === 'Ongoing'
                               ? 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10'
+                              : exp.status === 'Scheduled'
+                              ? 'border-accent-blue/30 text-accent-sky bg-accent-blue/10'
                               : 'border-editorial-line text-ink-400 bg-obsidian-900'
                           }`}>
                             {exp.duration}
@@ -178,7 +229,7 @@ export default function ResumeModal({ isOpen, onClose }) {
                     <span>Technical Proficiencies</span>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                    {skills.slice(0, 6).map((group, idx) => (
+                    {skills.map((group, idx) => (
                       <div key={idx} className="p-3 rounded-lg bg-obsidian-850/40 border border-editorial-line">
                         <p className="text-xs font-mono text-accent-sky font-semibold mb-1">{group.category}</p>
                         <p className="text-xs text-ink-300">
@@ -202,7 +253,7 @@ export default function ResumeModal({ isOpen, onClose }) {
 
           {/* Footer Actions */}
           <div className="px-6 py-3 border-t border-editorial-line bg-obsidian-850 flex items-center justify-between text-xs text-ink-400">
-            <span>Verified document &bull; Updated for 2026</span>
+            <span>Verified document &bull; Updated with latest credentials</span>
             <div className="flex items-center gap-3">
               <a
                 href={personal.resumeUrl}

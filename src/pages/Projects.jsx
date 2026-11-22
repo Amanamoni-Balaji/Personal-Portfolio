@@ -12,8 +12,9 @@ export default function Projects() {
     'All',
     'AI & Predictive Analytics',
     'Deep Learning & AgriTech',
-    'Healthcare Analytics & Process Mining',
-    'Optimization & Full Stack'
+    'Full Stack & Web Systems',
+    'Optimization & Full Stack',
+    'Generative AI & SRE Operations'
   ];
 
   const filteredProjects =
@@ -35,7 +36,7 @@ export default function Projects() {
           Featured Engineering Projects
         </h1>
         <p className="text-sm sm:text-base text-ink-400 max-w-3xl leading-relaxed">
-          Deep-dives into intelligent software products, data science models, and algorithmic systems. Each project includes problem statements, solution architecture, my individual contributions, and authentic screenshots.
+          Deep-dives into intelligent software applications, machine learning models, and full-stack systems. Each case study features problem statements, solution architecture, my individual contributions, and authentic screenshots.
         </p>
 
         {/* Filters with Animated Layout Indicator */}
@@ -67,7 +68,7 @@ export default function Projects() {
       </div>
 
       {/* Projects Grid */}
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, idx) => (
             <ProjectCard key={project.id} project={project} index={idx} />
@@ -79,7 +80,7 @@ export default function Projects() {
       <div className="p-6 rounded-2xl bg-obsidian-900 border border-editorial-line text-xs font-mono text-ink-400 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <span className="text-ink-200 font-bold block mb-1">Authentic Project Artifacts</span>
-          All screenshots, wireframes, and implementation descriptions reflect verified academic and hackathon project deliverables.
+          All screenshots, wireframes, and implementation descriptions reflect verified academic, internship, and hackathon project deliverables.
         </div>
         <span className="badge-status text-xs shrink-0">
           Open Source Code Available
