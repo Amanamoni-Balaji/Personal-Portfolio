@@ -810,6 +810,54 @@ export const portfolioData = {
       skills: ["Data Analytics", "Exploratory Data Analysis", "Data Lifecycle", "Statistical Reasoning"],
       pdfUrl: "/certificates/Data_Analytics_Essentials.pdf",
       issuerLogoText: "Cisco Academy"
+    },
+    {
+      id: "tata-cybersecurity",
+      title: "Cybersecurity Analyst Job Simulation",
+      issuer: "Tata & Forage",
+      organization: "Tata Group & Forage",
+      date: "August 16, 2026",
+      year: "2026",
+      status: "Verified Credential",
+      badge: "Tata Certified",
+      credentialId: "6a818d7eba854243f456fda6",
+      category: "Cybersecurity & Systems",
+      description: "Completed practical job simulation in Cybersecurity Analysis with Tata and Forage. Covered identity and access management (IAM) fundamentals, IAM strategy assessment, custom IAM solution design, and enterprise platform integration.",
+      skills: ["Identity & Access Management (IAM)", "IAM Strategy Assessment", "Custom IAM Solutions", "Platform Integration"],
+      pdfUrl: "/certificates/Tata_Cybersecurity_Analyst_Job_Simulation.pdf",
+      issuerLogoText: "Tata | Forage"
+    },
+    {
+      id: "tata-data-visualisation",
+      title: "Data Visualisation: Empowering Business with Effective Insights",
+      issuer: "Tata & Forage",
+      organization: "Tata Group & Forage",
+      date: "August 16, 2026",
+      year: "2026",
+      status: "Verified Credential",
+      badge: "Tata Certified",
+      credentialId: "6a818880aa694bdf89ad70a2",
+      category: "Data Analytics",
+      description: "Completed practical job simulation in Data Visualisation with Tata and Forage. Mastered framing business scenarios, choosing optimal visualizations, creating effective executive dashboards, and communicating data-driven strategic insights.",
+      skills: ["Data Visualisation", "Business Scenario Framing", "Executive Dashboards", "Data Storytelling"],
+      pdfUrl: "/certificates/Tata_Data_Visualisation_Empowering_Business.pdf",
+      issuerLogoText: "Tata | Forage"
+    },
+    {
+      id: "tata-genai-analytics",
+      title: "GenAI Powered Data Analytics Job Simulation",
+      issuer: "Tata & Forage",
+      organization: "Tata Group & Forage",
+      date: "August 16, 2026",
+      year: "2026",
+      status: "Verified Credential",
+      badge: "Tata Certified",
+      credentialId: "6a818022aa694bdf89ac1031",
+      category: "AI & Machine Learning",
+      description: "Completed practical job simulation in GenAI Powered Data Analytics with Tata and Forage. Performed exploratory data analysis and risk profiling, predictive modeling for delinquency forecasting, executive data reporting, and AI-driven collections strategy implementation.",
+      skills: ["Generative AI", "Exploratory Data Analysis", "Risk Profiling", "Predictive Delinquency Modeling", "AI Collections Strategy"],
+      pdfUrl: "/certificates/Tata_GenAI_Powered_Data_Analytics.pdf",
+      issuerLogoText: "Tata | Forage"
     }
   ],
 
@@ -894,6 +942,48 @@ export const portfolioData = {
       description: "Essential data analysis methodologies, data lifecycle, exploratory analysis, statistical techniques, and analytical communication.",
       skills: ["Data Analytics", "Exploratory Data Analysis", "Data Lifecycle", "Statistical Reasoning"],
       pdfUrl: "/certificates/Data_Analytics_Essentials.pdf"
+    },
+    {
+      id: "tata-cybersecurity",
+      title: "Cybersecurity Analyst Job Simulation",
+      issuer: "Tata & Forage",
+      organization: "Tata Group & Forage",
+      date: "August 16, 2026",
+      status: "Verified Credential",
+      badge: "Tata Certified",
+      credentialId: "6a818d7eba854243f456fda6",
+      category: "Cybersecurity & Systems",
+      description: "Completed practical job simulation in Cybersecurity Analysis with Tata and Forage. Covered identity and access management (IAM) fundamentals, IAM strategy assessment, custom IAM solution design, and enterprise platform integration.",
+      skills: ["Identity & Access Management (IAM)", "IAM Strategy Assessment", "Custom IAM Solutions", "Platform Integration"],
+      pdfUrl: "/certificates/Tata_Cybersecurity_Analyst_Job_Simulation.pdf"
+    },
+    {
+      id: "tata-data-visualisation",
+      title: "Data Visualisation: Empowering Business with Effective Insights",
+      issuer: "Tata & Forage",
+      organization: "Tata Group & Forage",
+      date: "August 16, 2026",
+      status: "Verified Credential",
+      badge: "Tata Certified",
+      credentialId: "6a818880aa694bdf89ad70a2",
+      category: "Data Analytics",
+      description: "Completed practical job simulation in Data Visualisation with Tata and Forage. Mastered framing business scenarios, choosing optimal visualizations, creating effective executive dashboards, and communicating data-driven strategic insights.",
+      skills: ["Data Visualisation", "Business Scenario Framing", "Executive Dashboards", "Data Storytelling"],
+      pdfUrl: "/certificates/Tata_Data_Visualisation_Empowering_Business.pdf"
+    },
+    {
+      id: "tata-genai-analytics",
+      title: "GenAI Powered Data Analytics Job Simulation",
+      issuer: "Tata & Forage",
+      organization: "Tata Group & Forage",
+      date: "August 16, 2026",
+      status: "Verified Credential",
+      badge: "Tata Certified",
+      credentialId: "6a818022aa694bdf89ac1031",
+      category: "AI & Machine Learning",
+      description: "Completed practical job simulation in GenAI Powered Data Analytics with Tata and Forage. Performed exploratory data analysis and risk profiling, predictive modeling for delinquency forecasting, executive data reporting, and AI-driven collections strategy implementation.",
+      skills: ["Generative AI", "Exploratory Data Analysis", "Risk Profiling", "Predictive Delinquency Modeling", "AI Collections Strategy"],
+      pdfUrl: "/certificates/Tata_GenAI_Powered_Data_Analytics.pdf"
     }
   ],
 

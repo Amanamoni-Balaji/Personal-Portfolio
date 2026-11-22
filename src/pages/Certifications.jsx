@@ -37,7 +37,8 @@ export default function Certifications() {
     'Database & Cloud',
     'Data Analytics',
     'Cybersecurity & Systems',
-    'Mathematics & Honors'
+    'Mathematics & Honors',
+    'Professional Memberships'
   ];
 
   // Category Filter for Internship Certificates
@@ -129,7 +130,7 @@ export default function Certifications() {
                 Professional Certifications
               </h2>
               <p className="text-xs sm:text-sm text-ink-400 max-w-2xl leading-relaxed">
-                Accreditations from Oracle Academy, IIT Bombay, HP Foundation, Cisco Networking Academy, Soft Computing Research Society (SCRS), ISTE Srinivasa Ramanujan Mathematics, and IEI.
+                Accreditations and industry job simulations from Tata &amp; Forage, Oracle Academy, IIT Bombay, HP Foundation, Cisco Networking Academy, Soft Computing Research Society (SCRS), ISTE Srinivasa Ramanujan Mathematics, and IEI.
               </p>
             </div>
 

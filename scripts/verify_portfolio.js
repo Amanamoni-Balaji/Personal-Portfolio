@@ -113,12 +113,12 @@ async function runVerification() {
   }
 
   // 4. Verify Professional Certifications (Non-Internship)
-  console.log('\n4. Verifying All 15 Official Professional Certifications:');
-  if (portfolioData.professionalCertifications && portfolioData.professionalCertifications.length === 15) {
-    console.log('  [PASS] All 15 professional certifications cataloged in data model');
+  console.log('\n4. Verifying All 18 Official Professional Certifications:');
+  if (portfolioData.professionalCertifications && portfolioData.professionalCertifications.length === 18) {
+    console.log('  [PASS] All 18 professional certifications cataloged in data model');
     passed++;
   } else {
-    console.error(`  [FAIL] Expected 15 professional certifications, found ${portfolioData.professionalCertifications?.length}`);
+    console.error(`  [FAIL] Expected 18 professional certifications, found ${portfolioData.professionalCertifications?.length}`);
     failed++;
   }
 
