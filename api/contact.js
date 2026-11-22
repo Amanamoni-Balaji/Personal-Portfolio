@@ -98,7 +98,7 @@ export default async function handler(req, res) {
       recipient: recipientEmail || process.env.VITE_RECIPIENT_EMAIL || 'amanamonibalaji1828@gmail.com'
     };
 
-    // 4. Message Storage in database / file storage
+    // 4. Message Storage in database / file storage (Safety backup)
     try {
       const dataDir = path.join(process.cwd(), 'data');
       if (!fs.existsSync(dataDir)) {
@@ -116,7 +116,6 @@ export default async function handler(req, res) {
       existingInquiries.unshift(inquiryRecord);
       fs.writeFileSync(dbPath, JSON.stringify(existingInquiries.slice(0, 100), null, 2), 'utf8');
     } catch (fsErr) {
-      // In serverless environments where local filesystem might be read-only, log safely
       console.log('Inquiry logged in memory:', inquiryRecord.id);
     }
 
@@ -127,7 +126,17 @@ export default async function handler(req, res) {
     const privateKey = process.env.EMAILJS_PRIVATE_KEY;
 
     let emailSent = false;
-    if (serviceId && templateId && publicKey && !serviceId.includes('your_')) {
+    let dispatchError = null;
+
+    const isEmailConfigured =
+      serviceId &&
+      templateId &&
+      publicKey &&
+      !serviceId.includes('your_') &&
+      !templateId.includes('your_') &&
+      !publicKey.includes('your_');
+
+    if (isEmailConfigured) {
       try {
         const emailjsPayload = {
           service_id: serviceId,
@@ -159,17 +168,36 @@ export default async function handler(req, res) {
           emailSent = true;
         } else {
           const errText = await emailRes.text();
+          dispatchError = `EmailJS API returned ${emailRes.status}: ${errText}`;
           console.warn('EmailJS API error response:', errText);
         }
       } catch (err) {
+        dispatchError = err.message;
         console.warn('EmailJS fetch error on server:', err.message);
       }
+    } else {
+      dispatchError = 'EmailJS credentials are not configured in environment variables.';
+    }
+
+    // CRITICAL: NEVER claim success or inbox delivery unless email was ACTUALLY delivered
+    if (!emailSent) {
+      return res.status(503).json({
+        success: false,
+        emailDelivered: false,
+        storedBackup: true,
+        messageId,
+        error: dispatchError || 'Email delivery service is currently unconfigured.',
+        data: {
+          id: messageId,
+          date: formattedDate
+        }
+      });
     }
 
     return res.status(200).json({
       success: true,
+      emailDelivered: true,
       messageId,
-      emailDelivered: emailSent,
       message: "Your message has been sent successfully! I'll get back to you soon.",
       data: {
         id: messageId,

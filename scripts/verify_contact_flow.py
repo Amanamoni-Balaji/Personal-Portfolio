@@ -1,4 +1,3 @@
-import time
 from playwright.sync_api import sync_playwright
 
 def verify_contact_page_and_flow():
@@ -12,7 +11,7 @@ def verify_contact_page_and_flow():
 
         print("--- 1. NAVIGATING TO CONTACT PAGE ---")
         page.goto("http://localhost:3000/contact", wait_until="networkidle")
-        page.wait_for_timeout(1000)
+        page.wait_for_timeout(800)
 
         # 1. Verify Page Elements & Form Fields
         assert page.locator("h1:has-text('Get in Touch')").count() >= 1, "Page title missing"
@@ -54,38 +53,25 @@ def verify_contact_page_and_flow():
         assert page.locator("text=Please enter a valid email address").count() >= 1, "Email format validation failed"
         print("  [PASS] Email format validation correctly rejected invalid email.")
 
-        # 4. Test Valid Submission Workflow
+        # 4. Test Submission when Email Service is awaiting configuration
         email_input.fill("alex.johnson@example.com")
-        
-        # Click submit and observe state
         submit_button.click()
-        
-        # Wait for submission to complete
         page.wait_for_timeout(800)
 
-        # 5. Verify Success State
-        success_title = page.locator("h3:has-text(\"Your message has been sent successfully! I'll get back to you soon.\")")
-        assert success_title.count() >= 1, "Success message title mismatch or missing!"
-        print("  [PASS] Success state displayed: \"Your message has been sent successfully! I'll get back to you soon.\"")
+        # Ensure FALSE SUCCESS is NEVER shown
+        success_el = page.locator("h3:has-text('Your message has been sent successfully')")
+        assert success_el.count() == 0, "CRITICAL: False success was displayed without verified email service!"
+        print("  [PASS] Confirmed: No false success screen is displayed.")
 
-        # Verify sender details in summary card
-        assert page.locator("text=Alex Johnson").count() >= 1, "Sender name in summary missing"
-        assert page.locator("text=alex.johnson@example.com").count() >= 1, "Sender email in summary missing"
-        assert page.locator("text=AI Collaboration").count() >= 1, "Subject in summary missing"
-        print("  [PASS] Submission summary details verified.")
+        # Ensure explicit error notice is shown with mailto fallback
+        assert page.locator("text=Email service is not yet connected").count() >= 1, "Unconfigured error missing"
+        fallback_link = page.locator("a:has-text('Open in Default Mail Client')")
+        assert fallback_link.count() >= 1, "Fallback mailto link missing"
+        href = fallback_link.get_attribute("href")
+        assert "mailto:amanamonibalaji1828@gmail.com" in href, "Mailto target wrong"
+        print("  [PASS] Explicit configuration warning and 1-click mailto fallback verified.")
 
-        # 6. Test 'Send another message' button
-        reset_btn = page.locator("button:has-text('Send another message')")
-        assert reset_btn.count() == 1, "'Send another message' button missing"
-        reset_btn.click()
-        page.wait_for_timeout(400)
-
-        # Verify form is reset and ready
-        assert page.locator("input[name='name']").count() == 1, "Form did not reset back"
-        assert page.locator("input[name='name']").input_value() == "", "Name field was not cleared"
-        print("  [PASS] 'Send another message' reset the form cleanly.")
-
-        # 7. Mobile Viewport Check (390px)
+        # 5. Mobile Viewport Check (390px)
         page.set_viewport_size({"width": 390, "height": 844})
         page.wait_for_timeout(400)
         sw = page.evaluate("() => document.documentElement.scrollWidth")

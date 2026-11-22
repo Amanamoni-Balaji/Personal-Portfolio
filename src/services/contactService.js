@@ -5,6 +5,28 @@ import { portfolioData } from '../data/portfolioData';
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /**
+ * Check whether EmailJS credentials are fully and genuinely configured
+ */
+export function checkEmailServiceConfig() {
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+  const missingKeys = [];
+  if (!serviceId || serviceId.includes('your_')) missingKeys.push('VITE_EMAILJS_SERVICE_ID');
+  if (!templateId || templateId.includes('your_')) missingKeys.push('VITE_EMAILJS_TEMPLATE_ID');
+  if (!publicKey || publicKey.includes('your_')) missingKeys.push('VITE_EMAILJS_PUBLIC_KEY');
+
+  return {
+    isConfigured: missingKeys.length === 0,
+    missingKeys,
+    serviceId,
+    templateId,
+    publicKey
+  };
+}
+
+/**
  * Validate contact form payload
  */
 export function validateContactForm({ name, email, subject, message }) {
@@ -95,13 +117,14 @@ export function generateMailtoUrl({ name, email, subject, message }) {
 
 /**
  * Send contact inquiry via EmailJS or Backend API
+ * STRICT: Only resolves with success if email service accepts & delivers the message!
  */
 export async function sendContactMessage({ name, email, subject, message, honeypot = '' }) {
   // 1. Client-Side Spam / Honeypot Check
   if (honeypot && honeypot.trim() !== '') {
-    // Silently drop bot submissions
     return {
       success: true,
+      emailDelivered: false,
       provider: 'spam-filter',
       message: 'Inquiry processed.'
     };
@@ -140,8 +163,71 @@ export async function sendContactMessage({ name, email, subject, message, honeyp
     portfolioData?.personal?.email ||
     'amanamonibalaji1828@gmail.com';
 
-  // 4. Try Backend API first (/api/contact)
-  let backendAttempted = false;
+  const configCheck = checkEmailServiceConfig();
+
+  // 4. If EmailJS is configured on client, dispatch directly via EmailJS SDK
+  if (configCheck.isConfigured) {
+    try {
+      const templateParams = {
+        from_name: name.trim(),
+        from_email: email.trim(),
+        reply_to: email.trim(),
+        to_name: portfolioData?.personal?.name || 'Amanamoni Balaji',
+        to_email: recipientEmail,
+        subject: subject.trim(),
+        message: message.trim(),
+        submission_date: submissionDateFormatted
+      };
+
+      const response = await emailjs.send(
+        configCheck.serviceId,
+        configCheck.templateId,
+        templateParams,
+        configCheck.publicKey
+      );
+
+      if (response.status === 200 || response.text === 'OK') {
+        if (localRecord?.id) updateLocalInquiryStatus(localRecord.id, 'delivered-via-emailjs');
+        
+        // Also log to backend storage quietly in background if possible
+        try {
+          fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name,
+              email,
+              subject,
+              message,
+              submissionDate: submissionDateFormatted,
+              recipientEmail
+            })
+          }).catch(() => {});
+        } catch (e) {}
+
+        return {
+          success: true,
+          emailDelivered: true,
+          provider: 'emailjs',
+          status: response.status
+        };
+      } else {
+        throw new Error(`EmailJS error status ${response.status}: ${response.text}`);
+      }
+    } catch (emailJsError) {
+      if (localRecord?.id) updateLocalInquiryStatus(localRecord.id, 'failed-emailjs');
+      const err = new Error(
+        emailJsError?.text ||
+          emailJsError?.message ||
+          'Email service rejected the message. Please check your EmailJS dashboard or email directly.'
+      );
+      err.code = 'EMAILJS_FAILURE';
+      err.fallbackMailto = generateMailtoUrl({ name, email, subject, message });
+      throw err;
+    }
+  }
+
+  // 5. Try Backend API (/api/contact) to see if server-side email keys are configured
   try {
     const apiRes = await fetch('/api/contact', {
       method: 'POST',
@@ -157,76 +243,41 @@ export async function sendContactMessage({ name, email, subject, message, honeyp
       })
     });
 
-    if (apiRes.ok) {
-      const data = await apiRes.json();
-      if (data.success) {
-        if (localRecord?.id) updateLocalInquiryStatus(localRecord.id, 'delivered-via-api');
-        return {
-          success: true,
-          provider: 'api',
-          messageId: data.messageId,
-          data
-        };
-      }
-    }
-    backendAttempted = true;
-  } catch (err) {
-    // Backend endpoint not present or network error; gracefully fallback to EmailJS
-    backendAttempted = true;
-  }
+    const data = await apiRes.json().catch(() => ({}));
 
-  // 5. Try EmailJS client SDK
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-  const isEmailJsConfigured =
-    serviceId &&
-    templateId &&
-    publicKey &&
-    !serviceId.includes('your_') &&
-    !templateId.includes('your_') &&
-    !publicKey.includes('your_');
-
-  if (isEmailJsConfigured) {
-    try {
-      const templateParams = {
-        from_name: name.trim(),
-        from_email: email.trim(),
-        reply_to: email.trim(),
-        to_name: portfolioData?.personal?.name || 'Amanamoni Balaji',
-        to_email: recipientEmail,
-        subject: subject.trim(),
-        message: message.trim(),
-        submission_date: submissionDateFormatted
+    // STRICT CHECK: Only consider success IF emailDelivered is true!
+    if (apiRes.ok && data.success && data.emailDelivered) {
+      if (localRecord?.id) updateLocalInquiryStatus(localRecord.id, 'delivered-via-api');
+      return {
+        success: true,
+        emailDelivered: true,
+        provider: 'api',
+        messageId: data.messageId,
+        data
       };
-
-      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
-
-      if (response.status === 200 || response.text === 'OK') {
-        if (localRecord?.id) updateLocalInquiryStatus(localRecord.id, 'delivered-via-emailjs');
-        return {
-          success: true,
-          provider: 'emailjs',
-          status: response.status
-        };
-      } else {
-        throw new Error(`EmailJS responded with status ${response.status}: ${response.text}`);
-      }
-    } catch (emailJsError) {
-      if (localRecord?.id) updateLocalInquiryStatus(localRecord.id, 'failed-emailjs');
-      throw new Error(
-        emailJsError?.text ||
-          emailJsError?.message ||
-          'Email delivery failed. Please try again or email directly.'
-      );
     }
+
+    // If server stored backup but could not send email
+    if (data.storedBackup && !data.emailDelivered) {
+      if (localRecord?.id) updateLocalInquiryStatus(localRecord.id, 'stored-no-email');
+      const err = new Error(
+        'Email service is not yet connected to this portfolio. To receive messages directly in your inbox, configure your EmailJS credentials in .env.'
+      );
+      err.code = 'UNCONFIGURED_SERVICE';
+      err.fallbackMailto = generateMailtoUrl({ name, email, subject, message });
+      throw err;
+    }
+  } catch (backendErr) {
+    if (backendErr.code === 'UNCONFIGURED_SERVICE') {
+      throw backendErr;
+    }
+    // Network or server error
   }
 
-  // 6. If neither backend nor EmailJS keys are configured, inform visitor honestly
+  // 6. If neither client nor server has email service configured
   if (localRecord?.id) updateLocalInquiryStatus(localRecord.id, 'unconfigured');
   const configError = new Error(
-    'Email delivery service is currently awaiting API key configuration (VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, VITE_EMAILJS_PUBLIC_KEY).'
+    'Email delivery service is currently not connected (missing EmailJS Service ID, Template ID, or Public Key in .env).'
   );
   configError.code = 'UNCONFIGURED_SERVICE';
   configError.fallbackMailto = generateMailtoUrl({ name, email, subject, message });
