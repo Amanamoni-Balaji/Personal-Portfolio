@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import {
   ArrowRight,
@@ -8,12 +8,7 @@ import {
   Github,
   Linkedin,
   Mail,
-  ChevronDown,
-  Sparkles,
-  ExternalLink,
-  GraduationCap,
-  MapPin,
-  Check
+  ChevronDown
 } from 'lucide-react';
 import BlurFade from '../components/BlurFade';
 import { portfolioData } from '../data/portfolioData';
@@ -133,29 +128,60 @@ export default function Home({ onOpenResume, onShowToast }) {
               </p>
             </BlurFade>
 
-            {/* Core Focus Badges (Clean & Tasteful) */}
-            <BlurFade delay={0.2}>
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
-                {[
-                  'Clinical Process Mining',
-                  'Predictive AI & NLP',
-                  'React & TypeScript',
-                  'Django REST Framework'
-                ].map((item, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 rounded-full text-xs font-mono text-ink-300 bg-white/5 border border-white/10 hover:border-white/25 hover:text-white transition-colors"
-                  >
-                    {item}
-                  </span>
-                ))}
+            {/* 1. Unified Single Contact Row: GitHub | LinkedIn | Email | WhatsApp */}
+            <BlurFade delay={0.2} className="space-y-2">
+              <div className="grid grid-cols-2 sm:flex sm:flex-wrap lg:flex-nowrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
+                {/* 1. GitHub */}
+                <a
+                  href={personal.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-glow-github light-sweep flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-all group"
+                  aria-label="GitHub Profile"
+                >
+                  <Github className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                  <span>GitHub</span>
+                </a>
+
+                {/* 2. LinkedIn */}
+                <a
+                  href={personal.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-glow-linkedin light-sweep flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-all group"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Linkedin className="w-4 h-4 text-sky-400 group-hover:scale-110 transition-transform" />
+                  <span>LinkedIn</span>
+                </a>
+
+                {/* 3. Email */}
+                <a
+                  href={`mailto:${personal.email}`}
+                  className="btn-glow-cyan light-sweep flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-all group"
+                  aria-label="Send direct email"
+                >
+                  <Mail className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" />
+                  <span>Email</span>
+                </a>
+
+                {/* 4. WhatsApp */}
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-glow-emerald light-sweep flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-all group"
+                  aria-label="Open WhatsApp conversation"
+                >
+                  <WhatsAppIcon className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
+                  <span>WhatsApp</span>
+                </a>
               </div>
             </BlurFade>
 
-            {/* Action Buttons with Glowing Interactions */}
-            <BlurFade delay={0.25} className="space-y-4 pt-2">
-              {/* Row 1: Primary Work & Resume CTAs */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
+            {/* 2. Main Action Buttons: Explore My Work & Download Resume */}
+            <BlurFade delay={0.25}>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1">
                 <Link
                   to="/projects"
                   className="btn-glow-sky light-sweep text-sm py-3 px-6 rounded-xl font-semibold group"
@@ -171,64 +197,6 @@ export default function Home({ onOpenResume, onShowToast }) {
                   <Download className="w-4 h-4 text-accent-sky transition-transform group-hover:-translate-y-0.5" />
                   <span>Download Resume</span>
                 </button>
-              </div>
-
-              {/* Row 2: Direct Contact Channels — Email & WhatsApp (Immediately After Email) */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                {/* Email Contact Button */}
-                <a
-                  href={`mailto:${personal.email}`}
-                  className="btn-glow-cyan light-sweep inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-all group"
-                  aria-label="Send direct email"
-                >
-                  <Mail className="w-4 h-4 text-sky-400 transition-transform group-hover:scale-110" />
-                  <span>Email</span>
-                </a>
-
-                {/* WhatsApp Contact Button — Immediately after Email */}
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-glow-emerald light-sweep inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-all group"
-                  aria-label="Open WhatsApp conversation"
-                >
-                  <WhatsAppIcon className="w-4 h-4 text-emerald-400 transition-transform group-hover:scale-110" />
-                  <span>WhatsApp</span>
-                </a>
-              </div>
-            </BlurFade>
-
-            {/* Minimal Professional Social Links */}
-            <BlurFade delay={0.3}>
-              <div className="pt-2 flex items-center justify-center lg:justify-start gap-6 text-xs font-mono text-ink-400">
-                <a
-                  href={personal.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white inline-flex items-center gap-1.5 transition-colors group"
-                  aria-label="GitHub Profile"
-                >
-                  <Github className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-                  <span>GitHub</span>
-                </a>
-
-                <span className="text-ink-700">&bull;</span>
-
-                <a
-                  href={personal.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white inline-flex items-center gap-1.5 transition-colors group"
-                  aria-label="LinkedIn Profile"
-                >
-                  <Linkedin className="w-4 h-4 text-accent-sky group-hover:scale-110 transition-transform" />
-                  <span>LinkedIn</span>
-                </a>
-
-                <span className="text-ink-700">&bull;</span>
-
-                <span className="text-ink-500">Matrusri IT &bull; CGPA 9.6</span>
               </div>
             </BlurFade>
 
