@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ArrowUpRight, Github, Sparkles, Layers, Activity } from 'lucide-react';
+import { ArrowUpRight, Github, Sparkles, Layers, Activity, Images } from 'lucide-react';
 import BlurFade from './BlurFade';
 
-export default function ProjectCard({ project, index }) {
+export default function ProjectCard({ project, index, onOpenGallery }) {
   const cardRef = useRef(null);
   const [hovered, setHovered] = useState(false);
 
@@ -84,7 +84,19 @@ export default function ProjectCard({ project, index }) {
         className={`group relative h-full rounded-3xl bg-[#0a0d16]/95 border overflow-hidden flex flex-col justify-between transition-all duration-300 ${cardBorderClass}`}
       >
         {/* Top Media / Screenshot Container */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-black border-b border-white/[0.08]">
+        <div
+          onClick={(e) => {
+            if (onOpenGallery && project.gallery?.length) {
+              e.preventDefault();
+              e.stopPropagation();
+              onOpenGallery(project);
+            }
+          }}
+          className={`relative aspect-[16/10] overflow-hidden bg-black border-b border-white/[0.08] ${
+            onOpenGallery ? 'cursor-pointer' : ''
+          }`}
+          title={onOpenGallery ? `Click to open ${project.shortTitle} Image Gallery (${project.gallery?.length || 0} screens)` : project.title}
+        >
           <img
             src={project.primaryImage}
             alt={project.title}
@@ -106,6 +118,16 @@ export default function ProjectCard({ project, index }) {
               </span>
             )}
           </div>
+
+          {/* Hover Gallery Indicator Pill */}
+          {project.gallery && project.gallery.length > 0 && (
+            <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+              <span className="px-2.5 py-1 rounded-lg bg-black/85 backdrop-blur-md border border-white/20 text-[10px] font-mono font-semibold text-accent-sky flex items-center gap-1.5 shadow-lg">
+                <Images className="w-3 h-3 text-accent-sky" />
+                <span>{project.gallery.length} Screens</span>
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Card Content */}
@@ -153,7 +175,24 @@ export default function ProjectCard({ project, index }) {
               )}
             </div>
 
-            <div className="flex items-center justify-between pt-1">
+            {/* Dedicated View Project Gallery Button */}
+            {project.gallery && project.gallery.length > 0 && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (onOpenGallery) onOpenGallery(project);
+                }}
+                className="w-full py-2 px-3 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 hover:border-blue-400/80 text-accent-sky hover:text-white text-xs font-mono font-semibold flex items-center justify-center gap-2 transition-all duration-200 light-sweep group/gal shadow-[0_0_12px_rgba(59,130,246,0.12)] hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] cursor-pointer"
+                aria-label={`View ${project.shortTitle} Image Gallery`}
+              >
+                <Images className="w-3.5 h-3.5 text-accent-sky group-hover/gal:scale-110 transition-transform" />
+                <span>View Project Gallery ({project.gallery.length} Screens)</span>
+              </button>
+            )}
+
+            <div className="flex items-center justify-between pt-0.5">
               <Link
                 to={`/projects/${project.id}`}
                 className={`light-sweep text-xs font-semibold px-3 py-1.5 rounded-lg border inline-flex items-center gap-1.5 transition-all ${actionButtonClass}`}

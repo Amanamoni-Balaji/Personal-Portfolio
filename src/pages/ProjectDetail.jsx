@@ -20,9 +20,12 @@ import {
   Workflow,
   Sparkles,
   Sliders,
-  Target
+  Target,
+  Grid,
+  Images
 } from 'lucide-react';
 import BlurFade from '../components/BlurFade';
+import ProjectGalleryModal from '../components/ProjectGalleryModal';
 import { portfolioData } from '../data/portfolioData';
 
 export default function ProjectDetail() {
@@ -36,6 +39,7 @@ export default function ProjectDetail() {
   // Carousel slider state
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
 
   // Reset slide and step on project change
@@ -136,14 +140,24 @@ export default function ProjectDetail() {
 
       {/* Interactive Screenshot Carousel / Slider */}
       <BlurFade delay={0.12} className="space-y-3">
-        <div className="flex items-center justify-between text-xs font-mono text-ink-400">
+        <div className="flex items-center justify-between text-xs font-mono text-ink-400 gap-2 flex-wrap">
           <span className="flex items-center gap-1.5 text-ink-300 font-semibold">
             <Sliders className="w-3.5 h-3.5 text-accent-sky" />
             <span>Interactive Visual Artifacts &amp; Screenshots</span>
           </span>
-          <span>
-            Slide {currentSlide + 1} of {slides.length}
-          </span>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setIsGalleryModalOpen(true)}
+              className="text-accent-sky hover:text-white flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/30 hover:border-blue-400 transition-all font-semibold"
+              title="Open full interactive screenshot gallery"
+            >
+              <Images className="w-3.5 h-3.5" />
+              <span>View Full Gallery ({slides.length} Screens)</span>
+            </button>
+            <span>
+              Slide {currentSlide + 1} of {slides.length}
+            </span>
+          </div>
         </div>
 
         {/* Main Display Screen */}
@@ -484,6 +498,12 @@ export default function ProjectDetail() {
           </div>
         )}
       </AnimatePresence>
+      {/* Project Image Gallery Modal */}
+      <ProjectGalleryModal
+        isOpen={isGalleryModalOpen}
+        onClose={() => setIsGalleryModalOpen(false)}
+        project={project}
+      />
     </div>
   );
 }

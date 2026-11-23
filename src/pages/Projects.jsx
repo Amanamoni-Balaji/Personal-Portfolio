@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
+import ProjectGalleryModal from '../components/ProjectGalleryModal';
 import { portfolioData } from '../data/portfolioData';
 import { Sparkles, Search } from 'lucide-react';
 import BlurFade from '../components/BlurFade';
@@ -9,6 +10,7 @@ export default function Projects() {
   const { projects } = portfolioData;
   const [filter, setFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeGalleryProject, setActiveGalleryProject] = useState(null);
 
   const categories = [
     'All',
@@ -137,11 +139,23 @@ export default function Projects() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project, idx) => (
-              <ProjectCard key={project.id} project={project} index={idx} />
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={idx}
+                onOpenGallery={(p) => setActiveGalleryProject(p)}
+              />
             ))}
           </div>
         )}
       </div>
+
+      {/* Dedicated Project Image Gallery Modal */}
+      <ProjectGalleryModal
+        isOpen={activeGalleryProject !== null}
+        onClose={() => setActiveGalleryProject(null)}
+        project={activeGalleryProject}
+      />
     </div>
   );
 }
